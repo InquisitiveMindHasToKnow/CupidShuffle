@@ -2,6 +2,7 @@ package com.example.cupidshuffle;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
     private SharedPreferences loginSharedPreferences;
+    private ImageView loginPageImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         rememberMeCheckBox = findViewById(R.id.remember_me_checkbox);
         loginButton = findViewById(R.id.login_button);
         registerButton = findViewById(R.id.register_button);
+        loginPageImage = findViewById(R.id.loginRegistrationImageView);
+
+        registerButton.setPaintFlags(registerButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        Picasso.get()
+                .load(R.drawable.cupid2)
+                .into(loginPageImage);
 
         loginSharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 

@@ -1,5 +1,6 @@
 package com.example.cupidshuffle.rv;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.model.UserProfiles;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
@@ -15,9 +17,10 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
     private TextView userNameTextView;
     private TextView userLocationTextView;
     private TextView userOccupationTextView;
-    private ImageView userPictureImageView;
+    private CircularImageView profileCircularImageView;
     private String userName;
     private String userAge;
+
 
     public UserProfilesViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -25,7 +28,7 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
         userNameTextView = itemView.findViewById(R.id.userprofile_name_textview);
         userLocationTextView = itemView.findViewById(R.id.userprofile_location_textview);
         userOccupationTextView = itemView.findViewById(R.id.userprofile_occupation_textview);
-        userPictureImageView = itemView.findViewById(R.id.userprofile_image_view);
+        profileCircularImageView = itemView.findViewById(R.id.profileimagetester);
     }
 
     public void onBind(UserProfiles userProfiles) {
@@ -40,7 +43,7 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
 
         Picasso.get()
                 .load(userProfiles.getPicture())
-                .into(userPictureImageView);
+                .into(profileCircularImageView);
 
     }
 }

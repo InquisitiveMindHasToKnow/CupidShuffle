@@ -28,7 +28,7 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
         userNameTextView = itemView.findViewById(R.id.userprofile_name_textview);
         userLocationTextView = itemView.findViewById(R.id.userprofile_location_textview);
         userOccupationTextView = itemView.findViewById(R.id.userprofile_occupation_textview);
-        profileCircularImageView = itemView.findViewById(R.id.profileimagetester);
+        profileCircularImageView = itemView.findViewById(R.id.userprofile_circular_imageview);
     }
 
     public void onBind(UserProfiles userProfiles) {

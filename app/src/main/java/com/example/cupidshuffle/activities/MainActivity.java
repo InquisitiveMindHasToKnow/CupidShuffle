@@ -1,9 +1,10 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.model.Category;
 import com.example.cupidshuffle.model.FourSquareResponse;
 import com.example.cupidshuffle.services.FourSquareClient;

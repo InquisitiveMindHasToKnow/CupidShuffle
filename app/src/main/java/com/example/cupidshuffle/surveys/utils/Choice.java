@@ -11,5 +11,5 @@ public class Choice {
 
     public Destination getDestination(){
         return destination;
-    }git
+    }
 }

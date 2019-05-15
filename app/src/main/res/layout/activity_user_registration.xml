@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserRegistrationActivity">
+    tools:context=".activities.UserRegistrationActivity">
 
     <TextView
         android:id="@+id/registration_screen_prompt_textview"

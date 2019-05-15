@@ -1,4 +1,4 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cupidshuffle.R;
 import com.squareup.picasso.Picasso;
 
 public class LoginActivity extends AppCompatActivity {
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (usernameEditText.getText().toString().equalsIgnoreCase(loginSharedPreferences.getString(checkUser, null))
                         && passwordEditText.getText().toString().equals(loginSharedPreferences.getString(checkPassword, null))) {
-                    Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent loginIntent = new Intent(LoginActivity.this, ViewUserProfilesActivity.class);
                     loginIntent.putExtra("currentUser", usernameEditText.getText().toString());
                     LoginActivity.this.startActivity(loginIntent);
                 } else {

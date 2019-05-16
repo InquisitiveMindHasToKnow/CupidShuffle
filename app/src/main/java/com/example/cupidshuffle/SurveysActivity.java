@@ -1,4 +1,4 @@
-package com.example.cupidshuffle.survey;
+package com.example.cupidshuffle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

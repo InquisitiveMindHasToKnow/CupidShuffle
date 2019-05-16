@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+<<<<<<< HEAD
 import com.example.cupidshuffle.activities.LoginActivity;
 
+=======
+>>>>>>> 61acb8512067a5ae85b86dcf0a47eb2b4aa13fd2
 import pl.droidsonroids.gif.GifImageView;
 
 public class SplashActivity extends AppCompatActivity {
@@ -41,7 +44,11 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 startActivity(new Intent(SplashActivity.this,
+<<<<<<< HEAD
                         LoginActivity.class));
+=======
+                        MainActivity.class));
+>>>>>>> 61acb8512067a5ae85b86dcf0a47eb2b4aa13fd2
                 finish();
             }
         }, secondsDelayed * 3700);

@@ -1,13 +1,13 @@
-package com.example.cupidshuffle.services;
+package com.example.cupidshuffle;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitSingleton {
+public class UserProfileRetrofitSingleton {
 
         private static Retrofit retrofitInstance;
 
-        private RetrofitSingleton(){}
+        private UserProfileRetrofitSingleton(){}
 
         public static Retrofit getRetrofitInstance() {
             if (retrofitInstance != null) {

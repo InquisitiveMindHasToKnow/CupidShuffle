@@ -1,6 +1,7 @@
-package com.example.cupidshuffle.surveys.network;
+package com.example.cupidshuffle;
 
-import com.example.cupidshuffle.surveys.models.Questionaire;
+import com.example.cupidshuffle.services.SurveyService;
+import com.example.cupidshuffle.surveys.models.QuestionaireList;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -10,11 +11,19 @@ public class RetrofitSingleton {
     private static final String BASE_URL = "https://gist.githubusercontent.com/sheriffameen/";
     private static Retrofit retrofit;
 
+    private static RetrofitSingleton instance;
+
+    public static RetrofitSingleton getInstance(){
+        if (instance == null){
+            return new RetrofitSingleton();
+        }
+        return instance;
+    }
+
     public static Retrofit getSinglenstance() {
         if (retrofit != null) {
             return retrofit;
         }
-
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -22,14 +31,12 @@ public class RetrofitSingleton {
         return retrofit;
     }
 
-    private RetrofitSingleton() {
-    }
 
     private SurveyService getSurveyService(){
         return retrofit.create(SurveyService.class);
     }
 
-    public Call<Questionaire> getQuestionaireResponse(){
+    public Call<QuestionaireList> getQuestionaireResponse(){
         return getSurveyService().getQuestionaire();
     }
 }

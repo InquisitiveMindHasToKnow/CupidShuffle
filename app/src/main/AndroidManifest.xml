@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".QuestionaireActivity"></activity>
         <activity android:name=".activities.ViewPrivateMessagesActivity"></activity>
         <activity android:name=".activities.MainUserProfile" />
         <activity android:name=".activities.IndividualProfilePage" />

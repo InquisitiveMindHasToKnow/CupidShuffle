@@ -3,6 +3,7 @@ package com.example.cupidshuffle.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ public class IndividualProfilePage extends AppCompatActivity {
     private TextView individualProfilePageUserOccupation;
     private CircularImageView individualProfilePageUserPicture;
     private Intent fillOutProfileIntent;
+    private Button letsShuffleButton;
+    private Button messageMeButton;
 
     private static final String USER_NAME = "username";
     private static final String USER_AGE = "userage";
@@ -42,6 +45,8 @@ public class IndividualProfilePage extends AppCompatActivity {
         individualProfilePageUserLocation = findViewById(R.id.individual_profile_location_textview);
         individualProfilePageUserPicture = findViewById(R.id.individual_profile_circular_imageview);
         individualProfilePageUserOccupation = findViewById(R.id.individual_profile_occupation_textview);
+        letsShuffleButton = findViewById(R.id.letsshufflebutton);
+        messageMeButton = findViewById(R.id.sendmessagetouserbutton);
 
 
         individualUserAge = fillOutProfileIntent.getStringExtra(USER_AGE);

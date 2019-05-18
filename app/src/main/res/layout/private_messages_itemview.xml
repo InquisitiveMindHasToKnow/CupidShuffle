@@ -40,13 +40,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/direct_message_accept_button"
+                android:id="@+id/private_message_accept_button"
                 android:text="Respond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/direct_message_reject_button"
+                android:id="@+id/private_message_reject_button"
                 android:text="Reject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -54,7 +54,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

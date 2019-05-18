@@ -6,14 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".activities.ViewPrivateMessagesActivity">
 
+
+    <TextView
+        android:id="@+id/view_private_messages_header_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:layout_marginTop="48dp"
+        android:text="The Following Messages Require Your Attention: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/private_messages_recyclerview"
+
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/private_messages_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/view_private_messages_header_textview"/>
 
 </android.support.constraint.ConstraintLayout>

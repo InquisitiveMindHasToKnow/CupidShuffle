@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.model.UserProfiles;
 import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.rv.UserProfilesAdapter;
-import com.example.cupidshuffle.services.RetrofitSingleton;
 import com.example.cupidshuffle.services.UserProfileService;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class ViewUserProfilesActivity extends AppCompatActivity {
 
         userProfileRecyclerView = findViewById(R.id.user_profiles_recyclerview);
 
-        Retrofit retrofit = RetrofitSingleton.getRetrofitInstance();
+        Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
         UserProfileService userProfileService = retrofit.create(UserProfileService.class);
         userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
             @Override

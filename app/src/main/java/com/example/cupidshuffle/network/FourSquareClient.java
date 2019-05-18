@@ -1,6 +1,7 @@
-package com.example.cupidshuffle.services;
+package com.example.cupidshuffle.network;
 
 import com.example.cupidshuffle.model.FourSquareResponse;
+import com.example.cupidshuffle.services.CategoryService;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

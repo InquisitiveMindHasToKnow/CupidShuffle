@@ -7,7 +7,7 @@ import android.util.Log;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.model.Category;
 import com.example.cupidshuffle.model.FourSquareResponse;
-import com.example.cupidshuffle.services.FourSquareClient;
+import com.example.cupidshuffle.network.FourSquareClient;
 
 import java.util.List;
 

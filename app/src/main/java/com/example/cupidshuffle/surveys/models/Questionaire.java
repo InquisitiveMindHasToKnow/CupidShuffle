@@ -32,4 +32,6 @@ public class Questionaire {
     public GeneralInterest getGeneralInterest() {
         return generalInterest;
     }
+
+
 }

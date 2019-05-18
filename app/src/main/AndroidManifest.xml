@@ -14,6 +14,8 @@
         <activity android:name=".activities.SentMessageConfirmationActivity"></activity>
         <activity android:name=".activities.RespondToDMActivity" />
         <activity android:name=".activities.ViewPrivateMessagesActivity" />
+        <activity android:name=".QuestionaireActivity"></activity>
+        <activity android:name=".activities.ViewPrivateMessagesActivity"></activity>
         <activity android:name=".activities.MainUserProfile" />
         <activity android:name=".activities.IndividualProfilePage" />
         <activity android:name=".activities.ViewUserProfilesActivity" />
@@ -28,5 +30,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

@@ -31,10 +31,12 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
 
         PrivateMessages privateMessages = privateMessagesList.get(i);
         privateMessagesViewHolder.onBind(privateMessages);
+
     }
 
     @Override
     public int getItemCount() {
         return privateMessagesList.size();
     }
+
 }

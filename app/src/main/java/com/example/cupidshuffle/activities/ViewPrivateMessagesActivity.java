@@ -6,11 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.RetrofitSingleton;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.example.cupidshuffle.model.PrivateMessagesAPI;
 import com.example.cupidshuffle.rv.PrivateMessagesAdapter;
 import com.example.cupidshuffle.services.PrivateMessageService;
-import com.example.cupidshuffle.services.RetrofitSingleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,8 @@ public class ViewPrivateMessagesActivity extends AppCompatActivity {
 
         privateMessagesRecyclerView = findViewById(R.id.private_messages_recyclerview);
 
-        Retrofit retrofit = RetrofitSingleton.getRetrofitInstance();
+
+        Retrofit retrofit = RetrofitSingleton.getSinglenstance();
         PrivateMessageService privateMessageService = retrofit.create(PrivateMessageService.class);
         privateMessageService.getPrivateMessages().enqueue(new Callback<PrivateMessagesAPI>() {
             @Override

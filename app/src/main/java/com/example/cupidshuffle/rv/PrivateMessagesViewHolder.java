@@ -11,6 +11,9 @@ import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.RespondToDMActivity;
 import com.example.cupidshuffle.model.PrivateMessages;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrivateMessagesViewHolder extends RecyclerView.ViewHolder {
 
     private static final String dMSendersName = "dmSendersName";
@@ -21,9 +24,8 @@ public class PrivateMessagesViewHolder extends RecyclerView.ViewHolder {
     private Button dMRespondButton;
     private Button dMRejectButton;
 
-
-
-
+    private List<PrivateMessages> privateMessagesList = new ArrayList<>();
+    private PrivateMessagesAdapter privateMessagesAdapter;
 
     public PrivateMessagesViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -33,12 +35,15 @@ public class PrivateMessagesViewHolder extends RecyclerView.ViewHolder {
         dMRespondButton = itemView.findViewById(R.id.private_message_accept_button);
         dMRejectButton = itemView.findViewById(R.id.private_message_reject_button);
 
+        privateMessagesAdapter = new PrivateMessagesAdapter(privateMessagesList);
     }
+
 
     public void onBind(final PrivateMessages privateMessages) {
 
         privateMessageSenderTextView.setText(privateMessages.getSender());
         privateMessageTextView.setText(privateMessages.getMessage());
+
 
         dMRespondButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +55,13 @@ public class PrivateMessagesViewHolder extends RecyclerView.ViewHolder {
                 itemView.getContext().startActivity(toRespondToDMActivityIntent);
             }
         });
+
+        dMRejectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 }

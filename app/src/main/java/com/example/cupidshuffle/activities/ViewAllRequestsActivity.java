@@ -92,7 +92,7 @@ public class ViewAllRequestsActivity extends AppCompatActivity {
 
 
 
-        if (connectorModelList.isEmpty()) {
+        if (connectorModelList == null || connectorModelList.isEmpty()) {
             connectorModelList = new ArrayList<>();
             getConnectionRequests();
 

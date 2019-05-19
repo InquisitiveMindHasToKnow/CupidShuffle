@@ -22,7 +22,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessagesAdapter.PrivateMessagesViewHolder> {
 
     private static final String DM_SHARED_PREFS_KEY = "privateMessagesSharedPrefs";
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences privateMessageSharedPrefs;
     private List<PrivateMessages> privateMessagesList;
 
     public PrivateMessagesAdapter(List<PrivateMessages> privateMessagesList) {
@@ -32,7 +32,7 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
     @NonNull
     @Override
     public PrivateMessagesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        sharedPreferences = viewGroup.getContext().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
+        privateMessageSharedPrefs = viewGroup.getContext().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
         View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.private_messages_itemview, viewGroup, false);
         return new PrivateMessagesViewHolder(childView);
     }
@@ -62,7 +62,7 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
 
     private void savePrivateMessages() {
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor = privateMessageSharedPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(privateMessagesList);
         editor.putString("slideinthedms", json);

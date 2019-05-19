@@ -5,22 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.ViewPrivateMessagesActivity">
+    tools:context=".activities.ViewAllRequestsActivity">
 
 
     <TextView
-        android:id="@+id/view_private_messages_header_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:text="The Following Messages Require Your Attention: "
-        />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/private_messages_recyclerview"
+        android:id="@+id/connector_reuqest_header_texview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF" />
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="Connection Requests"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/connector_request_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+       />
 
 </LinearLayout>

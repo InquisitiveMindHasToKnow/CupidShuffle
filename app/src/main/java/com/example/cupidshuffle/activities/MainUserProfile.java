@@ -30,6 +30,7 @@ public class MainUserProfile extends AppCompatActivity {
 
     private LinearLayout shuffleLinearLayout;
     private LinearLayout messageLinearLayout;
+    private LinearLayout requestLinearLayout;
 
 
 
@@ -56,6 +57,7 @@ public class MainUserProfile extends AppCompatActivity {
 
         shuffleLinearLayout = findViewById(R.id.main_user_profile_connect_linear_layout);
         messageLinearLayout = findViewById(R.id.main_user_profile_messages_linear_layout);
+        requestLinearLayout = findViewById(R.id.main_user_profile_request_linear_layout);
 
         shuffleLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +75,16 @@ public class MainUserProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toPrivateMessagesRecyclerViewIntent = new Intent(MainUserProfile.this, ViewPrivateMessagesActivity.class);
                 startActivity(toPrivateMessagesRecyclerViewIntent);
+            }
+        });
+
+
+        requestLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toConnectionRequestRecyclerViewIntent = new Intent(MainUserProfile.this, ViewAllRequestsActivity.class);
+                startActivity(toConnectionRequestRecyclerViewIntent);
+
             }
         });
 

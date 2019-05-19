@@ -20,6 +20,7 @@ public class RespondToDMActivity extends AppCompatActivity {
     private Intent getInfoToRespondToIntent;
     private TextView sendersNameTextView;
     private TextView sendersMessageTextView;
+    private TextView sendersNameInCardTextView;
     private Button sendResponseButton;
     private Button cancelResponseButton;
     private EditText respondToDMEditText;
@@ -35,10 +36,12 @@ public class RespondToDMActivity extends AppCompatActivity {
 
         sendersNameTextView = findViewById(R.id.respond_to_dm_requestors_name_textview);
         sendersMessageTextView = findViewById(R.id.dm_textview);
+        sendersNameInCardTextView = findViewById(R.id.dm_requestors_name_on_card);
         respondToDMEditText = findViewById(R.id.respond_to_dm_edittext);
         sendResponseButton = findViewById(R.id.send_response_to_dm_button);
         cancelResponseButton = findViewById(R.id.cancel_response_to_dm_button);
 
+        sendersNameInCardTextView.setText(getInfoToRespondToIntent.getStringExtra(dMSendersName)+ ":");
         sendersNameTextView.setText("Responding to " + getInfoToRespondToIntent.getStringExtra(dMSendersName) + "'s Message:");
         sendersMessageTextView.setText(getInfoToRespondToIntent.getStringExtra(dMedMessage));
 

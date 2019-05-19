@@ -39,7 +39,7 @@
 
         <Button
             android:id="@+id/connection_request_accept_button"
-            android:text="Respond"
+            android:text="Accept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

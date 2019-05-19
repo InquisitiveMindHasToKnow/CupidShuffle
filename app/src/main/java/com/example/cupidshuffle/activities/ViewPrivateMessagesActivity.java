@@ -87,7 +87,7 @@ public class ViewPrivateMessagesActivity extends AppCompatActivity {
 
 
 
-        if (privateMessagesList.isEmpty()) {
+        if (privateMessagesList == null || privateMessagesList.isEmpty()) {
             privateMessagesList = new ArrayList<>();
             getPrivatMessages();
 

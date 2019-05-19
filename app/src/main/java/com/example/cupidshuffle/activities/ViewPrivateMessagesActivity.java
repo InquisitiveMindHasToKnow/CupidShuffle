@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.example.cupidshuffle.model.PrivateMessagesAPI;
-import com.example.cupidshuffle.model.UserProfiles;
-import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.rv.PrivateMessagesAdapter;
-import com.example.cupidshuffle.rv.UserProfilesAdapter;
 import com.example.cupidshuffle.services.PrivateMessageService;
 import com.example.cupidshuffle.services.RetrofitSingleton;
-import com.example.cupidshuffle.services.UserProfileService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +25,7 @@ public class ViewPrivateMessagesActivity extends AppCompatActivity {
     private static final String TAG = "PrivateMessagesJSON.TAG";
     private RecyclerView privateMessagesRecyclerView;
     private List<PrivateMessages> privateMessagesList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +46,7 @@ public class ViewPrivateMessagesActivity extends AppCompatActivity {
                 PrivateMessagesAdapter privateMessagesAdapter = new PrivateMessagesAdapter(privateMessagesList);
                 privateMessagesRecyclerView.setAdapter(privateMessagesAdapter);
                 privateMessagesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
 
             }
 

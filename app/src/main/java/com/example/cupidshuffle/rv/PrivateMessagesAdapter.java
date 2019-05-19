@@ -1,6 +1,7 @@
 package com.example.cupidshuffle.rv;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,11 +13,16 @@ import android.widget.TextView;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.RespondToDMActivity;
 import com.example.cupidshuffle.model.PrivateMessages;
+import com.google.gson.Gson;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessagesAdapter.PrivateMessagesViewHolder> {
 
+    private static final String DM_SHARED_PREFS_KEY = "privateMessagesSharedPrefs";
+    private SharedPreferences sharedPreferences;
     private List<PrivateMessages> privateMessagesList;
 
     public PrivateMessagesAdapter(List<PrivateMessages> privateMessagesList) {
@@ -26,6 +32,7 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
     @NonNull
     @Override
     public PrivateMessagesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        sharedPreferences = viewGroup.getContext().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
         View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.private_messages_itemview, viewGroup, false);
         return new PrivateMessagesViewHolder(childView);
     }
@@ -48,8 +55,19 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, privateMessagesList.size());
 
+        savePrivateMessages();
+
+
     }
 
+    private void savePrivateMessages() {
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(privateMessagesList);
+        editor.putString("slideinthedms", json);
+        editor.apply();
+    }
 
     public class PrivateMessagesViewHolder extends RecyclerView.ViewHolder {
 

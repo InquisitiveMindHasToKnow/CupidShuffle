@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:gravity="center"
+        android:layout_marginTop="40dp"
         android:text="Connection Requests"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>

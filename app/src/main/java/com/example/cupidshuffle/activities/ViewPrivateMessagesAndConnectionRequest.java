@@ -29,8 +29,8 @@ public class ViewPrivateMessagesAndConnectionRequest extends AppCompatActivity {
     private void setUpViewPager(ViewPager viewPager) {
 
         PrivateMessageAndRequestVPAdapter privateMessageAndRequestVPAdapter = new PrivateMessageAndRequestVPAdapter(getSupportFragmentManager());
-        privateMessageAndRequestVPAdapter.addFragments(new ViewAllPrivateMessagesFragment(), "Private Messages");
-        privateMessageAndRequestVPAdapter.addFragments(new ViewAllConnectionRequestsFragment(), "Connection Requests");
+        privateMessageAndRequestVPAdapter.addFragments(new ViewAllPrivateMessagesFragment(), "Private Messages \n   9");
+        privateMessageAndRequestVPAdapter.addFragments(new ViewAllConnectionRequestsFragment(), "Connection Requests \n   12");
         viewPager.setAdapter(privateMessageAndRequestVPAdapter);
     }
     }

@@ -86,7 +86,7 @@ public class ViewAllPrivateMessagesFragment extends Fragment {
         }
 
         private void savePrivateMessages() {
-            SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Gson gson = new Gson();
             String json = gson.toJson(privateMessagesList);
@@ -95,7 +95,7 @@ public class ViewAllPrivateMessagesFragment extends Fragment {
         }
 
         private void loadPrivateMessages() {
-            SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences(DM_SHARED_PREFS_KEY, MODE_PRIVATE);
             Gson gson = new Gson();
             String json = sharedPreferences.getString("slideinthedms", null);
             Type type = new TypeToken<ArrayList<PrivateMessages>>() {}.getType();

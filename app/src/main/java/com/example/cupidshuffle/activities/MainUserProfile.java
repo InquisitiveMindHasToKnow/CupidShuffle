@@ -62,8 +62,8 @@ public class MainUserProfile extends AppCompatActivity {
         shuffleLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toAllAccountsRecyclerViewIntent = new Intent(MainUserProfile.this, ViewUserProfilesActivity.class);
-                startActivity(toAllAccountsRecyclerViewIntent);
+                Intent toShuffledLoveBirdIntent = new Intent(MainUserProfile.this, ShuffleTheLoveBirdsActivity.class);
+                startActivity(toShuffledLoveBirdIntent);
 
             }
         });
@@ -73,8 +73,8 @@ public class MainUserProfile extends AppCompatActivity {
         messageLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toPrivateMessagesRecyclerViewIntent = new Intent(MainUserProfile.this, ViewPrivateMessagesAndConnectionRequest.class);
-                startActivity(toPrivateMessagesRecyclerViewIntent);
+                Intent toPrivateMessagesAndRequestsRecyclerViewIntent = new Intent(MainUserProfile.this, ViewPrivateMessagesAndConnectionRequest.class);
+                startActivity(toPrivateMessagesAndRequestsRecyclerViewIntent);
             }
         });
 
@@ -82,8 +82,8 @@ public class MainUserProfile extends AppCompatActivity {
         requestLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toConnectionRequestRecyclerViewIntent = new Intent(MainUserProfile.this, ViewPrivateMessagesAndConnectionRequest.class);
-                startActivity(toConnectionRequestRecyclerViewIntent);
+                Intent toAllAccountsRecyclerViewIntent = new Intent(MainUserProfile.this, ViewUserProfilesActivity.class);
+                startActivity(toAllAccountsRecyclerViewIntent);
 
             }
         });

@@ -288,7 +288,9 @@
                         android:id="@+id/main_user_profile_message_hint_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Messages:" />
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:text="Messages " />
 
 
                     <TextView
@@ -296,7 +298,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="9"
+                        android:text="And Requests"
                         android:textSize="12sp" />
 
 
@@ -362,15 +364,9 @@
                         android:id="@+id/main_user_profile_request_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Requests:" />
+                        android:textSize="12sp"
+                        android:text=" View All Users" />
 
-                    <TextView
-                        android:id="@+id/main_user_profile_request_amount_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="12"
-                        android:textSize="12sp" />
 
 
                 </LinearLayout>

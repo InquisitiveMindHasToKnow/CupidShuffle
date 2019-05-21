@@ -61,7 +61,7 @@ public class RespondToDMActivity extends AppCompatActivity {
         cancelResponseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toViewPrivateMessagesIntent = new Intent(RespondToDMActivity.this, ViewPrivateMessagesActivity.class);
+                Intent toViewPrivateMessagesIntent = new Intent(RespondToDMActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
                 startActivity(toViewPrivateMessagesIntent);
             }
         });

@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ViewAllRequestsActivity"></activity>
+        <activity android:name=".activities.PrivateProfileActivity"></activity>
+        <activity android:name=".activities.ShuffleSelectedProfileActivity" />
+        <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
+        <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />
         <activity android:name=".activities.RespondToDMActivity" />
-        <activity android:name=".activities.ViewPrivateMessagesActivity" />
         <activity android:name=".QuestionaireActivity" />
         <activity android:name=".activities.MainUserProfile" />
         <activity android:name=".activities.IndividualProfilePage" />

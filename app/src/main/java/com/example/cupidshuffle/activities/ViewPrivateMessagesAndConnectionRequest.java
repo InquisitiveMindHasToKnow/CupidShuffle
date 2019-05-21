@@ -22,16 +22,21 @@ public class ViewPrivateMessagesAndConnectionRequest extends AppCompatActivity {
         viewPager = findViewById(R.id.view_private_messages_and_connection_request_viewPager);
         setUpViewPager(viewPager);
 
+
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getSelectedTabPosition();
     }
 
     private void setUpViewPager(ViewPager viewPager) {
 
         PrivateMessageAndRequestVPAdapter privateMessageAndRequestVPAdapter = new PrivateMessageAndRequestVPAdapter(getSupportFragmentManager());
-        privateMessageAndRequestVPAdapter.addFragments(new ViewAllPrivateMessagesFragment(), "Private Messages \n   9");
         privateMessageAndRequestVPAdapter.addFragments(new ViewAllConnectionRequestsFragment(), "Connection Requests \n   12");
+        privateMessageAndRequestVPAdapter.addFragments(new ViewAllPrivateMessagesFragment(), "Private Messages \n   9");
         viewPager.setAdapter(privateMessageAndRequestVPAdapter);
+
     }
-    }
+}
+
 

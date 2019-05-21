@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ShuffleSelectedProfileActivity"></activity>
+        <activity android:name=".activities.PrivateProfileActivity"></activity>
+        <activity android:name=".activities.ShuffleSelectedProfileActivity" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />

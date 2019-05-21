@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PrivateProfileActivity">
+
+    <TextView
+        android:id="@+id/private_profile_user_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Valentina Menedez"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/private_profile_message_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="Valentina Menendez Has A Private Profile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/private_profile_user_picture_circular_imageview"/>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/private_profile_user_picture_circular_imageview"
+        android:layout_width="204dp"
+        android:layout_height="204dp"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="10"
+        android:src="@drawable/connect5"
+        app:layout_constraintTop_toBottomOf="@id/private_profile_user_name_textview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:civ_shadow_color="@color/textPrimaryColor"/>
+
+    <Button
+        android:id="@+id/private_profile_connect_button"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+        android:gravity="center"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/private_profile_message_textview"/>
+
+</android.support.constraint.ConstraintLayout>

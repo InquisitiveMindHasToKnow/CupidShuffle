@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                         && passwordEditText.getText().toString().equals(loginSharedPreferences.getString(checkPassword, null))) {
                     Intent loginIntent = new Intent(LoginActivity.this, MainUserProfile.class);
                     loginIntent.putExtra("currentUser", usernameEditText.getText().toString());
+                    LoginActivity.this.finish();
                     LoginActivity.this.startActivity(loginIntent);
                 } else {
                     Toast.makeText(LoginActivity.this.getApplicationContext(), "Username or password invalid!", Toast.LENGTH_LONG).show();

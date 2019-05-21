@@ -52,6 +52,7 @@ public class PrivateProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent connectToPrivateUserIntent = new Intent(PrivateProfileActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
                 Toast.makeText(PrivateProfileActivity.this, "Connect Request Sent To " + requestorsName, Toast.LENGTH_LONG).show();
+                PrivateProfileActivity.this.finish();
                 startActivity(connectToPrivateUserIntent);
             }
         });

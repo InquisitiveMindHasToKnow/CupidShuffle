@@ -6,7 +6,7 @@
 
     <color name="backgroundPrimary">#EBA6A9</color>
     <color name="textPrimaryColor">#002A32</color>
-    <color name="buttonTextColor">#FFF</color>
+    <color name="white">#FFF</color>
     <color name="buttonPrimaryColor">#003366</color>
     <color name="snackColor">#000</color>
 

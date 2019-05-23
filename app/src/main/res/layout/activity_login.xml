@@ -93,7 +93,7 @@
         android:layout_marginRight="16dp"
         android:background="@color/buttonPrimaryColor"
         android:text="Log In"
-        android:textColor="@color/buttonTextColor"
+        android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintLeft_toLeftOf="parent"

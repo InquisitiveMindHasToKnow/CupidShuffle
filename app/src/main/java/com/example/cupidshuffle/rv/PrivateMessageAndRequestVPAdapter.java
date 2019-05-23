@@ -23,6 +23,7 @@ public class PrivateMessageAndRequestVPAdapter extends FragmentPagerAdapter {
         fragmentTitleList.add(fragmentTitle);
     }
 
+
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

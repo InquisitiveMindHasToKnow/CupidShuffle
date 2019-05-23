@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.cupidshuffle.activities.LoginActivity;
+import com.example.cupidshuffle.activities.questionnaires.GenderActivity;
+
 import pl.droidsonroids.gif.GifImageView;
 
 public class SplashActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 startActivity(new Intent(SplashActivity.this,
-                        LoginActivity.class));
+                        GenderActivity.class));
                 finish();
             }
         }, secondsDelayed * 3700);

@@ -1,8 +1,12 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +34,14 @@ public class PrivateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_profile);
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        int size = navView.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            navView.getMenu().getItem(i).setCheckable(false);
+        }
+
         getInfoForPrivateUserIntent = getIntent();
 
         requestorsName = getInfoForPrivateUserIntent.getStringExtra(REQUESTORS_USER_NAME);
@@ -42,6 +54,7 @@ public class PrivateProfileActivity extends AppCompatActivity {
         privateProfileUserNameHeader.setText(getInfoForPrivateUserIntent.getStringExtra(REQUESTORS_USER_NAME));
 
         privateProfileMessage.setText(requestorsName + headerMessage);
+
 
         Picasso.get()
                 .load(getInfoForPrivateUserIntent.getStringExtra(REQUESTOR_USER_PICTURE))
@@ -57,4 +70,36 @@ public class PrivateProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent toMainProfileIntent = new Intent(PrivateProfileActivity.this, PageAfterLoginActivity.class);
+                    startActivity(toMainProfileIntent);
+                    return true;
+
+                case R.id.navigation_discover:
+                    Intent toViewAllUserAccountsIntent = new Intent(PrivateProfileActivity.this, ViewUserProfilesActivity.class);
+                    startActivity(toViewAllUserAccountsIntent);
+                    return true;
+
+                case R.id.navigation_notifications:
+                    Intent toMessagesAndConnectRequestIntent = new Intent(PrivateProfileActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
+                    startActivity(toMessagesAndConnectRequestIntent);
+                    return true;
+
+                case R.id.navigation_shuffle:
+                    Intent toShuffledLoveBirdIntent = new Intent(PrivateProfileActivity.this, ShuffleTheLoveBirdsActivity.class);
+                    startActivity(toShuffledLoveBirdIntent);
+                    return true;
+            }
+
+            return false;
+        }
+    };
+
 }

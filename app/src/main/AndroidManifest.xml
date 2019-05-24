@@ -16,6 +16,9 @@
         <activity android:name=".activities.questionnaires.AgeActivity" />
         <activity android:name=".activities.questionnaires.GenderActivity" />
         <activity android:name=".activities.PrivateProfileActivity" />
+        <activity
+            android:name=".activities.PageAfterLoginActivity"
+            android:label="@string/title_activity_page_after_login"></activity>
         <activity android:name=".activities.ShuffleSelectedProfileActivity" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />

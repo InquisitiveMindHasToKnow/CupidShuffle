@@ -1,9 +1,13 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +36,15 @@ public class RespondToDMActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_respond_to_dm);
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        int size = navView.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            navView.getMenu().getItem(i).setCheckable(false);
+        }
+
+
         getInfoToRespondToIntent = getIntent();
 
         sendersNameTextView = findViewById(R.id.respond_to_dm_requestors_name_textview);
@@ -53,6 +66,7 @@ public class RespondToDMActivity extends AppCompatActivity {
                     setResult(RESULT_CANCELED, toSentMessageConfirmationIntent);
                     Toast.makeText(RespondToDMActivity.this, "Please Enter A Message!", Toast.LENGTH_LONG).show();
                 }else{
+                    RespondToDMActivity.this.finish();
                     startActivity(toSentMessageConfirmationIntent);
                 }
             }
@@ -65,5 +79,38 @@ public class RespondToDMActivity extends AppCompatActivity {
                 startActivity(toViewPrivateMessagesIntent);
             }
         });
+
+
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent toMainProfileIntent = new Intent(RespondToDMActivity.this, PageAfterLoginActivity.class);
+                    startActivity(toMainProfileIntent);
+
+                    return true;
+                case R.id.navigation_discover:
+                    Intent toViewAllUserAccountsIntent = new Intent(RespondToDMActivity.this, ViewUserProfilesActivity.class);
+                    startActivity(toViewAllUserAccountsIntent);
+                    return true;
+
+                case R.id.navigation_notifications:
+                    Intent toMessagesAndConnectRequestIntent = new Intent(RespondToDMActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
+                    startActivity(toMessagesAndConnectRequestIntent);
+                    return true;
+
+
+                case R.id.navigation_shuffle:
+                    Intent toShuffledLoveBirdIntent = new Intent(RespondToDMActivity.this, ShuffleTheLoveBirdsActivity.class);
+                    startActivity(toShuffledLoveBirdIntent);
+                    return true;
+            }
+
+            return false;
+        }
+    };
 }

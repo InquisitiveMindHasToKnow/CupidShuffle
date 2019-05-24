@@ -43,6 +43,5 @@ public class MainActivity extends AppCompatActivity implements Callback<FourSqua
     public void onFailure(Call<FourSquareResponse> call, Throwable t) {
         Log.d(TAG,t.toString());
 
-
     }
 }

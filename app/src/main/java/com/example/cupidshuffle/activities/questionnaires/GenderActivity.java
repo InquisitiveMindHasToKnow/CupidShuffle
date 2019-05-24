@@ -25,7 +25,7 @@ public class GenderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionairre);
+        setContentView(R.layout.activity_gender);
         maleButton = findViewById(R.id.male_button);
         femaleButton = findViewById(R.id.female_button);
 

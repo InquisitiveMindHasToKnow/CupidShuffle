@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activities.IndividualProfilePage">
-
+    tools:context=".fragments.ShuffleSelectedProfileFragment">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="210dp"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/textPrimaryColor"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,15 +19,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
 
-
             <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/individual_profile_circular_imageview"
+                android:id="@+id/shuffled_profile_circular_imageview"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:src="@drawable/aimingcupid2"
@@ -60,7 +58,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/individual_profile_username_textview"
+                            android:id="@+id/shuffled_profile_username_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="60dp"
@@ -70,7 +68,7 @@
                             android:text="Gaming Phenom"/>
 
                         <TextView
-                            android:id="@+id/individual_profile_location_textview"
+                            android:id="@+id/shuffled_profile_location_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
@@ -79,7 +77,7 @@
                             android:text="Brooklyn, NY"/>
 
                         <TextView
-                            android:id="@+id/individual_profile_occupation_textview"
+                            android:id="@+id/shuffled_profile_occupation_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
@@ -88,7 +86,7 @@
                             android:text="Physical Therapist"/>
 
                         <TextView
-                            android:id="@+id/individual_profile_bio_textview"
+                            android:id="@+id/shuffled_profile__bio_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
@@ -104,110 +102,116 @@
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:weightSum="2">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar One"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Two"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Three" />
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Three" />
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Three" />
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Three" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:layout_marginTop="15dp"
-                            android:text="Progress Bar Four" />
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:weightSum="2">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="88dp"
-                            >
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                            <Button
-                                android:id="@+id/letsshufflebutton"
-                                android:layout_width="wrap_content"
+
+                            <TextView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:text="Let's Shuffle"
-                                />
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar One"/>
 
-                            <Button
-                                android:layout_marginLeft="90dp"
-                                android:id="@+id/sendmessagetouserbutton"
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:text="Message Me!"
-                                />
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Two"/>
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Three" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Four" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Three" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Three" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Three" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:layout_marginTop="15dp"
+                                android:text="Progress Bar Four" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="88dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/shuffled_profile_letsshuffle_button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Let's Shuffle"
+                                    android:textAlignment="center"
+                                    android:textStyle="italic" />
+
+                                <Button
+                                    android:id="@+id/shuffled_profile_send_message_to_user_button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="90dp"
+                                    android:text="Message Me!"
+                                    android:textAlignment="center"
+                                    android:textStyle="italic" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
 
                     </LinearLayout>
-                </LinearLayout>
+
                 </ScrollView>
             </LinearLayout>
-
         </RelativeLayout>
 
-</LinearLayout>
+    </LinearLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
@@ -219,5 +223,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.cupidshuffle.activities;
 
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +23,11 @@ public class ViewPrivateMessagesAndConnectionRequest extends AppCompatActivity {
         viewPager = findViewById(R.id.view_private_messages_and_connection_request_viewPager);
         setUpViewPager(viewPager);
 
-
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getSelectedTabPosition();
+
     }
 
     private void setUpViewPager(ViewPager viewPager) {
@@ -39,6 +40,7 @@ public class ViewPrivateMessagesAndConnectionRequest extends AppCompatActivity {
         viewPager.setAdapter(privateMessageAndRequestVPAdapter);
 
     }
+
 }
 
 

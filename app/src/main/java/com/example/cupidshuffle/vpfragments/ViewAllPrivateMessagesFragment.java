@@ -1,18 +1,27 @@
 package com.example.cupidshuffle.vpfragments;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.RetrofitSingleton;
+import com.example.cupidshuffle.activities.PageAfterLoginActivity;
+import com.example.cupidshuffle.activities.ShuffleTheLoveBirdsActivity;
+import com.example.cupidshuffle.activities.ViewPrivateMessagesAndConnectionRequest;
+import com.example.cupidshuffle.activities.ViewUserProfilesActivity;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.example.cupidshuffle.model.PrivateMessagesAPI;
 import com.example.cupidshuffle.rv.PrivateMessagesAdapter;
@@ -52,6 +61,14 @@ public class ViewAllPrivateMessagesFragment extends Fragment {
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             rootView = inflater.inflate(R.layout.fragment_view_all_private_messages, container, false);
+
+            BottomNavigationView navView = rootView.findViewById(R.id.nav_view);
+            navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+            Menu menu = navView.getMenu();
+            MenuItem menuItem = menu.getItem(3);
+            menuItem.setChecked(true);
+
 
             privateMessagesRecyclerView = rootView.findViewById(R.id.private_messages_recyclerview);
             loadPrivateMessages();
@@ -112,5 +129,35 @@ public class ViewAllPrivateMessagesFragment extends Fragment {
             privateMessagesRecyclerView.setAdapter(privateMessagesAdapter);
             privateMessagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent toMainProfileIntent = new Intent(getContext(), PageAfterLoginActivity.class);
+                    startActivity(toMainProfileIntent);
+
+                    return true;
+
+                case R.id.navigation_discover:
+                    Intent toViewAllUserAccountsIntent = new Intent(getContext(), ViewUserProfilesActivity.class);
+                    startActivity(toViewAllUserAccountsIntent);
+                    return true;
+
+                case R.id.navigation_notifications:
+                    return true;
+
+                case R.id.navigation_shuffle:
+                    Intent toShuffledLoveBirdIntent = new Intent(getContext(), ShuffleTheLoveBirdsActivity.class);
+                    startActivity(toShuffledLoveBirdIntent);
+                    return true;
+            }
+
+            return false;
+        }
+    };
 
     }

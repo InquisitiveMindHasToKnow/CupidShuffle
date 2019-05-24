@@ -100,7 +100,6 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
                 @Override
                 public void onClick(View v) {
                     Intent toRespondToDMActivityIntent = new Intent(itemView.getContext(), RespondToDMActivity.class);
-
                     toRespondToDMActivityIntent.putExtra(dMSendersName, privateMessages.getSender());
                     toRespondToDMActivityIntent.putExtra(dMedMessage, privateMessages.getMessage());
                     itemView.getContext().startActivity(toRespondToDMActivityIntent);

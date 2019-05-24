@@ -1,8 +1,11 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,6 +41,14 @@ public class IndividualProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_profile_page);
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        int size = navView.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            navView.getMenu().getItem(i).setCheckable(false);
+        }
+
         fillOutProfileIntent = getIntent();
 
         individualProfilePageUserName = findViewById(R.id.individual_profile_username_textview);
@@ -61,4 +72,35 @@ public class IndividualProfilePage extends AppCompatActivity {
                 .load(getIntent().getStringExtra(USER_PICTURE))
                 .into(individualProfilePageUserPicture);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent toMainProfileIntent = new Intent(IndividualProfilePage.this, PageAfterLoginActivity.class);
+                    startActivity(toMainProfileIntent);
+
+                    return true;
+                case R.id.navigation_discover:
+                    Intent toViewAllUserAccountsIntent = new Intent(IndividualProfilePage.this, ViewUserProfilesActivity.class);
+                    startActivity(toViewAllUserAccountsIntent);
+                    return true;
+
+                case R.id.navigation_notifications:
+                    Intent toMessagesAndConnectRequestIntent = new Intent(IndividualProfilePage.this, ViewPrivateMessagesAndConnectionRequest.class);
+                    startActivity(toMessagesAndConnectRequestIntent);
+                    return true;
+
+                case R.id.navigation_shuffle:
+                    Intent toShuffledLoveBirdIntent = new Intent(IndividualProfilePage.this, ShuffleTheLoveBirdsActivity.class);
+                    startActivity(toShuffledLoveBirdIntent);
+                    return true;
+            }
+
+            return false;
+        }
+    };
 }

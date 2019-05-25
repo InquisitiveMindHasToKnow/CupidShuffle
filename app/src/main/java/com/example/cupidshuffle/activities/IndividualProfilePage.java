@@ -7,11 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.rv.UserProfilesViewHolder;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -80,7 +78,7 @@ public class IndividualProfilePage extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(IndividualProfilePage.this, PageAfterLoginActivity.class);
+                    Intent toMainProfileIntent = new Intent(IndividualProfilePage.this, FragmentHolder.class);
                     startActivity(toMainProfileIntent);
 
                     return true;

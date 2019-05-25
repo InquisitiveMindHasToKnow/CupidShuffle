@@ -6,8 +6,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,7 +51,7 @@ public class SentMessageConfirmationActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(SentMessageConfirmationActivity.this, PageAfterLoginActivity.class);
+                    Intent toMainProfileIntent = new Intent(SentMessageConfirmationActivity.this, FragmentHolder.class);
                     startActivity(toMainProfileIntent);
                     return true;
 

@@ -28,7 +28,7 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewAllUserProfilesFragment extends Fragment {
+public class AllUserProfilesFragment extends Fragment {
 
 
     private View rootView;
@@ -37,7 +37,7 @@ public class ViewAllUserProfilesFragment extends Fragment {
     private List<UserProfiles> userProfileList = new ArrayList<>();
 
 
-    public ViewAllUserProfilesFragment() {
+    public AllUserProfilesFragment() {
         // Required empty public constructor
     }
 
@@ -58,8 +58,9 @@ public class ViewAllUserProfilesFragment extends Fragment {
                 Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getPicture());
                 userProfileList.addAll(response.body().getProfiles());
                 UserProfilesAdapter userProfilesAdapter = new UserProfilesAdapter(userProfileList);
-                userProfileRecyclerView.setAdapter(userProfilesAdapter);
                 userProfileRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                userProfileRecyclerView.setAdapter(userProfilesAdapter);
+
 
             }
 

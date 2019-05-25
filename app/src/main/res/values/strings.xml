@@ -7,4 +7,231 @@
     <string name="title_messages">Requests</string>
     <string name="title_shuffle">Shuffle</string>
 
+
+    <string name="optional">Explain your answer (optional)</string>
+    <string name="your_answer">Your Answer</string>
+    <string name="accepted_answer">Accepted Answer</string>
+    <string name="answer_privately">👁‍🗨 Answer privately</string>
+    <string name="answer_privately_text">Questions answered privately will used for matching but hidden from your profile</string>
+    <string name="saveAnswer_text">Save</string>
+    <string name="skipQuestion_text">Skip</string>
+
+
+    <!--QUESTIONNAIRE STRINGS-->
+    <string-array name="generalInterest_surveyQuestions_array">
+        <item>What is your favorite cuisine?</item>
+        <item>Out of these genres, which gets you the most excited?</item>
+        <item>What are your favorite movie genres?</item>
+        <item>What are your favorite sports?</item>
+        <item>What are your favorite vacation vibes?</item>
+    </string-array>
+
+    <string-array name="generalInterest_surveyChoices_question1_array">
+        <item>Latin</item>
+        <item>Soul/West Indian/African</item>
+        <item>Asian</item>
+        <item>Italian</item>
+        <item>Vegan</item>
+        <item>Middle Eastern</item>
+        <item>Fast Food</item>
+    </string-array>
+
+    <string-array name="generalInterest_surveyChoices_question2_array">
+        <item>Hip-Hop/Rap</item>
+        <item>Reggae/Dancehall</item>
+        <item>Pop</item>
+        <item>R&amp;B/Soul</item>
+        <item>Reggaeton/Salsa/Bachata</item>
+        <item>Jazz/Classical</item>
+        <item>Country</item>
+        <item>Rock/Alternative</item>
+    </string-array>
+
+    <string-array name="generalInterest_surveyChoices_question3_array">
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Horror</item>
+        <item>Romance</item>
+        <item>Action</item>
+    </string-array>
+
+    <string-array name="generalInterest_surveyChoices_question4_array">
+        <item>Basketball</item>
+        <item>Football</item>
+        <item>Baseball</item>
+        <item>Tennis</item>
+        <item>Soccer</item>
+    </string-array>
+
+    <string-array name="generalInterest_surveyChoices_question5_array">
+        <item>Tropical Island</item>
+        <item>Historical Places</item>
+        <item>Romantic Cities</item>
+    </string-array>
+
+
+    <string-array name="hobbies_surveyQuestions_array">
+        <item>Do you play any sports?</item>
+        <item>Do you like to dance?</item>
+        <item>Do you play any musical instruments?</item>
+        <item>Do you enjoy poetry/spoken word?</item>
+        <item>Do you play video games?</item>
+    </string-array>
+
+    <string-array name="hobbies_surveyChoices_question1_array">
+        <item>Basketball</item>
+        <item>Football</item>
+        <item>Baseball/Softball</item>
+        <item>Gymnastics</item>
+        <item>I don\'t play sports</item>
+    </string-array>
+
+    <string-array name="hobbies_surveyChoices_question2_array">
+        <item>Of course, the rhythm moves me</item>
+        <item>No, it\’s awkward for me</item>
+        <item>I don\’t know how, but I\’m a dancing fool</item>
+    </string-array>
+
+    <string-array name="hobbies_surveyChoices_question3_array">
+        <item>Yes, I play an instrument</item>
+        <item>No, I never learned, but I\’m interested</item>
+        <item>Naw, it\’s not my thing</item>
+    </string-array>
+
+    <string-array name="hobbies_surveyChoices_question4_array">
+        <item>Of course, real eyes realize real lies</item>
+        <item>It\’s cool, but I\’m not very into it</item>
+        <item>I find it boring</item>
+    </string-array>
+
+    <string-array name="hobbies_surveyChoices_question5_array">
+        <item>Of course</item>
+        <item>No, I\’m not interested</item>
+        <item>I don’t, but I\’ll watch</item>
+        <item>I do, but only socially</item>
+    </string-array>
+
+
+    <string-array name="culture_surveyQuestions_array">
+        <item>Are you a smoker?</item>
+        <item>Do you drink alcohol?</item>
+        <item>How often do you exercise?</item>
+        <item>Do you have a passport?</item>
+        <item>Museums or Paint it Yourself?</item>
+    </string-array>
+
+    <string-array name="culture_surveyChoices_question1_array">
+        <item>Yes, but I only smoke tobacco</item>
+        <item>Yes, but I only smoke cannabis</item>
+        <item>No, but I don\'t mind it</item>
+        <item>NO!</item>
+    </string-array>
+
+    <string-array name="culture_surveyChoices_question2_array">
+        <item>A shot a day keeps the doctor away</item>
+        <item>I\’ll have a glass of wine</item>
+        <item>I drink on social occasions</item>
+        <item>No, keep the devil\’s nectar away from me</item>
+    </string-array>
+
+    <string-array name="culture_surveyChoices_question3_array">
+        <item>At least once a day</item>
+        <item>A few times a week</item>
+        <item>When I remember/get the chance</item>
+        <item>I don\’t exercise</item>
+    </string-array>
+
+    <string-array name="culture_surveyChoices_question4_array">
+        <item>Yes, I love to travel</item>
+        <item>No, I\’ve never had one</item>
+    </string-array>
+
+    <string-array name="culture_surveyChoices_question5_array">
+        <item>Museum</item>
+        <item>Paint it myself</item>
+        <item>Neither</item>
+    </string-array>
+
+
+    <string-array name="finance_surveyQuestions_array">
+        <item>What would you do if you won the lottery?</item>
+        <item>What percent of your income do you put towards savings?</item>
+        <item>Are you comfortable being the breadwinner of the relationship?</item>
+        <item>Lease or own?</item>
+        <item>Would you split the bill?</item>
+    </string-array>
+
+    <string-array name="finance_surveyChoices_question1_array">
+        <item>Donate to charity</item>
+        <item>Run away to a tropical paradise</item>
+        <item>Try to turn your winnings around</item>
+        <item>Blow a bag</item>
+    </string-array>
+
+    <string-array name="finance_surveyChoices_question2_array">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>10%</item>
+    </string-array>
+
+    <string-array name="finance_surveyChoices_question3_array">
+        <item>Of course</item>
+        <item>Hell naw, I want to be spoiled!</item>
+        <item>I don\’t mind</item>
+    </string-array>
+
+    <string-array name="finance_surveyChoices_question4_array">
+        <item>Lease, I\’m trying to build credit</item>
+        <item>Own, you can\’t take away what\’s mine</item>
+    </string-array>
+
+    <string-array name="finance_surveyChoices_question5_array">
+        <item>No, I\’m taking care of the bill</item>
+        <item>Sure, It\’s easier on both our pockets</item>
+        <item>Definitely, we should always go dutch</item>
+        <item>It depends on the situation</item>
+    </string-array>
+
+
+    <string-array name="sex_surveyQuestions_array">
+        <item>Do you believe in sex before marriage?</item>
+        <item>Do you have a high sex drive?</item>
+        <item>How important is sex to you in a relationship?</item>
+        <item>Toys or no toys?</item>
+        <item>Would you participate in group sex?</item>
+    </string-array>
+
+    <string-array name="sex_surveyChoices_question1_array">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="sex_surveyChoices_question2_array">
+        <item>You have no idea!</item>
+        <item>Not too much, not too little</item>
+        <item>Not really, as sex isn\’t very important to me</item>
+        <item>I\’m abstinent/celibate</item>
+    </string-array>
+
+    <string-array name="sex_surveyChoices_question3_array">
+        <item>We should be having sex 3 times a day</item>
+        <item>If we don\’t connect sexually, there\’s no point</item>
+        <item>Over time, we\’ll adjust to each other</item>
+        <item>That\’s just lust; other aspects are more important</item>
+    </string-array>
+
+    <string-array name="sex_surveyChoices_question4_array">
+        <item>Sure, let\’s have some fun</item>
+        <item>It depends</item>
+        <item>I don\’t need toys</item>
+        <item>Ummmmm, no</item>
+    </string-array>
+
+    <string-array name="sex_surveyChoices_question5_array">
+        <item>Sure, let\’s have a threesome</item>
+        <item>Let\’s swing baby, yeaahh</item>
+        <item>ORGY!!</item>
+        <item>NO! I’m not sharing my partner</item>
+    </string-array>
 </resources>

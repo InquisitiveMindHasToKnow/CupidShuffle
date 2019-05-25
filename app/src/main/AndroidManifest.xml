@@ -24,6 +24,8 @@
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
         <activity android:name=".surveys.SurveyActivities.EndSurveyActivity"></activity>
         <activity android:name=".activities.ViewAllRequestsActivity" />
+        <activity android:name=".surveys.SurveyActivities.EndSurveyActivity"></activity>
+        <activity android:name=".activities.ViewAllRequestsActivity" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />
         <activity android:name=".activities.RespondToDMActivity" />
         <activity android:name=".activities.ViewPrivateMessagesActivity" />

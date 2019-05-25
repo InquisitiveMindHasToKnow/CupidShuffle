@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CupidShuffle</string>
+    <string name="title_activity_page_after_login">PageAfterLoginActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Discover</string>
+    <string name="title_notifications">Messages</string>
+    <string name="title_messages">Requests</string>
+    <string name="title_shuffle">Shuffle</string>
+
 </resources>

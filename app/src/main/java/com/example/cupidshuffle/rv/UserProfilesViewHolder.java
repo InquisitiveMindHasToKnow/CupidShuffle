@@ -45,6 +45,7 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
         userAge = userProfiles.getAge();
 
 
+
         userNameTextView.setText(userName+userAge);
         userLocationTextView.setText(userProfiles.getLocation());
         userOccupationTextView.setText(userProfiles.getOccupation());

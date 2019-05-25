@@ -1,10 +1,11 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,8 +17,6 @@ public class SentMessageConfirmationActivity extends AppCompatActivity {
     private TextView sentConfirmationTextview;
     private String confirmationMessage = "Response Sent! ";
     private ImageView checkMarkImageView;
-    private Button backToProfileButton;
-    private Button keepShufflingButton;
 
 
     @Override
@@ -25,10 +24,16 @@ public class SentMessageConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sent_message_confirmation);
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        int size = navView.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            navView.getMenu().getItem(i).setCheckable(false);
+        }
+
 
         checkMarkImageView = findViewById(R.id.green_checkmark_imageview);
-        backToProfileButton = findViewById(R.id.back_to_profile_button);
-        keepShufflingButton = findViewById(R.id.keep_shuffing_button);
         sentConfirmationTextview = findViewById(R.id.message_confirmation_sent_textview);
 
         Picasso.get()
@@ -37,21 +42,36 @@ public class SentMessageConfirmationActivity extends AppCompatActivity {
 
         sentConfirmationTextview.setText(confirmationMessage);
 
-        backToProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent backToProfileIntent = new Intent(SentMessageConfirmationActivity.this, MainUserProfile.class);
-                startActivity(backToProfileIntent);
-            }
-        });
-
-        keepShufflingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent keepShufflingIntent = new Intent(SentMessageConfirmationActivity.this, ViewUserProfilesActivity.class);
-                startActivity(keepShufflingIntent);
-            }
-        });
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent toMainProfileIntent = new Intent(SentMessageConfirmationActivity.this, FragmentHolder.class);
+                    startActivity(toMainProfileIntent);
+                    return true;
+
+                case R.id.navigation_discover:
+                    Intent toViewAllProfilesIntent = new Intent(SentMessageConfirmationActivity.this, ViewUserProfilesActivity.class);
+                    startActivity(toViewAllProfilesIntent);
+                    return true;
+
+                case R.id.navigation_notifications:
+                    Intent toMessagesAndConnectRequestIntent = new Intent(SentMessageConfirmationActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
+                    startActivity(toMessagesAndConnectRequestIntent);
+                    return true;
+
+                case R.id.navigation_shuffle:
+                    Intent toShuffledLoveBirdIntent = new Intent(SentMessageConfirmationActivity.this, ShuffleTheLoveBirdsActivity.class);
+                    startActivity(toShuffledLoveBirdIntent);
+                    return true;
+            }
+
+            return false;
+        }
+    };
 }

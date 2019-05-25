@@ -24,7 +24,6 @@
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />
         <activity android:name=".activities.RespondToDMActivity" />
-        <activity android:name=".QuestionaireActivity" />
         <activity android:name=".activities.MainUserProfile" />
         <activity android:name=".activities.IndividualProfilePage" />
         <activity android:name=".activities.ViewUserProfilesActivity" />

@@ -1,6 +1,5 @@
 package com.example.cupidshuffle.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -15,10 +14,11 @@ import com.example.cupidshuffle.fragments.MainUserProfileFragment;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.fragments.ShuffleTheLoveBirdsFragment;
 import com.example.cupidshuffle.fragments.ViewAllUserProfilesFragment;
+import com.example.cupidshuffle.navigation.FragNav;
 import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
 
-public class PageAfterLoginActivity extends AppCompatActivity {
+public class PageAfterLoginActivity extends AppCompatActivity implements FragNav {
 
 
     @Override
@@ -54,11 +54,6 @@ public class PageAfterLoginActivity extends AppCompatActivity {
                 case R.id.navigation_discover:
 
                     clickedNavTabFragment = new ViewAllUserProfilesFragment();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.main_fragment_container, clickedNavTabFragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
                     break;
 
                 case R.id.navigation_notifications:
@@ -69,18 +64,11 @@ public class PageAfterLoginActivity extends AppCompatActivity {
                 case R.id.navigation_shuffle:
 
                     clickedNavTabFragment = new ShuffleTheLoveBirdsFragment();
-                    FragmentManager fragmentManagerOne = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransactionOne = fragmentManagerOne.beginTransaction();
-                    fragmentTransactionOne.replace(R.id.main_fragment_container, clickedNavTabFragment);
-                    fragmentTransactionOne.addToBackStack(null);
-                    fragmentTransactionOne.commit();
                     break;
 
             case R.id.navigation_connection_requests:
-
                 clickedNavTabFragment = new ViewAllConnectionRequestsFragment();
-
-            break;
+                    break;
         }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, clickedNavTabFragment).commit();
@@ -88,4 +76,14 @@ public class PageAfterLoginActivity extends AppCompatActivity {
         }
     };
 
-}
+    @Override
+    public void goToSelectedProfileAfterShuffle(String name, String age, String occupation, String picture, String location, String bio) {
+            ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = ShuffleSelectedProfileFragment.getInstance(name, age, occupation, picture, location, bio);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_fragment_container, shuffleSelectedProfileFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+

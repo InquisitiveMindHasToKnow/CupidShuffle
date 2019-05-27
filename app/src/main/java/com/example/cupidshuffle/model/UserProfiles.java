@@ -9,8 +9,11 @@ public class UserProfiles {
     private String bio;
     private String picture;
     private String occupation;
+    private String topCategoryOne;
+    private String topCategoryTwo;
+    private String topCategoryThree;
 
-    public UserProfiles(String user, String gender, String age, String location, String bio, String picture, String occupation) {
+    public UserProfiles(String user, String gender, String age, String location, String bio, String picture, String occupation, String topCategoryOne, String topCategoryTwo, String topCategoryThree) {
         this.user = user;
         this.gender = gender;
         this.age = age;
@@ -18,14 +21,13 @@ public class UserProfiles {
         this.bio = bio;
         this.picture = picture;
         this.occupation = occupation;
+        this.topCategoryOne = topCategoryOne;
+        this.topCategoryTwo = topCategoryTwo;
+        this.topCategoryThree = topCategoryThree;
     }
 
     public String getUser() {
         return user;
-    }
-
-    public String getPicture() {
-        return picture;
     }
 
     public String getGender() {
@@ -44,7 +46,23 @@ public class UserProfiles {
         return bio;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
     public String getOccupation() {
         return occupation;
+    }
+
+    public String getTopCategoryOne() {
+        return topCategoryOne;
+    }
+
+    public String getTopCategoryTwo() {
+        return topCategoryTwo;
+    }
+
+    public String getTopCategoryThree() {
+        return topCategoryThree;
     }
 }

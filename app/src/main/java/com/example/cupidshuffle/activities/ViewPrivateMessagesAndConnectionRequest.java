@@ -8,8 +8,8 @@ import android.os.Bundle;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.rv.PrivateMessageAndRequestVPAdapter;
-import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
-import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
+import com.example.cupidshuffle.fragments.ViewAllConnectionRequestsFragment;
+import com.example.cupidshuffle.fragments.ViewAllPrivateMessagesFragment;
 
 public class ViewPrivateMessagesAndConnectionRequest extends AppCompatActivity {
 

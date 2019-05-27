@@ -55,7 +55,7 @@ public class ViewAllUserProfilesFragment extends Fragment {
         userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
             @Override
             public void onResponse(Call<UserProfilesAPI> call, Response<UserProfilesAPI> response) {
-                Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getPicture());
+                Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getTopCategoryOne());
                 userProfileList.addAll(response.body().getProfiles());
                 UserProfilesAdapter userProfilesAdapter = new UserProfilesAdapter(userProfileList);
                 userProfileRecyclerView.setAdapter(userProfilesAdapter);

@@ -36,13 +36,6 @@ public class ShuffleTheLoveBirdsFragment extends Fragment {
 
     private FragNav fragNav;
 
-    private static final String SHUFFLED_USER_NAME = "shuffledusername";
-    private static final String SHUFFLED_USER_AGE = "shuffleduserage";
-    private static final String SHUFFLED_USER_OCCUPATION = "shuffleduseroccupation";
-    private static final String SHUFFLED_USER_PICTURE = "shuffleduserpicture";
-    private static final String SHUFFLED_USER_LOCATION = "shuffleduserlocation";
-    private static final String SHUFFLED_USER_BIO = "shuffleduserbio";
-
 
     public ShuffleTheLoveBirdsFragment() {
         // Required empty public constructor

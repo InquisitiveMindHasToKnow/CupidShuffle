@@ -15,8 +15,8 @@ import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.fragments.ShuffleTheLoveBirdsFragment;
 import com.example.cupidshuffle.fragments.ViewAllUserProfilesFragment;
 import com.example.cupidshuffle.navigation.FragNav;
-import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
-import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
+import com.example.cupidshuffle.fragments.ViewAllConnectionRequestsFragment;
+import com.example.cupidshuffle.fragments.ViewAllPrivateMessagesFragment;
 
 public class PageAfterLoginActivity extends AppCompatActivity implements FragNav {
 

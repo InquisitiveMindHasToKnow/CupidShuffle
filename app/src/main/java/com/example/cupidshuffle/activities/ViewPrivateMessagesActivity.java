@@ -1,6 +1,5 @@
 package com.example.cupidshuffle.activities;
 
-
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -95,7 +94,5 @@ public class ViewPrivateMessagesActivity extends AppCompatActivity {
         privateMessagesRecyclerView.setAdapter(privateMessagesAdapter);
         privateMessagesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
-
-
 
 }

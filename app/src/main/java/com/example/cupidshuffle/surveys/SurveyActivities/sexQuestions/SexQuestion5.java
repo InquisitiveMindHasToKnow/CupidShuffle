@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.FragmentHolder;
+import com.example.cupidshuffle.surveys.SurveyActivities.EndSurveyActivity;
 
 
 public class SexQuestion5 extends AppCompatActivity {
@@ -113,7 +114,7 @@ public class SexQuestion5 extends AppCompatActivity {
         saveAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent saveIntent = new Intent(SexQuestion5.this, FragmentHolder.class);
+                Intent saveIntent = new Intent(SexQuestion5.this, EndSurveyActivity.class);
                 //LOGIC TO SAVE RESPONSES HERE!!
                 startActivity(saveIntent);
             }
@@ -122,7 +123,7 @@ public class SexQuestion5 extends AppCompatActivity {
         skipAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent skipIntent = new Intent(SexQuestion5.this, FragmentHolder.class);
+                Intent skipIntent = new Intent(SexQuestion5.this, EndSurveyActivity.class);
                 startActivity(skipIntent);
             }
         });

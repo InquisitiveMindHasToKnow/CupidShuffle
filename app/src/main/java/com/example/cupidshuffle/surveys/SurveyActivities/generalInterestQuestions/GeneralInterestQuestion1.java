@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 
-
 public class GeneralInterestQuestion1 extends AppCompatActivity {
     private String[] generalInterestQuestions;
     private String[] generalInterestQuestion1_choices;

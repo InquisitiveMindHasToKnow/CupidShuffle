@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.example.cupidshuffle.model.PrivateMessagesAPI;
 import com.example.cupidshuffle.rv.PrivateMessagesAdapter;
@@ -70,7 +71,7 @@ public class ViewAllPrivateMessagesFragment extends Fragment {
 
         private void getPrivateMessages(){
 
-            Retrofit retrofit = RetrofitSingleton.getSinglenstance();
+            Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
             PrivateMessageService privateMessageService = retrofit.create(PrivateMessageService.class);
             privateMessageService.getPrivateMessages().enqueue(new Callback<PrivateMessagesAPI>() {
 

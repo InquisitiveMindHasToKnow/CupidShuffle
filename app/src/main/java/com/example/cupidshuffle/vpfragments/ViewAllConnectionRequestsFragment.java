@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.model.ConnectorAPI;
 import com.example.cupidshuffle.model.ConnectorModel;
 import com.example.cupidshuffle.rv.ConnectorsRequestAdapter;
@@ -70,7 +71,7 @@ public class ViewAllConnectionRequestsFragment extends Fragment {
 
     private void getConnectionRequests() {
 
-        Retrofit retrofit = RetrofitSingleton.getSinglenstance();
+        Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
         ConnectionRequestService connectionRequestService = retrofit.create(ConnectionRequestService.class);
         connectionRequestService.getConnectRequest().enqueue(new Callback<ConnectorAPI>() {
             @Override

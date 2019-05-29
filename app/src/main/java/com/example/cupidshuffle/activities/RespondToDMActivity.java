@@ -88,7 +88,7 @@ public class RespondToDMActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(RespondToDMActivity.this, FragmentHolder.class);
+                    Intent toMainProfileIntent = new Intent(RespondToDMActivity.this, FragmentHolderActivity.class);
                     startActivity(toMainProfileIntent);
 
                     return true;

@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.model.UserProfiles;
+import com.example.cupidshuffle.model.UserProfile;
 
 import java.util.List;
 
 public class UserProfilesAdapter  extends RecyclerView.Adapter<UserProfilesViewHolder> {
 
-    private List<UserProfiles> userProfileList;
+    private List<UserProfile> userProfileList;
 
-    public UserProfilesAdapter(List<UserProfiles> userProfileList) {
+    public UserProfilesAdapter(List<UserProfile> userProfileList) {
         this.userProfileList = userProfileList;
     }
 
@@ -29,8 +29,8 @@ public class UserProfilesAdapter  extends RecyclerView.Adapter<UserProfilesViewH
     @Override
     public void onBindViewHolder(@NonNull UserProfilesViewHolder userProfilesViewHolder, int i) {
 
-        UserProfiles userProfiles = userProfileList.get(i);
-        userProfilesViewHolder.onBind(userProfiles);
+        UserProfile userProfile = userProfileList.get(i);
+        userProfilesViewHolder.onBind(userProfile);
 
     }
 

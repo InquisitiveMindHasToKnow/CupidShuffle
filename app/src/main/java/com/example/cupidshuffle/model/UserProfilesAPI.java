@@ -4,9 +4,9 @@ import java.util.List;
 
 public class UserProfilesAPI {
 
-    private List<UserProfiles> profiles;
+    private List<UserProfile> profiles;
 
-    public List<UserProfiles> getProfiles() {
+    public List<UserProfile> getProfiles() {
         return profiles;
     }
 }

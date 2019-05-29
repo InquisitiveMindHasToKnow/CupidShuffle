@@ -51,7 +51,7 @@ public class SentMessageConfirmationActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(SentMessageConfirmationActivity.this, FragmentHolder.class);
+                    Intent toMainProfileIntent = new Intent(SentMessageConfirmationActivity.this, FragmentHolderActivity.class);
                     startActivity(toMainProfileIntent);
                     return true;
 

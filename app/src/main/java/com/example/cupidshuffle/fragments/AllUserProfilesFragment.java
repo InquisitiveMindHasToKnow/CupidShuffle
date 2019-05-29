@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.UserProfileRetrofitSingleton;
-import com.example.cupidshuffle.model.UserProfiles;
+import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.rv.UserProfilesAdapter;
 import com.example.cupidshuffle.services.UserProfileService;
@@ -34,7 +34,7 @@ public class AllUserProfilesFragment extends Fragment {
     private View rootView;
     private static final String TAG = "UserProfilesJSON.TAG";
     private RecyclerView userProfileRecyclerView;
-    private List<UserProfiles> userProfileList = new ArrayList<>();
+    private List<UserProfile> userProfileList = new ArrayList<>();
 
 
     public AllUserProfilesFragment() {

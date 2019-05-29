@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.UserProfileRetrofitSingleton;
-import com.example.cupidshuffle.model.UserProfiles;
+import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.rv.UserProfilesAdapter;
 import com.example.cupidshuffle.services.UserProfileService;
@@ -30,7 +30,7 @@ public class ViewUserProfilesActivity extends AppCompatActivity {
 
     private static final String TAG = "UserProfilesJSON.TAG";
     private RecyclerView userProfileRecyclerView;
-    private List<UserProfiles> userProfileList = new ArrayList<>();
+    private List<UserProfile> userProfileList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class ViewUserProfilesActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(ViewUserProfilesActivity.this, FragmentHolder.class);
+                    Intent toMainProfileIntent = new Intent(ViewUserProfilesActivity.this, FragmentHolderActivity.class);
                     startActivity(toMainProfileIntent);
 
                     return true;

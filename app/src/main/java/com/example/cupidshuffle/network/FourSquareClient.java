@@ -1,7 +1,8 @@
 package com.example.cupidshuffle.network;
 
-import com.example.cupidshuffle.model.FourSquareResponse;
-import com.example.cupidshuffle.services.CategoryService;
+import com.example.cupidshuffle.model.FourSquarePhotoResponse;
+import com.example.cupidshuffle.model.SearchVenuesResponse;
+import com.example.cupidshuffle.services.FourSquareService;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -31,11 +32,16 @@ public class FourSquareClient {
         }
     }
 
-    private CategoryService getCategoryService(){
-        return retrofit.create(CategoryService.class);
+    private FourSquareService getFourSquareService(){
+        return retrofit.create(FourSquareService.class);
     }
 
-    public Call<FourSquareResponse> getCategoryResponse(){
-        return getCategoryService().getFourSquareResponse();
+
+    public Call<SearchVenuesResponse> getVenues(String topCategoryOne,String topCategoryTwo,String topCategoryThree){
+        return getFourSquareService().getVenues(topCategoryOne,topCategoryTwo,topCategoryThree);
+    }
+
+    public Call<FourSquarePhotoResponse> getPhotos(String venueId){
+        return getFourSquareService().getPhotos(venueId);
     }
 }

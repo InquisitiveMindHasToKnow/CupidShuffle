@@ -3,14 +3,12 @@ package com.example.cupidshuffle.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.UserProfileRetrofitSingleton;
-import com.example.cupidshuffle.model.UserProfiles;
+import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
-import com.example.cupidshuffle.rv.UserProfilesAdapter;
 import com.example.cupidshuffle.services.UserProfileService;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ import retrofit2.Retrofit;
 public class ShuffleTheLoveBirdsActivity extends AppCompatActivity {
 
     private static final String TAG = "UserProfilesJSON.TAG";
-    private List<UserProfiles> userProfileList = new ArrayList<>();
+    private List<UserProfile> userProfileList = new ArrayList<>();
 
     private static final String SHUFFLED_USER_NAME = "shuffledusername";
     private static final String SHUFFLED_USER_AGE = "shuffleduserage";
@@ -53,7 +51,7 @@ public class ShuffleTheLoveBirdsActivity extends AppCompatActivity {
 
 
                 Random randomNumber = new Random();
-                UserProfiles shuffledUserProfilePicked = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
+                UserProfile shuffledUserProfilePicked = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
                 Intent shuffledUserProfilePickedIntent = new Intent(getApplicationContext(), ShuffleSelectedProfileActivity.class);
                 shuffledUserProfilePickedIntent.putExtra(SHUFFLED_USER_NAME, shuffledUserProfilePicked.getUser());
                 shuffledUserProfilePickedIntent.putExtra(SHUFFLED_USER_AGE, shuffledUserProfilePicked.getAge());

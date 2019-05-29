@@ -14,7 +14,7 @@ import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
 
-public class FragmentHolder extends AppCompatActivity {
+public class FragmentHolderActivity extends AppCompatActivity {
 
 
     @Override

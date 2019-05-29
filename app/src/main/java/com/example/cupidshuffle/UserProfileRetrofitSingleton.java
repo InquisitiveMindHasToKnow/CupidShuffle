@@ -7,7 +7,9 @@ public class UserProfileRetrofitSingleton {
 
         private static Retrofit retrofitInstance;
 
-        private UserProfileRetrofitSingleton(){}
+        private UserProfileRetrofitSingleton(){
+
+        }
 
         public static Retrofit getRetrofitInstance() {
             if (retrofitInstance != null) {

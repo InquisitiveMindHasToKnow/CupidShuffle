@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.UserProfileRetrofitSingleton;
+import com.example.cupidshuffle.activities.FragmentHolderActivity;
 import com.example.cupidshuffle.activities.MainActivity;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
@@ -111,12 +112,11 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         shuffledProfileLetsShuffleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),MainActivity.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra(SHUFFLED_USER_KEY,shuffledUserProfilePicked);
                 startActivity(intent);
             }
         });
     }
-
 
 }

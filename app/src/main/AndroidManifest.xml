@@ -3,6 +3,8 @@
     package="com.example.cupidshuffle">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYv5iCG-i-eansbiHaudeFQfaECLlsnjc" />
+
         <activity android:name=".activities.questionnaires.CreateProfileActivity"></activity>
         <activity android:name=".activities.questionnaires.OccupationActivity" />
         <activity android:name=".activities.questionnaires.AgeActivity" />
@@ -18,7 +26,7 @@
         <activity android:name=".activities.PrivateProfileActivity" />
         <activity
             android:name=".activities.FragmentHolderActivity"
-            android:label="@string/title_activity_page_after_login"></activity>
+            android:label="@string/title_activity_page_after_login" android:configChanges="keyboardHidden|orientation"></activity>
         <activity android:name=".activities.ShuffleSelectedProfileActivity" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
@@ -38,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

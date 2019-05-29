@@ -8,13 +8,15 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.FragmentNavigation;
+import com.example.cupidshuffle.fragments.GoogleMapsFragment;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.fragments.UserProfileFragment;
 import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
 
-public class FragmentHolderActivity extends AppCompatActivity {
+public class FragmentHolderActivity extends AppCompatActivity implements FragmentNavigation {
 
 
     @Override
@@ -73,10 +75,18 @@ public class FragmentHolderActivity extends AppCompatActivity {
 
     private void inflateFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container,fragment).addToBackStack(null)
+                .replace(R.id.main_fragment_container,fragment)
                 .commit();
     }
 
 
-
+    @Override
+    public void goToLocationOnMap(String lon, String lat, String name) {
+        GoogleMapsFragment googleMapsFragment = GoogleMapsFragment.getInstance(lon, lat, name);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_fragment_container, googleMapsFragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

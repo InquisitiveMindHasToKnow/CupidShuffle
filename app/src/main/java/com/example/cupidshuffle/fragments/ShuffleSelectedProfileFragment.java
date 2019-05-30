@@ -37,6 +37,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private View rootView;
     private static final String TAG = "UserProfilesJSON.TAG";
     public static final String SHUFFLED_USER_KEY = "shuffled User";
+    public static String USER_NAME = "";
+    public static String CHOSEN_DATES_PICTURE = "";
     private List<UserProfile> userProfileList = new ArrayList<>();
     private TextView shuffledProfilePageUserName;
     private TextView shuffledProfilePageUserLocation;
@@ -50,6 +52,7 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private Intent getShuffledProfileIntent;
 
     private String shuffledIndividualUserAge;
+
 
 
 
@@ -96,6 +99,9 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                 shuffledProfilePageUserBio.setText(shuffledUserProfilePicked.getBio());
                 shuffledProfilePageUserLocation.setText(shuffledUserProfilePicked.getLocation());
                 shuffledProfilePageUserOccupation.setText(shuffledUserProfilePicked.getOccupation());
+
+                USER_NAME = shuffledUserProfilePicked.getUser();
+                CHOSEN_DATES_PICTURE = shuffledUserProfilePicked.getPicture();
 
 
                 Picasso.get()

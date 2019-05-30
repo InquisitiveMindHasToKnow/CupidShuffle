@@ -20,6 +20,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
@@ -100,16 +101,23 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
         dialog.show();
     }
 
+
+//
+//    private static final LatLngBounds NEW_YORK_BOUNDS = new LatLngBounds(new LatLng(40.4772, 45.0153),
+//            new LatLng(-79.7624, -71.7517));
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         cupidShuffleMap = googleMap;
 
+     //   cupidShuffleMap.setLatLngBoundsForCameraTarget(NEW_YORK_BOUNDS);
 
         LatLng latLng = new LatLng(lat, lon);
         cupidShuffleMap.addMarker(new MarkerOptions().position(latLng).title(TAG_FOR_MAP_ICON).icon(BitmapDescriptorFactory.fromResource(R.mipmap.cupidmapmarker)));
 
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 8);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
         cupidShuffleMap.animateCamera(cameraUpdate);
         UiSettings uiSettings = cupidShuffleMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
@@ -120,7 +128,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
             public void run() {
                 dialog.dismiss();
             }
-        }, 4000);
+        }, 2000);
 
 
     }

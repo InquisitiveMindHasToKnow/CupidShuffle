@@ -6,10 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
+import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.model.Venue;
 
 
@@ -21,12 +25,19 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
     private static final String LOCATION_LON = "lon";
     private static final String VENUE_NAME = "venuename";
     private TextView venueNameTextView;
+    private TextView venueCityTextView;
+    private TextView venueCrossStreetTextView;
+    private Button dateChoiceButton;
 
 
     public VenuesViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        venueNameTextView = itemView.findViewById(R.id.venue_textView);
+        venueNameTextView = itemView.findViewById(R.id.venue_name_textView);
+        venueCityTextView = itemView.findViewById(R.id.venue_city_textview);
+        venueCrossStreetTextView = itemView.findViewById(R.id.venue_location_textview);
+        dateChoiceButton = itemView.findViewById(R.id.date_choice_button);
+
 
     }
 
@@ -38,8 +49,30 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
         final String venueLat = venue.getLocation().getLat();
         final String venueLong = venue.getLocation().getLng();
         final String venueName = venue.getName();
+        final String venueCrossStreet = venue.getLocation().getCrossStreet();
+        final String venueCity = venue.getLocation().getCity();
 
-        venueNameTextView.setText(venue.getName());
+        venueNameTextView.setText(venueName);
+        venueCityTextView.setText(venueCity);
+        venueCrossStreetTextView.setText(venueCrossStreet);
+
+        dateChoiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), DateChoiceConfirmationActivity.class);
+//                itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
+ //definitely fix this later lol
+
+         //       Toast.makeText(itemView.getContext(), "You chose to go on a date to " + venueName + "with " + ShuffleSelectedProfileFragment.USER_NAME , Toast.LENGTH_SHORT).show();
+
+                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), DateChoiceConfirmationActivity.class);
+                toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
+
+                itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
+
+            }
+        });
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

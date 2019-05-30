@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.UserProfileRetrofitSingleton;
+import com.example.cupidshuffle.activities.FragmentHolderActivity;
 import com.example.cupidshuffle.activities.MainActivity;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
@@ -36,6 +37,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private View rootView;
     private static final String TAG = "UserProfilesJSON.TAG";
     public static final String SHUFFLED_USER_KEY = "shuffled User";
+    public static String USER_NAME = "";
+    public static String CHOSEN_DATES_PICTURE = "";
     private List<UserProfile> userProfileList = new ArrayList<>();
     private TextView shuffledProfilePageUserName;
     private TextView shuffledProfilePageUserLocation;
@@ -49,6 +52,7 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private Intent getShuffledProfileIntent;
 
     private String shuffledIndividualUserAge;
+
 
 
 
@@ -96,6 +100,9 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                 shuffledProfilePageUserLocation.setText(shuffledUserProfilePicked.getLocation());
                 shuffledProfilePageUserOccupation.setText(shuffledUserProfilePicked.getOccupation());
 
+                USER_NAME = shuffledUserProfilePicked.getUser();
+                CHOSEN_DATES_PICTURE = shuffledUserProfilePicked.getPicture();
+
 
                 Picasso.get()
                         .load(shuffledUserProfilePicked.getPicture())
@@ -111,12 +118,11 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         shuffledProfileLetsShuffleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),MainActivity.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra(SHUFFLED_USER_KEY,shuffledUserProfilePicked);
                 startActivity(intent);
             }
         });
     }
-
 
 }

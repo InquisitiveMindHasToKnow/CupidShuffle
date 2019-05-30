@@ -3,22 +3,32 @@
     package="com.example.cupidshuffle">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.questionnaires.CreateProfileActivity"></activity>
+        <activity android:name=".activities.DateChoiceConfirmationActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYv5iCG-i-eansbiHaudeFQfaECLlsnjc" />
+
+        <activity android:name=".activities.questionnaires.CreateProfileActivity" />
         <activity android:name=".activities.questionnaires.OccupationActivity" />
         <activity android:name=".activities.questionnaires.AgeActivity" />
         <activity android:name=".activities.questionnaires.GenderActivity" />
         <activity android:name=".activities.PrivateProfileActivity" />
         <activity
             android:name=".activities.FragmentHolderActivity"
-            android:label="@string/title_activity_page_after_login"></activity>
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_page_after_login" />
         <activity android:name=".activities.ShuffleSelectedProfileActivity" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
@@ -29,7 +39,9 @@
         <activity android:name=".activities.IndividualProfilePage" />
         <activity android:name=".activities.ViewUserProfilesActivity" />
         <activity android:name=".activities.UserRegistrationActivity" />
-        <activity android:name=".activities.MainActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

@@ -6,8 +6,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
@@ -69,6 +71,14 @@ public class IndividualProfilePage extends AppCompatActivity {
         Picasso.get()
                 .load(getIntent().getStringExtra(USER_PICTURE))
                 .into(individualProfilePageUserPicture);
+
+        letsShuffleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(IndividualProfilePage.this, "You can shuffle once we implement this page.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

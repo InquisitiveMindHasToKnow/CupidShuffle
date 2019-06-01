@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
     private String topCategoryThree;
     private RecyclerView venuesRecyclerView;
     private VenuesAdapter venuesAdapter;
+    private String happy;
 
 
     @Override

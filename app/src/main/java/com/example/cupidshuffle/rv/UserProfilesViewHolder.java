@@ -2,12 +2,15 @@ package com.example.cupidshuffle.rv;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.activities.IndividualProfilePage;
+import com.example.cupidshuffle.activities.MainActivity;
+import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.model.UserProfile;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
@@ -21,7 +24,7 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
     private String userName;
     private String userAge;
 
-    private static final String USER_NAME = "username";
+    private static final String USER = "username";
     private static final String USER_AGE = "userage";
     private static final String USER_OCCUPATION = "useroccupation";
     private static final String USER_PICTURE = "userpicture";
@@ -58,16 +61,13 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
 
-                Intent profileIntent = new Intent(itemView.getContext(), IndividualProfilePage.class);
-
-                profileIntent.putExtra(USER_NAME, userProfile.getUser());
-                profileIntent.putExtra(USER_AGE, userProfile.getAge());
-                profileIntent.putExtra(USER_LOCATION, userProfile.getLocation());
-                profileIntent.putExtra(USER_OCCUPATION, userProfile.getOccupation());
-                profileIntent.putExtra(USER_PICTURE, userProfile.getPicture());
-                profileIntent.putExtra(USER_BIO, userProfile.getBio());
-
-                v.getContext().startActivity(profileIntent);
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = ShuffleSelectedProfileFragment.newInstance(userProfile);
+                FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                        fragmentManager.beginTransaction()
+                        .replace(R.id.main_fragment_container, shuffleSelectedProfileFragment)
+                        .addToBackStack(null)
+                        .commit();
 
             }
         });

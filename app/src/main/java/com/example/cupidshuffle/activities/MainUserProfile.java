@@ -89,8 +89,7 @@ public class MainUserProfile extends AppCompatActivity {
         requestLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toAllAccountsRecyclerViewIntent = new Intent(MainUserProfile.this, ViewUserProfilesActivity.class);
-                startActivity(toAllAccountsRecyclerViewIntent);
+
 
             }
         });

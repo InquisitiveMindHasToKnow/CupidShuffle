@@ -1,4 +1,4 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.cupidshuffle.activities.questionnaires.GenderActivity;
+import com.example.cupidshuffle.R;
+
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -41,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 startActivity(new Intent(SplashActivity.this,
-                        GenderActivity.class));
+                        LoginActivity.class));
                 finish();
             }
         }, secondsDelayed * 3700);

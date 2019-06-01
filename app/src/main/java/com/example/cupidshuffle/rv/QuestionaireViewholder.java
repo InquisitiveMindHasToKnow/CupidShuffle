@@ -1,4 +1,4 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.rv;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

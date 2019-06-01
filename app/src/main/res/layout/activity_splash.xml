@@ -5,7 +5,7 @@
     android:id="@+id/splashActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".activities.SplashActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/cupid_shoot_gif"

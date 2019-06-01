@@ -1,4 +1,4 @@
-package com.example.cupidshuffle.activities;
+package com.example.cupidshuffle.rv;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.model.Venue;
+import com.example.cupidshuffle.rv.VenuesViewHolder;
 
 import java.util.List;
 

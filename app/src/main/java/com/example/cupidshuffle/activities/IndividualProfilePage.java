@@ -42,7 +42,6 @@ public class IndividualProfilePage extends AppCompatActivity {
         setContentView(R.layout.activity_individual_profile_page);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         int size = navView.getMenu().size();
         for (int i = 0; i < size; i++) {
@@ -81,34 +80,5 @@ public class IndividualProfilePage extends AppCompatActivity {
         });
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(IndividualProfilePage.this, FragmentHolderActivity.class);
-                    startActivity(toMainProfileIntent);
-
-                    return true;
-                case R.id.navigation_discover:
-                    Intent toViewAllUserAccountsIntent = new Intent(IndividualProfilePage.this, ViewUserProfilesActivity.class);
-                    startActivity(toViewAllUserAccountsIntent);
-                    return true;
-
-                case R.id.navigation_notifications:
-                    Intent toMessagesAndConnectRequestIntent = new Intent(IndividualProfilePage.this, ViewPrivateMessagesAndConnectionRequest.class);
-                    startActivity(toMessagesAndConnectRequestIntent);
-                    return true;
-
-                case R.id.navigation_shuffle:
-                    Intent toShuffledLoveBirdIntent = new Intent(IndividualProfilePage.this, ShuffleTheLoveBirdsActivity.class);
-                    startActivity(toShuffledLoveBirdIntent);
-                    return true;
-            }
-
-            return false;
-        }
-    };
 }

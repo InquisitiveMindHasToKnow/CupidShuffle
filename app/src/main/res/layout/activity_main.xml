@@ -4,20 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_container"
     tools:context=".activities.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mainActivity_recyclerView"
+        <LinearLayout
+            android:id="@+id/googlemapslinear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/googlemaps"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+                </com.google.android.gms.maps.MapView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/googlemapslinear">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="24sp"
+                    android:text="Suggested Date Spots Based On Similar Interests"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mainActivity_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
 
+        </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.example.cupidshuffle.fragments;
 
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
@@ -35,8 +35,6 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
     private MapView cupidShuffleMapView;
     private View googleMapView;
 
-    private ProgressDialog dialog;
-
     private String latitude;
     private String longitude;
     private String venue;
@@ -48,6 +46,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
     public GoogleMapsFragment() {
         // Required empty public constructor
     }
+
 
     public static GoogleMapsFragment getInstance(String locationLongitude, String locationLatitude, String venueName) {
         GoogleMapsFragment googleMapFragment = new GoogleMapsFragment();
@@ -78,6 +77,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
             cupidShuffleMapView.onResume();
             cupidShuffleMapView.getMapAsync(this);
 
+
             if (getArguments() != null) {
                 longitude = getArguments().getString(LOCATION_LON);
                 latitude = getArguments().getString(LOCATION_LAT);
@@ -88,31 +88,17 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
                 lat = Double.parseDouble(latitude);
                 lon = Double.parseDouble(longitude);
 
-                setDialog();
             }
         }
     }
-
-    public void setDialog() {
-        dialog = new ProgressDialog(getContext(), R.style.DialogCustom);
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-    }
-
-
-//
-//    private static final LatLngBounds NEW_YORK_BOUNDS = new LatLngBounds(new LatLng(40.4772, 45.0153),
-//            new LatLng(-79.7624, -71.7517));
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+
         cupidShuffleMap = googleMap;
 
-     //   cupidShuffleMap.setLatLngBoundsForCameraTarget(NEW_YORK_BOUNDS);
 
         LatLng latLng = new LatLng(lat, lon);
         cupidShuffleMap.addMarker(new MarkerOptions().position(latLng).title(TAG_FOR_MAP_ICON).icon(BitmapDescriptorFactory.fromResource(R.mipmap.cupidmapmarker)));
@@ -122,14 +108,6 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
         UiSettings uiSettings = cupidShuffleMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
         uiSettings.setMyLocationButtonEnabled(true);
-
-        Handler progressDialogHandler = new Handler();
-        progressDialogHandler.postDelayed(new Runnable() {
-            public void run() {
-                dialog.dismiss();
-            }
-        }, 2000);
-
 
     }
 }

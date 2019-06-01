@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.LinearLayout;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
@@ -16,8 +15,8 @@ import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.Venue;
 import com.example.cupidshuffle.model.VenuesResponse;
 import com.example.cupidshuffle.network.FourSquareClient;
+import com.example.cupidshuffle.rv.VenuesAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,10 +43,22 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         venuesRecyclerView = findViewById(R.id.mainActivity_recyclerView);
 
         Intent intent = getIntent();
+
+
         userProfile = intent.getParcelableExtra(SHUFFLED_USER_KEY);
-        topCategoryOne = userProfile.getTopCategoryOne();
-        topCategoryTwo = userProfile.getTopCategoryTwo();
-        topCategoryThree = userProfile.getTopCategoryThree();
+
+
+        if (userProfile == null){
+            userProfile = intent.getParcelableExtra("USER SELECTED");
+            topCategoryOne = userProfile.getTopCategoryOne();
+            topCategoryTwo = userProfile.getTopCategoryTwo();
+            topCategoryThree = userProfile.getTopCategoryThree();
+        }else {
+            topCategoryOne = userProfile.getTopCategoryOne();
+            topCategoryTwo = userProfile.getTopCategoryTwo();
+            topCategoryThree = userProfile.getTopCategoryThree();
+        }
+
         Log.d(TAG, topCategoryOne + topCategoryTwo + topCategoryThree);
 
         getVenues();

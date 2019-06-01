@@ -1,4 +1,4 @@
-package com.example.cupidshuffle.activities;
+package com.example.cupidshuffle.rv;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.activities.DateChoiceConfirmationActivity;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
 import com.example.cupidshuffle.model.Venue;

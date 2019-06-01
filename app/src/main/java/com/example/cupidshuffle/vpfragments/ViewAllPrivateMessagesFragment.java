@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.RetrofitSingleton;
+import com.example.cupidshuffle.network.RetrofitSingleton;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.example.cupidshuffle.model.PrivateMessagesAPI;
 import com.example.cupidshuffle.rv.PrivateMessagesAdapter;

@@ -1,4 +1,4 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

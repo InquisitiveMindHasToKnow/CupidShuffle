@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.UserProfileRetrofitSingleton;
+import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.rv.UserProfilesAdapter;

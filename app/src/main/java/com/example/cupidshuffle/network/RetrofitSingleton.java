@@ -1,4 +1,4 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.network;
 
 import com.example.cupidshuffle.services.SurveyService;
 import com.example.cupidshuffle.surveys.models.QuestionaireList;

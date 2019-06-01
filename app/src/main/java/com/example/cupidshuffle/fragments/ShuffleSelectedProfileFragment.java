@@ -14,8 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.UserProfileRetrofitSingleton;
-import com.example.cupidshuffle.activities.FragmentHolderActivity;
+import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.activities.MainActivity;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
@@ -34,24 +33,25 @@ import retrofit2.Retrofit;
 
 public class ShuffleSelectedProfileFragment extends Fragment {
 
+    private static final String USER_SELECTED = "USER SELECTED";
     private View rootView;
     private static final String TAG = "UserProfilesJSON.TAG";
     public static final String SHUFFLED_USER_KEY = "shuffled User";
     public static String USER_NAME = "";
     public static String CHOSEN_DATES_PICTURE = "";
     private List<UserProfile> userProfileList = new ArrayList<>();
-    private TextView shuffledProfilePageUserName;
-    private TextView shuffledProfilePageUserLocation;
-    private TextView shuffledProfilePageUserBio;
+    private TextView profilePageUserName;
+    private TextView profilePageUserLocation;
+    private TextView profilePageUserBio;
     private TextView shuffledProfilePageUserAge;
-    private TextView shuffledProfilePageUserOccupation;
-    private CircularImageView shuffledProfilePageUserPicture;
+    private TextView profilePageUserOccupation;
+    private CircularImageView profilePageUserPicture;
     private Button shuffledProfileLetsShuffleButton;
-    private UserProfile shuffledUserProfilePicked;
+    private UserProfile profileSelected;
     private Button shuffledProfileMessageMeButton;
     private Intent getShuffledProfileIntent;
-
     private String shuffledIndividualUserAge;
+    private UserProfile userProfile;
 
 
 
@@ -60,18 +60,34 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static ShuffleSelectedProfileFragment newInstance(UserProfile userProfile) {
+        ShuffleSelectedProfileFragment fragment = new ShuffleSelectedProfileFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(USER_SELECTED, userProfile);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            userProfile = getArguments().getParcelable(USER_SELECTED);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
        rootView = inflater.inflate(R.layout.fragment_shuffle_selected_profile, container, false);
 
-        shuffledProfilePageUserName = rootView.findViewById(R.id.shuffled_profile_username_textview);
-        shuffledProfilePageUserBio = rootView.findViewById(R.id.shuffled_profile__bio_textview);
-        shuffledProfilePageUserLocation = rootView.findViewById(R.id.shuffled_profile_location_textview);
-        shuffledProfilePageUserPicture = rootView.findViewById(R.id.shuffled_profile_circular_imageview);
-        shuffledProfilePageUserOccupation = rootView.findViewById(R.id.shuffled_profile_occupation_textview);
+        profilePageUserName = rootView.findViewById(R.id.shuffled_profile_username_textview);
+        profilePageUserBio = rootView.findViewById(R.id.shuffled_profile__bio_textview);
+        profilePageUserLocation = rootView.findViewById(R.id.shuffled_profile_location_textview);
+        profilePageUserPicture = rootView.findViewById(R.id.shuffled_profile_circular_imageview);
+        profilePageUserOccupation = rootView.findViewById(R.id.shuffled_profile_occupation_textview);
         shuffledProfileLetsShuffleButton = rootView.findViewById(R.id.shuffled_profile_letsshuffle_button);
         shuffledProfileMessageMeButton = rootView.findViewById(R.id.shuffled_profile_send_message_to_user_button);
 
@@ -81,47 +97,62 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
-        UserProfileService userProfileService = retrofit.create(UserProfileService.class);
-        userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
-            @Override
-            public void onResponse(Call<UserProfilesAPI> call, Response<UserProfilesAPI> response) {
-                Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getPicture());
-                userProfileList.addAll(response.body().getProfiles());
+
+        if (userProfile == null) {
+            Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
+            UserProfileService userProfileService = retrofit.create(UserProfileService.class);
+            userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
+                @Override
+                public void onResponse(Call<UserProfilesAPI> call, Response<UserProfilesAPI> response) {
+                    Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getPicture());
+                    userProfileList.addAll(response.body().getProfiles());
 
 
-                Random randomNumber = new Random();
-                shuffledUserProfilePicked = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
+                    Random randomNumber = new Random();
+                    profileSelected = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
 
 
+                    profilePageUserName.setText(profileSelected.getUser() + ", " + profileSelected.getAge());
+                    profilePageUserBio.setText(profileSelected.getBio());
+                    profilePageUserLocation.setText(profileSelected.getLocation());
+                    profilePageUserOccupation.setText(profileSelected.getOccupation());
 
-                shuffledProfilePageUserName.setText(shuffledUserProfilePicked.getUser() + ", " + shuffledUserProfilePicked.getAge());
-                shuffledProfilePageUserBio.setText(shuffledUserProfilePicked.getBio());
-                shuffledProfilePageUserLocation.setText(shuffledUserProfilePicked.getLocation());
-                shuffledProfilePageUserOccupation.setText(shuffledUserProfilePicked.getOccupation());
-
-                USER_NAME = shuffledUserProfilePicked.getUser();
-                CHOSEN_DATES_PICTURE = shuffledUserProfilePicked.getPicture();
+                    USER_NAME = profileSelected.getUser();
+                    CHOSEN_DATES_PICTURE = profileSelected.getPicture();
 
 
-                Picasso.get()
-                        .load(shuffledUserProfilePicked.getPicture())
-                        .into(shuffledProfilePageUserPicture);
-            }
+                    Picasso.get()
+                            .load(profileSelected.getPicture())
+                            .into(profilePageUserPicture);
+                }
 
-            @Override
-            public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
-                Log.d(TAG, "Retrofit call failed" + t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
+                    Log.d(TAG, "Retrofit call failed" + t.getMessage());
+                }
+            });
+        }else {
+            profilePageUserName.setText(userProfile.getUser());
+            profilePageUserBio.setText(userProfile.getBio());
+            profilePageUserLocation.setText(userProfile.getLocation());
+            profilePageUserOccupation.setText(userProfile.getOccupation());
 
-        shuffledProfileLetsShuffleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.putExtra(SHUFFLED_USER_KEY,shuffledUserProfilePicked);
-                startActivity(intent);
-            }
+            USER_NAME = userProfile.getUser();
+            CHOSEN_DATES_PICTURE = userProfile.getPicture();
+
+
+            Picasso.get()
+                    .load(userProfile.getPicture())
+                    .into(profilePageUserPicture);
+
+            profileSelected = userProfile;
+
+        }
+
+        shuffledProfileLetsShuffleButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.putExtra(SHUFFLED_USER_KEY, profileSelected);
+            startActivity(intent);
         });
     }
 

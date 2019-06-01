@@ -36,7 +36,6 @@ public class RespondToDMActivity extends AppCompatActivity {
         setContentView(R.layout.activity_respond_to_dm);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         int size = navView.getMenu().size();
         for (int i = 0; i < size; i++) {
@@ -81,35 +80,6 @@ public class RespondToDMActivity extends AppCompatActivity {
 
 
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Intent toMainProfileIntent = new Intent(RespondToDMActivity.this, FragmentHolderActivity.class);
-                    startActivity(toMainProfileIntent);
-
-                    return true;
-                case R.id.navigation_discover:
-                    Intent toViewAllUserAccountsIntent = new Intent(RespondToDMActivity.this, ViewUserProfilesActivity.class);
-                    startActivity(toViewAllUserAccountsIntent);
-                    return true;
-
-                case R.id.navigation_notifications:
-                    Intent toMessagesAndConnectRequestIntent = new Intent(RespondToDMActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
-                    startActivity(toMessagesAndConnectRequestIntent);
-                    return true;
 
 
-                case R.id.navigation_shuffle:
-                    Intent toShuffledLoveBirdIntent = new Intent(RespondToDMActivity.this, ShuffleTheLoveBirdsActivity.class);
-                    startActivity(toShuffledLoveBirdIntent);
-                    return true;
-            }
-
-            return false;
-        }
-    };
 }

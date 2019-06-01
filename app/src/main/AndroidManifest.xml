@@ -30,7 +30,6 @@
             android:name=".activities.FragmentHolderActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_page_after_login" />
-        <activity android:name=".activities.ShuffleSelectedProfileActivity" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />

@@ -1,6 +1,7 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
     private String topCategoryThree;
     private RecyclerView venuesRecyclerView;
     private VenuesAdapter venuesAdapter;
+    private String happy;
 
 
     @Override
@@ -80,6 +82,14 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 venuesRecyclerView.setAdapter(venuesAdapter);
                 venuesRecyclerView.setLayoutManager(linearLayoutManager);
                 Log.d(TAG, venues.toString());
+
+                final int pos = 0;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        venuesRecyclerView.findViewHolderForAdapterPosition(pos).itemView.performClick();
+                    }
+                },1);
             }
 
             @Override
@@ -96,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         GoogleMapsFragment googleMapsFragment = GoogleMapsFragment.getInstance(lon, lat, name);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_container, googleMapsFragment)
+                .add(R.id.main_container, googleMapsFragment)
                 .addToBackStack(null)
                 .commit();
     }

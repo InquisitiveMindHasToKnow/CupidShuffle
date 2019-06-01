@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
@@ -52,7 +53,7 @@ public class ShuffleTheLoveBirdsActivity extends AppCompatActivity {
 
                 Random randomNumber = new Random();
                 UserProfile shuffledUserProfilePicked = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
-                Intent shuffledUserProfilePickedIntent = new Intent(getApplicationContext(), ShuffleSelectedProfileActivity.class);
+                Intent shuffledUserProfilePickedIntent = new Intent(getApplicationContext(), ShuffleSelectedProfileFragment.class);
                 shuffledUserProfilePickedIntent.putExtra(SHUFFLED_USER_NAME, shuffledUserProfilePicked.getUser());
                 shuffledUserProfilePickedIntent.putExtra(SHUFFLED_USER_AGE, shuffledUserProfilePicked.getAge());
                 shuffledUserProfilePickedIntent.putExtra(SHUFFLED_USER_BIO, shuffledUserProfilePicked.getBio());

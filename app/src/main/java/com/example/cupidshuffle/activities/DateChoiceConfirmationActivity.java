@@ -1,6 +1,13 @@
 package com.example.cupidshuffle.activities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -15,8 +22,11 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
     private Intent dateIntent;
     private TextView dateMessageTextView;
     private ImageView dateImageView;
-
     private static final String VENUE_NAME = "venuename";
+    public static final int NOTIFICATION_ID =0 ;
+    public static final String PRIMARY_CHANNEL_ID = "PRIMARY_CHANNEL_ID" ;
+    private NotificationManager notificationManager;
+
 
     String venue;
 
@@ -40,5 +50,52 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
 
 
 
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                createNotificationChannel();
+
+                sendNotification();
+
+            }
+        }, 10000);
+
+
+
     }
+
+    public void sendNotification(){
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
+        notificationManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+    }
+
+    public void createNotificationChannel(){
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL_ID,
+                    "CupidShuffle Notification",NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notification For New Location Sent");
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+    }
+
+    private NotificationCompat.Builder getNotificationBuilder(){
+        Intent notificationIntent = new Intent(this,MakeReservationActivity.class);
+        PendingIntent notificationPendingIntent = PendingIntent.getActivity(this, NOTIFICATION_ID,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        return new NotificationCompat.Builder(this,PRIMARY_CHANNEL_ID)
+                .setContentTitle("Great News!!!")
+                .setContentText(ShuffleSelectedProfileFragment.USER_NAME + " Has Agreed To Meet Up At " + venue + ". Click To Confirm A Date And Time")
+                .setSmallIcon(R.drawable.notificationcupid)
+                .setContentIntent(notificationPendingIntent)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setDefaults(NotificationCompat.DEFAULT_ALL);
+    }
+
 }

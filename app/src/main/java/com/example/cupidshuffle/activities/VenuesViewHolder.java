@@ -1,6 +1,10 @@
 package com.example.cupidshuffle.activities;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
-import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.model.Venue;
+
+import java.util.Calendar;
 
 
 public class VenuesViewHolder extends RecyclerView.ViewHolder {
@@ -29,6 +33,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
     private TextView venueCrossStreetTextView;
     private Button dateChoiceButton;
 
+    private Context context;
 
     public VenuesViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -58,18 +63,13 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
 
         dateChoiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
-//                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), DateChoiceConfirmationActivity.class);
-//                itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
- //definitely fix this later lol
-
-         //       Toast.makeText(itemView.getContext(), "You chose to go on a date to " + venueName + "with " + ShuffleSelectedProfileFragment.USER_NAME , Toast.LENGTH_SHORT).show();
 
                 Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), DateChoiceConfirmationActivity.class);
                 toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
-
                 itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
+
 
             }
         });
@@ -94,53 +94,5 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-    }
-}
+        }}
 
-
-
-
-
-
-
-//        Call<FourSquarePhotoResponse> photoResponseCall = FourSquareClient.getInstance().getPhotos(venueId);
-//        photoResponseCall.enqueue(new Callback<FourSquarePhotoResponse>() {
-//            @Override
-//            public void onResponse(Call<FourSquarePhotoResponse> call, Response<FourSquarePhotoResponse> response) {
-//                Log.d(TAG,response.body().toString());
-//                List<PhotoItem> photoItems;
-//                if (response.body() != null) {
-//
-//                    Toast.makeText(itemView.getContext(), "Please Enter A Message!", Toast.LENGTH_LONG).show();
-//
-//                    photoItems = response.body().getResponse().getPhotos().getItems();
-//                    if (photoItems.size() ==0) {
-//
-//                        //  Picasso.get().load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png").into(venueImage);
-//
-//                        Toast.makeText(itemView.getContext(), "Please Enter A Message!", Toast.LENGTH_LONG).show();
-//
-
-//                    }else {
-//                        String prefix = photoItems.get(0).getPrefix();
-//                        String suffix = photoItems.get(0).getSuffix();
-//                        String photoUrl = prefix +"612x612" +suffix;
-//                        Log.d(TAG,photoUrl);
-//                        Picasso.get().load(photoUrl).into(venueImage);
-//                    }
-//                }
-
-//                    }
-                //              }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<FourSquarePhotoResponse> call, Throwable t) {
-//                Log.d(TAG,t.getMessage());
-//
-//            }
-//        });
-//
-//    }
-//
-//}

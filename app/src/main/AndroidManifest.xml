@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.DateChoiceConfirmationActivity"></activity>
+        <activity android:name=".activities.MakeReservationActivity"></activity>
+        <activity android:name=".activities.DateChoiceConfirmationActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

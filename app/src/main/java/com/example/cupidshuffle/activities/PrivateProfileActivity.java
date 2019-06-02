@@ -58,15 +58,6 @@ public class PrivateProfileActivity extends AppCompatActivity {
                 .load(getInfoForPrivateUserIntent.getStringExtra(REQUESTOR_USER_PICTURE))
                 .into(privateProfileCircularImageView);
 
-        privateProfileConnectRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent connectToPrivateUserIntent = new Intent(PrivateProfileActivity.this, ViewPrivateMessagesAndConnectionRequest.class);
-                Toast.makeText(PrivateProfileActivity.this, "Connect Request Sent To " + requestorsName, Toast.LENGTH_LONG).show();
-                PrivateProfileActivity.this.finish();
-                startActivity(connectToPrivateUserIntent);
-            }
-        });
     }
 
 

@@ -15,6 +15,11 @@ public class UserProfile implements Parcelable {
     private String topCategoryOne;
     private String topCategoryTwo;
     private String topCategoryThree;
+    private String financeWidth;
+    private String hobbiesWidth;
+    private String cultureWidth;
+    private String sexWidth;
+    private String generalWidth;
 
     protected UserProfile(Parcel in) {
         user = in.readString();
@@ -27,6 +32,35 @@ public class UserProfile implements Parcelable {
         topCategoryOne = in.readString();
         topCategoryTwo = in.readString();
         topCategoryThree = in.readString();
+        financeWidth = in.readString();
+        hobbiesWidth = in.readString();
+        cultureWidth = in.readString();
+        sexWidth = in.readString();
+        generalWidth = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(user);
+        dest.writeString(gender);
+        dest.writeString(age);
+        dest.writeString(location);
+        dest.writeString(bio);
+        dest.writeString(picture);
+        dest.writeString(occupation);
+        dest.writeString(topCategoryOne);
+        dest.writeString(topCategoryTwo);
+        dest.writeString(topCategoryThree);
+        dest.writeString(financeWidth);
+        dest.writeString(hobbiesWidth);
+        dest.writeString(cultureWidth);
+        dest.writeString(sexWidth);
+        dest.writeString(generalWidth);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<UserProfile> CREATOR = new Creator<UserProfile>() {
@@ -81,22 +115,23 @@ public class UserProfile implements Parcelable {
         return topCategoryThree;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getFinanceWidth() {
+        return financeWidth;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(user);
-        dest.writeString(gender);
-        dest.writeString(age);
-        dest.writeString(location);
-        dest.writeString(bio);
-        dest.writeString(picture);
-        dest.writeString(occupation);
-        dest.writeString(topCategoryOne);
-        dest.writeString(topCategoryTwo);
-        dest.writeString(topCategoryThree);
+    public String getHobbiesWidth() {
+        return hobbiesWidth;
+    }
+
+    public String getCultureWidth() {
+        return cultureWidth;
+    }
+
+    public String getSexWidth() {
+        return sexWidth;
+    }
+
+    public String getGeneralWidth() {
+        return generalWidth;
     }
 }

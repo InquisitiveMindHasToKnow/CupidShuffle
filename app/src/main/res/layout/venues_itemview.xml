@@ -31,6 +31,13 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/venue_location_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/venue_city_textview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,12 +45,7 @@
                 android:textSize="18sp" />
 
 
-            <TextView
-                android:id="@+id/venue_location_textview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="18sp" />
+
 
             <Button
                 android:id="@+id/date_choice_button"

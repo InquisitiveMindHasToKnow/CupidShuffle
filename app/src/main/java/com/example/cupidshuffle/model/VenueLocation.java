@@ -6,6 +6,7 @@ public class VenueLocation {
     private String lng;
     private String city;
     private String state;
+    private String address;
 
     public String getCrossStreet() {
         return crossStreet;
@@ -25,5 +26,9 @@ public class VenueLocation {
 
     public String getState() {
         return state;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

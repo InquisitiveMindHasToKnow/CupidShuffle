@@ -77,13 +77,7 @@ public class MainUserProfile extends AppCompatActivity {
 
 
 
-        messageLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toPrivateMessagesAndRequestsRecyclerViewIntent = new Intent(MainUserProfile.this, ViewPrivateMessagesAndConnectionRequest.class);
-                startActivity(toPrivateMessagesAndRequestsRecyclerViewIntent);
-            }
-        });
+
 
 
         requestLinearLayout.setOnClickListener(new View.OnClickListener() {

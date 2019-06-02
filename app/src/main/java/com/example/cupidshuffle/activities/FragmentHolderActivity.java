@@ -17,6 +17,7 @@ import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
 
 public class FragmentHolderActivity extends AppCompatActivity implements FragmentNavigation {
+    private BottomNavigationView navView;
 
 
     @Override
@@ -24,53 +25,54 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_after_login);
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navView.getMenu().getItem(2).setChecked(true);
 
-        UserProfileFragment mainFragment = new UserProfileFragment();
-        inflateFragment(mainFragment);
+
+        ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = new ShuffleSelectedProfileFragment();
+        inflateFragment(shuffleSelectedProfileFragment);
 
     }
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
+        Fragment clickedNavTabFragment;
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment clickedNavTabFragment;
+        int mMenuId = item.getItemId();
 
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    clickedNavTabFragment = new UserProfileFragment();
-                    inflateFragment(clickedNavTabFragment);
-                    break;
 
-                case R.id.navigation_discover:
-
-                    clickedNavTabFragment = new AllUserProfilesFragment();
-                    inflateFragment(clickedNavTabFragment);
-                    break;
-
-                case R.id.navigation_notifications:
-
-                    clickedNavTabFragment = new ViewAllPrivateMessagesFragment();
-                    inflateFragment(clickedNavTabFragment);
-                    break;
-
-                case R.id.navigation_shuffle:
-
-                    clickedNavTabFragment = new ShuffleSelectedProfileFragment();
-                    inflateFragment(clickedNavTabFragment);
-                    break;
-
-            case R.id.navigation_connection_requests:
-                clickedNavTabFragment = new ViewAllConnectionRequestsFragment();
+        switch (mMenuId) {
+            case R.id.navigation_home:
+                clickedNavTabFragment = new UserProfileFragment();
                 inflateFragment(clickedNavTabFragment);
                 break;
-        }
 
-            return true;
-        }
+            case R.id.navigation_discover:
+
+                clickedNavTabFragment = new AllUserProfilesFragment();
+                inflateFragment(clickedNavTabFragment);
+                break;
+
+            case R.id.navigation_notifications:
+
+                clickedNavTabFragment = new ViewAllPrivateMessagesFragment();
+                inflateFragment(clickedNavTabFragment);
+                break;
+
+            case R.id.navigation_shuffle:
+
+                clickedNavTabFragment = new ShuffleSelectedProfileFragment();
+                inflateFragment(clickedNavTabFragment);
+                break;
+
+        case R.id.navigation_connection_requests:
+            clickedNavTabFragment = new ViewAllConnectionRequestsFragment();
+            inflateFragment(clickedNavTabFragment);
+            break;
+    }
+
+        return true;
     };
 
     private void inflateFragment(Fragment fragment){

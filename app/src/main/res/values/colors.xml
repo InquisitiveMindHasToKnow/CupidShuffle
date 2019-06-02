@@ -9,5 +9,6 @@
     <color name="white">#FFF</color>
     <color name="buttonPrimaryColor">#003366</color>
     <color name="snackColor">#000</color>
+    <color name="appColor1">#F40076</color>
 
 </resources>

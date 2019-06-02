@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
@@ -52,8 +54,11 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private Intent getShuffledProfileIntent;
     private String shuffledIndividualUserAge;
     private UserProfile userProfile;
-
-
+    private ImageView financeProgressBar;
+    private ImageView hobbiesProgressBar;
+    private ImageView cultureProgressBar;
+    private ImageView sexProgressBar;
+    private ImageView generalProgressBar;
 
 
     public ShuffleSelectedProfileFragment() {
@@ -74,6 +79,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         if (getArguments() != null) {
             userProfile = getArguments().getParcelable(USER_SELECTED);
         }
+
+
     }
 
     @Override
@@ -81,7 +88,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-       rootView = inflater.inflate(R.layout.fragment_shuffle_selected_profile, container, false);
+        rootView = inflater.inflate(R.layout.fragment_selected_profile, container, false);
+
 
         profilePageUserName = rootView.findViewById(R.id.shuffled_profile_username_textview);
         profilePageUserBio = rootView.findViewById(R.id.shuffled_profile__bio_textview);
@@ -91,7 +99,13 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         shuffledProfileLetsShuffleButton = rootView.findViewById(R.id.shuffled_profile_letsshuffle_button);
         shuffledProfileMessageMeButton = rootView.findViewById(R.id.shuffled_profile_send_message_to_user_button);
 
-       return rootView;
+        financeProgressBar = rootView.findViewById(R.id.finance_progressBar);
+        hobbiesProgressBar = rootView.findViewById(R.id.hobbies_progressBar);
+        cultureProgressBar = rootView.findViewById(R.id.culture_progressBar);
+        sexProgressBar = rootView.findViewById(R.id.sex_progressBar);
+        generalProgressBar = rootView.findViewById(R.id.general_progressBar);
+
+        return rootView;
     }
 
     @Override
@@ -124,6 +138,19 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                     Picasso.get()
                             .load(profileSelected.getPicture())
                             .into(profilePageUserPicture);
+                    int financeUserProgressWidth = Integer.valueOf(profileSelected.getFinanceWidth());
+                    int hobbiesUserProgressWidth = Integer.valueOf(profileSelected.getHobbiesWidth());
+                    int cultureUserProgressWidth = Integer.valueOf(profileSelected.getCultureWidth());
+                    int sexUserProgressWidth = Integer.valueOf(profileSelected.getSexWidth());
+                    int generalUserProgressWidth = Integer.valueOf(profileSelected.getGeneralWidth());
+
+                    setWidth(getWidth(financeUserProgressWidth),
+                            getWidth(hobbiesUserProgressWidth),
+                            getWidth(cultureUserProgressWidth),
+                            getWidth(sexUserProgressWidth),
+                            getWidth(generalUserProgressWidth));
+
+
                 }
 
                 @Override
@@ -131,7 +158,7 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                     Log.d(TAG, "Retrofit call failed" + t.getMessage());
                 }
             });
-        }else {
+        } else {
             profilePageUserName.setText(userProfile.getUser());
             profilePageUserBio.setText(userProfile.getBio());
             profilePageUserLocation.setText(userProfile.getLocation());
@@ -145,6 +172,18 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                     .load(userProfile.getPicture())
                     .into(profilePageUserPicture);
 
+            int financeUserProgressWidth = Integer.valueOf(userProfile.getFinanceWidth());
+            int hobbiesUserProgressWidth = Integer.valueOf(userProfile.getHobbiesWidth());
+            int cultureUserProgressWidth = Integer.valueOf(userProfile.getCultureWidth());
+            int sexUserProgressWidth = Integer.valueOf(userProfile.getSexWidth());
+            int generalUserProgressWidth = Integer.valueOf(userProfile.getGeneralWidth());
+
+            setWidth(getWidth(financeUserProgressWidth),
+                    getWidth(hobbiesUserProgressWidth),
+                    getWidth(cultureUserProgressWidth),
+                    getWidth(sexUserProgressWidth),
+                    getWidth(generalUserProgressWidth));
+
             profileSelected = userProfile;
 
         }
@@ -154,6 +193,46 @@ public class ShuffleSelectedProfileFragment extends Fragment {
             intent.putExtra(SHUFFLED_USER_KEY, profileSelected);
             startActivity(intent);
         });
+    }
+
+    private void setWidth(int financeWidth, int hobbiesWidth, int culturalWidth, int sexWidth, int generalWidth) {
+        financeProgressBar.getLayoutParams().width = financeWidth;
+        financeProgressBar.requestLayout();
+
+        hobbiesProgressBar.getLayoutParams().width = hobbiesWidth;
+        hobbiesProgressBar.requestLayout();
+
+        cultureProgressBar.getLayoutParams().width = culturalWidth;
+        cultureProgressBar.requestLayout();
+
+        sexProgressBar.getLayoutParams().width = sexWidth;
+        sexProgressBar.requestLayout();
+
+        generalProgressBar.getLayoutParams().width = generalWidth;
+        generalProgressBar.requestLayout();
+
+    }
+
+    public int getWidth(int width) {
+
+        int max = 31;
+        int min = 10;
+        int midMax = 20;
+
+        if (width == 0 || width <= 1) {
+            width = 1;
+        }
+        if (width <= min && width >= 2) {
+            width = 90;
+        }
+        if (width <= max && width >= midMax) {
+            width = 350;
+        }
+        if (width < midMax && width >= min) {
+            width = 175;
+        }
+
+        return width;
     }
 
 }

@@ -30,9 +30,10 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
     private static final String LOCATION_LAT = "lat";
     private static final String LOCATION_LON = "lon";
     private static final String VENUE_NAME = "venuename";
+    private static final String VENUE_ADDRESS = "venueaddress";
     private TextView venueNameTextView;
     private TextView venueCityTextView;
-    private TextView venueCrossStreetTextView;
+    private TextView venueAddressTextView;
     private Button dateChoiceButton;
 
     private Context context;
@@ -42,7 +43,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
 
         venueNameTextView = itemView.findViewById(R.id.venue_name_textView);
         venueCityTextView = itemView.findViewById(R.id.venue_city_textview);
-        venueCrossStreetTextView = itemView.findViewById(R.id.venue_location_textview);
+        venueAddressTextView = itemView.findViewById(R.id.venue_location_textview);
         dateChoiceButton = itemView.findViewById(R.id.date_choice_button);
 
 
@@ -56,12 +57,12 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
         final String venueLat = venue.getLocation().getLat();
         final String venueLong = venue.getLocation().getLng();
         final String venueName = venue.getName();
-        final String venueCrossStreet = venue.getLocation().getCrossStreet();
         final String venueCity = venue.getLocation().getCity();
+        final String venueAddress = venue.getLocation().getAddress();
 
         venueNameTextView.setText(venueName);
         venueCityTextView.setText(venueCity);
-        venueCrossStreetTextView.setText(venueCrossStreet);
+        venueAddressTextView.setText(venueAddress);
 
         dateChoiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +71,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
 
                 Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), MakeReservationActivity.class);
                 toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
+                toDateChoiceConfirmationIntent.putExtra(VENUE_ADDRESS, venueAddress);
                 itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
 
 
@@ -86,6 +88,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
                 mapBundle.putString(LOCATION_LON, venueLong);
                 mapBundle.putString(LOCATION_LAT, venueLat);
                 mapBundle.putString(VENUE_NAME, venueName);
+                mapBundle.putString(VENUE_ADDRESS, venueAddress);
 
                 mapIntent.putExtras(mapBundle);
                 Log.e("VENUE ON MAP: " , venueLong +" " + venueLat + " "+ venueName);

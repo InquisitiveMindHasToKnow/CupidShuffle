@@ -19,6 +19,12 @@ import java.util.Calendar;
 
 public class MakeReservationActivity extends AppCompatActivity {
 
+
+    private static final String VENUE_NAME = "venuename";
+    private static final String RESERVATION_TIME = "reservationtime";
+    private static final String RESERVATION_DATE = "reservationdate";
+    private static final String VENUE_ADDRESS = "venueaddress";
+
     private TextView chooseDateAndTimeHeaderTextView;
     private TextView chooseADateTextView;
     private TextView chooseATimeTextView;
@@ -26,6 +32,13 @@ public class MakeReservationActivity extends AppCompatActivity {
     private TimePickerDialog.OnTimeSetListener chooseATimeListener;
     private String timeOfDay;
     private Button reservationConservationButton;
+    private Intent reservationDetailIntent;
+
+    private String venue;
+    private String address;
+    private String date;
+    private String time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +49,12 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseATimeTextView = findViewById(R.id.time_selected);
         reservationConservationButton = findViewById(R.id.confirm_preferred_date_and_time);
 
+        reservationDetailIntent = getIntent();
+
+        venue = reservationDetailIntent.getStringExtra(VENUE_NAME);
+        address = reservationDetailIntent.getStringExtra(VENUE_ADDRESS);
+
+
         Calendar c = Calendar.getInstance();
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
@@ -45,8 +64,10 @@ public class MakeReservationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
-//                toReservationConfirmationIntent.putExtra(dMSendersName, privateMessages.getSender());
-//                toReservationConfirmationIntent.putExtra(dMedMessage, privateMessages.getMessage());
+                toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
+                toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
+                toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
+                toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
                 startActivity(toReservationConfirmationIntent);
             }
         });
@@ -74,7 +95,7 @@ public class MakeReservationActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
 
-                String date = month + "/" + day + "/" + year;
+                date = month + "/" + day + "/" + year;
                 chooseADateTextView.setText(date);
             }
         };
@@ -90,23 +111,21 @@ public class MakeReservationActivity extends AppCompatActivity {
 
                             hourOfDay += 12;
                             timeOfDay = "AM";
-                        }
-                        else if (hourOfDay == 12) {
+                        } else if (hourOfDay == 12) {
 
                             timeOfDay = "PM";
 
-                        }
-                        else if (hourOfDay > 12) {
+                        } else if (hourOfDay > 12) {
 
                             hourOfDay -= 12;
                             timeOfDay = "PM";
 
-                        }
-                        else {
+                        } else {
                             timeOfDay = "AM";
                         }
 
-                        chooseATimeTextView.setText(hourOfDay + ":" + minute + timeOfDay);
+                        time = hourOfDay + ":" + minute + timeOfDay;
+                        chooseATimeTextView.setText(time);
 
 
                     }
@@ -131,4 +150,4 @@ public class MakeReservationActivity extends AppCompatActivity {
 
     }
 
-    }
+}

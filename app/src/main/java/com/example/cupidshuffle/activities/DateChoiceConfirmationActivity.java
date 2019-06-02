@@ -19,16 +19,23 @@ import com.squareup.picasso.Picasso;
 
 public class DateChoiceConfirmationActivity extends AppCompatActivity {
 
+    private static final String RESERVATION_TIME = "reservationtime";
+    private static final String RESERVATION_DATE = "reservationdate";
+    private static final String VENUE_NAME = "venuename";
+    private static final String VENUE_ADDRESS = "venueaddress";
+
     private Intent dateIntent;
     private TextView dateMessageTextView;
     private ImageView dateImageView;
-    private static final String VENUE_NAME = "venuename";
+
     public static final int NOTIFICATION_ID =0 ;
     public static final String PRIMARY_CHANNEL_ID = "PRIMARY_CHANNEL_ID" ;
     private NotificationManager notificationManager;
 
-
-    String venue;
+    private String venue;
+    private String venueAddress;
+    private String date;
+    private String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,10 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
         dateIntent = getIntent();
 
         venue = dateIntent.getStringExtra(VENUE_NAME);
+        venueAddress = dateIntent.getStringExtra(VENUE_ADDRESS);
+        date = dateIntent.getStringExtra(RESERVATION_DATE);
+        time = dateIntent.getStringExtra(RESERVATION_TIME);
+
 
         dateMessageTextView.setText("You Chose To Go On A Date To " +  venue + " with " + ShuffleSelectedProfileFragment.USER_NAME);
 
@@ -86,6 +97,11 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
 
     private NotificationCompat.Builder getNotificationBuilder(){
         Intent notificationIntent = new Intent(this,ShowReservationActivity.class);
+        notificationIntent.putExtra(VENUE_NAME, venue);
+        notificationIntent.putExtra(VENUE_ADDRESS, venueAddress);
+        notificationIntent.putExtra(RESERVATION_DATE, date);
+        notificationIntent.putExtra(RESERVATION_TIME, time);
+
         PendingIntent notificationPendingIntent = PendingIntent.getActivity(this, NOTIFICATION_ID,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         return new NotificationCompat.Builder(this,PRIMARY_CHANNEL_ID)

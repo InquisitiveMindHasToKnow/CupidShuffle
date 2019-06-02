@@ -15,11 +15,11 @@
     <string name="answer_privately_text">Questions answered privately will used for matching but hidden from your profile</string>
     <string name="saveAnswer_text">Save</string>
     <string name="skipQuestion_text">Skip</string>
-    <string name="nextIs_compatibility_survey_text">Next, you will answer some questions to test your compatibility with other users.</string>
+    <string name="nextIs_compatibility_survey_text">Next, you will complete a quick questionnaire which will be used to calculate your compatibility with other users and recommended date ideas.</string>
     <string name="more_answers_better_score_text">The more questions you answer, the more accurate your results will be!</string>
     <string name="start_text">Start</string>
     <string name="go_text">Go !</string>
-    <string name="completed_survey_text">You\'ve complete the compatibility questionnaire. Now let\'s see your profile and potential matches!</string>
+    <string name="completed_survey_text">You\'ve complete the compatibility questionnaire.\n\nNow let\'s see your profile, potential matches, and recommended date ideas!</string>
 
 
     <!--QUESTIONNAIRE STRINGS-->

@@ -40,6 +40,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".surveys.SurveyActivities.generalInterestQuestions.GeneralInterestQuestion1" />
+        <activity android:name=".surveys.SurveyActivities.generalInterestQuestions.GeneralInterestQuestion2" />
+        <activity android:name=".surveys.SurveyActivities.generalInterestQuestions.GeneralInterestQuestion3" />
+        <activity android:name=".surveys.SurveyActivities.generalInterestQuestions.GeneralInterestQuestion5" />
+        <activity android:name=".surveys.SurveyActivities.hobbiesQuestions.HobbiesQuestion1" />
+        <activity android:name=".surveys.SurveyActivities.hobbiesQuestions.HobbiesQuestion2" />
+        <activity android:name=".surveys.SurveyActivities.hobbiesQuestions.HobbiesQuestion3" />
+        <activity android:name=".surveys.SurveyActivities.hobbiesQuestions.HobbiesQuestion4" />
+        <activity android:name=".surveys.SurveyActivities.hobbiesQuestions.HobbiesQuestion5" />
+        <activity android:name=".surveys.SurveyActivities.cultureQuestions.CultureQuestion1" />
+        <activity android:name=".surveys.SurveyActivities.cultureQuestions.CultureQuestion2" />
+        <activity android:name=".surveys.SurveyActivities.cultureQuestions.CultureQuestion3" />
+        <activity android:name=".surveys.SurveyActivities.cultureQuestions.CultureQuestion4" />
+        <activity android:name=".surveys.SurveyActivities.cultureQuestions.CultureQuestion5" />
+        <activity android:name=".surveys.SurveyActivities.financeQuestions.FinanceQuestion1" />
+        <activity android:name=".surveys.SurveyActivities.financeQuestions.FinanceQuestion2" />
+        <activity android:name=".surveys.SurveyActivities.financeQuestions.FinanceQuestion3" />
+        <activity android:name=".surveys.SurveyActivities.financeQuestions.FinanceQuestion4" />
+        <activity android:name=".surveys.SurveyActivities.financeQuestions.FinanceQuestion5" />
+        <activity android:name=".surveys.SurveyActivities.sexQuestions.SexQuestion1" />
+        <activity android:name=".surveys.SurveyActivities.sexQuestions.SexQuestion2" />
+        <activity android:name=".surveys.SurveyActivities.sexQuestions.SexQuestion3" />
     </application>
 
 </manifest>

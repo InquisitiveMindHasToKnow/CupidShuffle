@@ -1,6 +1,7 @@
 package com.example.cupidshuffle.surveys.SurveyActivities.generalInterestQuestions;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,26 @@ import android.widget.TextView;
 import com.example.cupidshuffle.R;
 
 public class GeneralInterestQuestion1 extends AppCompatActivity {
+    private static final String USER_PREFS_KEY = "user shared preference";
+
+    private static final String USER_CHOICE1_KEY = "question 1 user choice 1";
+    private static final String USER_CHOICE2_KEY = "question 1 user choice 2";
+    private static final String USER_CHOICE3_KEY = "question 1 user choice 3";
+    private static final String USER_CHOICE4_KEY = "question 1 user choice 4";
+    private static final String USER_CHOICE5_KEY = "question 1 user choice 5";
+    private static final String USER_CHOICE6_KEY = "question 1 user choice 6";
+    private static final String USER_CHOICE7_KEY = "question 1 user choice 7";
+
+    private static final String USER_ACCEPTED_CHOICE1_KEY = "question 1 accepted choice 1";
+    private static final String USER_ACCEPTED_CHOICE2_KEY = "question 1 accepted choice 2";
+    private static final String USER_ACCEPTED_CHOICE3_KEY = "question 1 accepted choice 3";
+    private static final String USER_ACCEPTED_CHOICE4_KEY = "question 1 accepted choice 4";
+    private static final String USER_ACCEPTED_CHOICE5_KEY = "question 1 accepted choice 5";
+    private static final String USER_ACCEPTED_CHOICE6_KEY = "question 1 accepted choice 6";
+    private static final String USER_ACCEPTED_CHOICE7_KEY = "question 1 accepted choice 7";
+
+    private static final String USER_EXPLAIN_ANSWER_KEY = "question 1 explanation";
+
     private String[] generalInterestQuestions;
     private String[] generalInterestQuestion1_choices;
 
@@ -76,65 +97,75 @@ public class GeneralInterestQuestion1 extends AppCompatActivity {
         acceptedChoice6.setText(generalInterestQuestion1_choices[5]);
         acceptedChoice7.setText(generalInterestQuestion1_choices[6]);
 
+        SharedPreferences userSharedPreferences = getApplicationContext().getSharedPreferences(USER_PREFS_KEY, MODE_PRIVATE);
+        final SharedPreferences.Editor editor = userSharedPreferences.edit();
+
         yourChoices.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.generalInterest_question1_yourChoice1_button:
-
+                        editor.putString(USER_CHOICE1_KEY, yourChoice1.getText().toString());
                         break;
+
                     case R.id.generalInterest_question1_yourChoice2_button:
-
+                        editor.putString(USER_CHOICE2_KEY, yourChoice2.getText().toString());
                         break;
+
                     case R.id.generalInterest_question1_yourChoice3_button:
-
+                        editor.putString(USER_CHOICE3_KEY, yourChoice3.getText().toString());
                         break;
+
                     case R.id.generalInterest_question1_yourChoice4_button:
-
+                        editor.putString(USER_CHOICE4_KEY, yourChoice4.getText().toString());
                         break;
+
                     case R.id.generalInterest_question1_yourChoice5_button:
-
+                        editor.putString(USER_CHOICE5_KEY, yourChoice5.getText().toString());
                         break;
+
                     case R.id.generalInterest_question1_yourChoice6_button:
-
+                        editor.putString(USER_CHOICE6_KEY, yourChoice6.getText().toString());
                         break;
-                    case R.id.generalInterest_question1_yourChoice7_button:
 
+                    case R.id.generalInterest_question1_yourChoice7_button:
+                        editor.putString(USER_CHOICE7_KEY, yourChoice7.getText().toString());
                         break;
                 }
             }
         });
 
-        //CAN I PLACE THESE INTO A SWITCH CASE?!
         if (acceptedChoice1.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE1_KEY, acceptedChoice1.getText().toString());
         }
         if (acceptedChoice2.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE2_KEY, acceptedChoice2.getText().toString());
         }
         if (acceptedChoice3.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE3_KEY, acceptedChoice3.getText().toString());
         }
         if (acceptedChoice4.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE4_KEY, acceptedChoice4.getText().toString());
         }
         if (acceptedChoice5.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE5_KEY, acceptedChoice5.getText().toString());
         }
         if (acceptedChoice6.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE6_KEY, acceptedChoice6.getText().toString());
         }
         if (acceptedChoice7.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE7_KEY, acceptedChoice7.getText().toString());
         }
 
-        explainAnswer.getText();
+        editor.putString(USER_EXPLAIN_ANSWER_KEY, explainAnswer.getText().toString());
 
         revealAnswerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
+                if (isChecked) {
+                    // hide answer from profile;
+                    // the isChecked will be true if the switch is in the On position
+                }
             }
         });
 
@@ -142,7 +173,7 @@ public class GeneralInterestQuestion1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent saveIntent = new Intent(GeneralInterestQuestion1.this, GeneralInterestQuestion2.class);
-                //LOGIC TO SAVE RESPONSES HERE!!
+                editor.apply();
                 startActivity(saveIntent);
             }
         });
@@ -154,7 +185,6 @@ public class GeneralInterestQuestion1 extends AppCompatActivity {
                 startActivity(skipIntent);
             }
         });
-
     }
 
     private void findViews() {

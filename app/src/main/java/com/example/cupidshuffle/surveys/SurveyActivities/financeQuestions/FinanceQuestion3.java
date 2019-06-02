@@ -1,6 +1,7 @@
 package com.example.cupidshuffle.surveys.SurveyActivities.financeQuestions;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,18 @@ import com.example.cupidshuffle.R;
 
 
 public class FinanceQuestion3 extends AppCompatActivity {
+    private static final String USER_PREFS_KEY = "user shared preference";
+
+    private static final String USER_CHOICE1_KEY = "question 3 user choice 1";
+    private static final String USER_CHOICE2_KEY = "question 3 user choice 2";
+    private static final String USER_CHOICE3_KEY = "question 3 user choice 3";
+
+    private static final String USER_ACCEPTED_CHOICE1_KEY = "question 3 accepted choice 1";
+    private static final String USER_ACCEPTED_CHOICE2_KEY = "question 3 accepted choice 2";
+    private static final String USER_ACCEPTED_CHOICE3_KEY = "question 3 accepted choice 3";
+
+    private static final String USER_EXPLAIN_ANSWER_KEY = "question 3 explanation";
+
     private String[] financeQuestions;
     private String[] financeQuestion3_choices;
 
@@ -61,18 +74,23 @@ public class FinanceQuestion3 extends AppCompatActivity {
         acceptedChoice2.setText(financeQuestion3_choices[1]);
         acceptedChoice3.setText(financeQuestion3_choices[2]);
 
+        SharedPreferences userSharedPreferences = getApplicationContext().getSharedPreferences(USER_PREFS_KEY, MODE_PRIVATE);
+        final SharedPreferences.Editor editor = userSharedPreferences.edit();
+
         yourChoices.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.finance_question3_yourChoice1_button:
-
+                        editor.putString(USER_CHOICE1_KEY, yourChoice1.getText().toString());
                         break;
+
                     case R.id.finance_question3_yourChoice2_button:
-
+                        editor.putString(USER_CHOICE2_KEY, yourChoice2.getText().toString());
                         break;
-                    case R.id.finance_question3_yourChoice3_button:
 
+                    case R.id.finance_question3_yourChoice3_button:
+                        editor.putString(USER_CHOICE3_KEY, yourChoice3.getText().toString());
                         break;
                 }
             }
@@ -80,22 +98,24 @@ public class FinanceQuestion3 extends AppCompatActivity {
 
         //CAN I PLACE THESE INTO A SWITCH CASE?!
         if (acceptedChoice1.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE1_KEY, acceptedChoice1.getText().toString());
         }
         if (acceptedChoice2.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE2_KEY, acceptedChoice2.getText().toString());
         }
         if (acceptedChoice3.isChecked()) {
-            //save answer
+            editor.putString(USER_ACCEPTED_CHOICE3_KEY, acceptedChoice3.getText().toString());
         }
 
-        explainAnswer.getText();
+        editor.putString(USER_EXPLAIN_ANSWER_KEY, explainAnswer.getText().toString());
 
         revealAnswerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
+                if (isChecked) {
+                    // hide answer from profile;
+                    // the isChecked will be true if the switch is in the On position
+                }
             }
         });
 
@@ -103,7 +123,7 @@ public class FinanceQuestion3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent saveIntent = new Intent(FinanceQuestion3.this, FinanceQuestion4.class);
-                //LOGIC TO SAVE RESPONSES HERE!!
+                editor.apply();
                 startActivity(saveIntent);
             }
         });

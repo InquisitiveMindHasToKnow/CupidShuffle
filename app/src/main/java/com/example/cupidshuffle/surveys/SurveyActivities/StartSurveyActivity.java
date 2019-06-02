@@ -20,12 +20,12 @@ public class StartSurveyActivity extends AppCompatActivity {
 
         startSurvey = findViewById(R.id.startSurvey_startButton);
         startSurvey.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent startSurveyIntent = new Intent(StartSurveyActivity.this, GeneralInterestQuestion1.class);
-                 startActivity(startSurveyIntent);
-             }
-         });
+            @Override
+            public void onClick(View v) {
+                Intent startSurveyIntent = new Intent(StartSurveyActivity.this, GeneralInterestQuestion1.class);
+                startActivity(startSurveyIntent);
+            }
+        });
 
     }
 }

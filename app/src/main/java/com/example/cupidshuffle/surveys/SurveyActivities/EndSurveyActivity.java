@@ -22,7 +22,7 @@ public class EndSurveyActivity extends AppCompatActivity {
         endSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent endSurveyIntent = new Intent( EndSurveyActivity.this, FragmentHolder.class);
+                Intent endSurveyIntent = new Intent(EndSurveyActivity.this, FragmentHolder.class);
                 startActivity(endSurveyIntent);
             }
         });

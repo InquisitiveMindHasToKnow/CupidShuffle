@@ -85,7 +85,7 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
     }
 
     private NotificationCompat.Builder getNotificationBuilder(){
-        Intent notificationIntent = new Intent(this,MakeReservationActivity.class);
+        Intent notificationIntent = new Intent(this,ShowReservationActivity.class);
         PendingIntent notificationPendingIntent = PendingIntent.getActivity(this, NOTIFICATION_ID,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         return new NotificationCompat.Builder(this,PRIMARY_CHANNEL_ID)

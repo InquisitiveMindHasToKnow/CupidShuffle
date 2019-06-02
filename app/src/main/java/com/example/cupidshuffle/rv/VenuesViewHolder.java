@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.DateChoiceConfirmationActivity;
+import com.example.cupidshuffle.activities.MakeReservationActivity;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
 import com.example.cupidshuffle.model.Venue;
@@ -67,7 +68,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
             public void onClick(final View v) {
 
 
-                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), DateChoiceConfirmationActivity.class);
+                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), MakeReservationActivity.class);
                 toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
                 itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
 

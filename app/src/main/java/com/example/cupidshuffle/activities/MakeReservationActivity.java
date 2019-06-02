@@ -2,11 +2,13 @@ package com.example.cupidshuffle.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -23,6 +25,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener chooseADateListener;
     private TimePickerDialog.OnTimeSetListener chooseATimeListener;
     private String timeOfDay;
+    private Button reservationConservationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,22 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseDateAndTimeHeaderTextView = findViewById(R.id.chooseDateAndTimeForDatePromptTextView);
         chooseADateTextView = findViewById(R.id.date_selected);
         chooseATimeTextView = findViewById(R.id.time_selected);
+        reservationConservationButton = findViewById(R.id.confirm_preferred_date_and_time);
 
         Calendar c = Calendar.getInstance();
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
+
+        reservationConservationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
+//                toReservationConfirmationIntent.putExtra(dMSendersName, privateMessages.getSender());
+//                toReservationConfirmationIntent.putExtra(dMedMessage, privateMessages.getMessage());
+                startActivity(toReservationConfirmationIntent);
+            }
+        });
 
         chooseADateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

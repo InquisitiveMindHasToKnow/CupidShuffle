@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
@@ -64,6 +65,16 @@ public class ShowReservationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("message/rfc822");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                emailIntent.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(ShowReservationActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

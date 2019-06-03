@@ -1,7 +1,9 @@
 package com.example.cupidshuffle.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -95,6 +97,20 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             @Override
             public void onFailure(Call<SearchVenuesResponse> call, Throwable t) {
                 Log.d(TAG, t.toString());
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setIcon(R.drawable.nointernetconnection)
+                                .setTitle("Uh-Oh!")
+                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                builder.create().show();
+
 
             }
 

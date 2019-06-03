@@ -68,7 +68,7 @@ public class ShowReservationActivity extends AppCompatActivity {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("message/rfc822");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Date Reservation Details");
                 emailIntent.putExtra(Intent.EXTRA_TEXT   , "body of email");
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));

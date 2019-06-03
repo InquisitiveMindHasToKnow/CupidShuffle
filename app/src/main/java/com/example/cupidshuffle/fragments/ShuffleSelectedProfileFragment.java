@@ -1,12 +1,14 @@
 package com.example.cupidshuffle.fragments;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +80,23 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             userProfile = getArguments().getParcelable(USER_SELECTED);
+        }
+
+        if (getArguments() == null){
+
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(getContext())
+                            .setIcon(R.drawable.nointernetconnection)
+                            .setTitle("Uh-Oh!")
+                            .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                            .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+            builder.create().show();
+
         }
 
 

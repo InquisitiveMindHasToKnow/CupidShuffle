@@ -1,10 +1,12 @@
 package com.example.cupidshuffle.vpfragments;
 
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -87,6 +89,20 @@ public class ViewAllConnectionRequestsFragment extends Fragment {
             @Override
             public void onFailure(Call<ConnectorAPI> call, Throwable t) {
                 Log.d(TAG, "Retrofit call failed" + t.getMessage());
+
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(getContext())
+                                .setIcon(R.drawable.nointernetconnection)
+                                .setTitle("Uh-Oh!")
+                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                builder.create().show();
             }
         });
 

@@ -1,14 +1,17 @@
 package com.example.cupidshuffle.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
@@ -25,9 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AllUserProfilesFragment extends Fragment {
 
 
@@ -67,8 +68,23 @@ public class AllUserProfilesFragment extends Fragment {
             @Override
             public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
                 Log.d(TAG, "Retrofit call failed" + t.getMessage());
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(getContext())
+                                .setIcon(R.drawable.nointernetconnection)
+                                .setTitle("Uh-Oh!")
+                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                builder.create().show();
+
             }
         });
+
 
         return rootView;
     }

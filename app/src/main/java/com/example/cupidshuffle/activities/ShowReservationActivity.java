@@ -64,17 +64,19 @@ public class ShowReservationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("message/rfc822");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Date Reservation Details");
                 emailIntent.putExtra(Intent.EXTRA_TEXT   , "body of email");
                 try {
-                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                    startActivity(Intent.createChooser(emailIntent, "Email Reservation Details"));
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(ShowReservationActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
     }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -31,8 +32,11 @@ public class MakeReservationActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener chooseADateListener;
     private TimePickerDialog.OnTimeSetListener chooseATimeListener;
     private String timeOfDay;
-    private Button reservationConservationButton;
+    private Button reservationConfirmationButton;
     private Intent reservationDetailIntent;
+
+    private LinearLayout chooseDateLinearLayout;
+    private LinearLayout chooseTimeLinearLayout;
 
     private String venue;
     private String address;
@@ -44,10 +48,15 @@ public class MakeReservationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_reservation);
+
+        chooseDateLinearLayout = findViewById(R.id.select_date_linear);
+        chooseTimeLinearLayout = findViewById(R.id.select_time_linear);
+
+
         chooseDateAndTimeHeaderTextView = findViewById(R.id.chooseDateAndTimeForDatePromptTextView);
         chooseADateTextView = findViewById(R.id.date_selected);
         chooseATimeTextView = findViewById(R.id.time_selected);
-        reservationConservationButton = findViewById(R.id.confirm_preferred_date_and_time);
+        reservationConfirmationButton = findViewById(R.id.confirm_preferred_date_and_time);
 
         reservationDetailIntent = getIntent();
 
@@ -59,7 +68,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
 
-        reservationConservationButton.setOnClickListener(new View.OnClickListener() {
+        reservationConfirmationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -72,9 +81,10 @@ public class MakeReservationActivity extends AppCompatActivity {
             }
         });
 
-        chooseADateTextView.setOnClickListener(new View.OnClickListener() {
+        chooseDateLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
@@ -88,7 +98,9 @@ public class MakeReservationActivity extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
+
         });
+
 
         chooseADateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -100,7 +112,7 @@ public class MakeReservationActivity extends AppCompatActivity {
             }
         };
 
-        chooseATimeTextView.setOnClickListener(new View.OnClickListener() {
+        chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -136,7 +148,11 @@ public class MakeReservationActivity extends AppCompatActivity {
 
 
             }
+
+
+
         });
+
 
         chooseATimeListener = new TimePickerDialog.OnTimeSetListener() {
             @Override

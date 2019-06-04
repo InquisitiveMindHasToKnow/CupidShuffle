@@ -1,6 +1,9 @@
 package com.example.cupidshuffle.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,7 +71,30 @@ public class ShuffleTheLoveBirdsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
                 Log.d(TAG, "Retrofit call failed" + t.getMessage());
+
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        AlertDialog.Builder builder =
+                                new AlertDialog.Builder(ShuffleTheLoveBirdsActivity.this)
+                                        .setIcon(R.drawable.nointernetconnection)
+                                        .setTitle("Uh-Oh!")
+                                        .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                        .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                        builder.create().show();
+
+                    }
+                }, 4000);
             }
+
         });
 
     }

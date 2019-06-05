@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.SurveyActivities.StartSurveyActivity;
 
 public class UserRegistrationActivity extends AppCompatActivity {
 
@@ -59,6 +60,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
                         Toast.makeText(UserRegistrationActivity.this.getApplicationContext(), "Try again. Both passwords have to match", Toast.LENGTH_LONG).show();
 
                     }
+
+                    Intent startSurveyIntent = new Intent(UserRegistrationActivity.this, StartSurveyActivity.class);
+                    startActivity(startSurveyIntent);
                 }
             });
         }

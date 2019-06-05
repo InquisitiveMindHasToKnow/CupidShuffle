@@ -7,12 +7,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 
@@ -72,98 +74,109 @@ public class MakeReservationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
                 toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
                 toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
                 toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
                 toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
-                startActivity(toReservationConfirmationIntent);
-            }
-        });
 
-        chooseDateLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                if (TextUtils.isEmpty(chooseADateTextView.getText()) || TextUtils.isEmpty(chooseATimeTextView.getText())) {
+                    setResult(RESULT_CANCELED, toReservationConfirmationIntent);
 
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        MakeReservationActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        chooseADateListener,
-                        year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
-
-        });
+                    Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be Left Blank.", Toast.LENGTH_LONG).show();
 
 
-        chooseADateListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
+                } else {
 
-                date = month + "/" + day + "/" + year;
-                chooseADateTextView.setText(date);
-            }
-        };
+                    startActivity(toReservationConfirmationIntent);
+                }
 
-        chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                chooseDateLinearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        if (hourOfDay == 0) {
+                    public void onClick(View v) {
 
-                            hourOfDay += 12;
-                            timeOfDay = "AM";
-                        } else if (hourOfDay == 12) {
+                        Calendar cal = Calendar.getInstance();
+                        int year = cal.get(Calendar.YEAR);
+                        int month = cal.get(Calendar.MONTH);
+                        int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                            timeOfDay = "PM";
+                        DatePickerDialog dialog = new DatePickerDialog(
+                                MakeReservationActivity.this,
+                                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                                chooseADateListener,
+                                year, month, day);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
+                    }
 
-                        } else if (hourOfDay > 12) {
+                });
 
-                            hourOfDay -= 12;
-                            timeOfDay = "PM";
 
-                        } else {
-                            timeOfDay = "AM";
-                        }
+                chooseADateListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        month = month + 1;
 
-                        time = hourOfDay + ":" + minute + timeOfDay;
-                        chooseATimeTextView.setText(time);
+                        date = month + "/" + day + "/" + year;
+                        chooseADateTextView.setText(date);
+                    }
+                };
+
+                chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                if (hourOfDay == 0) {
+
+                                    hourOfDay += 12;
+                                    timeOfDay = "AM";
+                                } else if (hourOfDay == 12) {
+
+                                    timeOfDay = "PM";
+
+                                } else if (hourOfDay > 12) {
+
+                                    hourOfDay -= 12;
+                                    timeOfDay = "PM";
+
+                                } else {
+                                    timeOfDay = "AM";
+                                }
+
+                                time = hourOfDay + ":" + minute + timeOfDay;
+                                chooseATimeTextView.setText(time);
+
+                            }
+                        }, hourChosen, minuteChosen, false);
+
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
 
 
                     }
-                }, hourChosen, minuteChosen, false);
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
 
+                });
+
+
+                chooseATimeListener = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+
+                        String time = hourOfDay + " : " + minute;
+                        chooseATimeTextView.setText(time);
+
+                    }
+                };
 
             }
-
-
 
         });
-
-
-        chooseATimeListener = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-                String time = hourOfDay + " : " + minute;
-                chooseATimeTextView.setText(time);
-
-            }
-        };
-
     }
-
 }

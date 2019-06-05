@@ -123,7 +123,7 @@ public class ConnectorsRequestAdapter extends RecyclerView.Adapter<ConnectorsReq
                 @Override
                 public void onClick(View v) {
 
-                    Toast.makeText(itemView.getContext(), userName +"'s Request Acccepted They May Now View Your Profile.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(itemView.getContext(), userName +"'s Request Accepted. They May Now View Your Profile.", Toast.LENGTH_LONG).show();
                     deleteConnectionRequest(getAdapterPosition());
 
                 }

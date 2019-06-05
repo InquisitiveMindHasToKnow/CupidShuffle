@@ -3,6 +3,8 @@ package com.example.cupidshuffle.activities;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -31,7 +33,10 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
 
 
         ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = new ShuffleSelectedProfileFragment();
-        inflateFragment(shuffleSelectedProfileFragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_fragment_container, shuffleSelectedProfileFragment);
+        fragmentTransaction.commit();
 
     }
 
@@ -78,6 +83,7 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
     private void inflateFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_container,fragment)
+                .addToBackStack(null)
                 .commit();
     }
 

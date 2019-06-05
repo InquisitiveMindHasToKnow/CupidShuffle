@@ -91,7 +91,7 @@ public class AllUserProfilesFragment extends Fragment {
                         builder.create().show();
 
                     }
-                }, 4000);
+                }, 8000);
             }
         });
 

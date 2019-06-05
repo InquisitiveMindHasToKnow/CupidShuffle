@@ -4,6 +4,7 @@ package com.example.cupidshuffle.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -81,25 +82,6 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         if (getArguments() != null) {
             userProfile = getArguments().getParcelable(USER_SELECTED);
         }
-
-        if (getArguments() == null){
-
-            AlertDialog.Builder builder =
-                    new AlertDialog.Builder(getContext())
-                            .setIcon(R.drawable.nointernetconnection)
-                            .setTitle("Uh-Oh!")
-                            .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
-                            .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-            builder.create().show();
-
-        }
-
-
     }
 
     @Override
@@ -175,6 +157,29 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                 @Override
                 public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
                     Log.d(TAG, "Retrofit call failed" + t.getMessage());
+
+                    new Handler().postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            if (getArguments() == null) {
+
+                                AlertDialog.Builder builder =
+                                        new AlertDialog.Builder(getContext())
+                                                .setIcon(R.drawable.nointernetconnection)
+                                                .setTitle("Uh-Oh!")
+                                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+                                builder.create().show();
+                            }
+                        }
+                    }, 8000);
                 }
             });
         } else {

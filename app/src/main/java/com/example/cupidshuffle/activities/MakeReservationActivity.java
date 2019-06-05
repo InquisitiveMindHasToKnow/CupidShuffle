@@ -7,11 +7,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 
@@ -31,8 +34,11 @@ public class MakeReservationActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener chooseADateListener;
     private TimePickerDialog.OnTimeSetListener chooseATimeListener;
     private String timeOfDay;
-    private Button reservationConservationButton;
+    private Button reservationConfirmationButton;
     private Intent reservationDetailIntent;
+
+    private LinearLayout chooseDateLinearLayout;
+    private LinearLayout chooseTimeLinearLayout;
 
     private String venue;
     private String address;
@@ -44,10 +50,15 @@ public class MakeReservationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_reservation);
+
+        chooseDateLinearLayout = findViewById(R.id.select_date_linear);
+        chooseTimeLinearLayout = findViewById(R.id.select_time_linear);
+
+
         chooseDateAndTimeHeaderTextView = findViewById(R.id.chooseDateAndTimeForDatePromptTextView);
         chooseADateTextView = findViewById(R.id.date_selected);
         chooseATimeTextView = findViewById(R.id.time_selected);
-        reservationConservationButton = findViewById(R.id.confirm_preferred_date_and_time);
+        reservationConfirmationButton = findViewById(R.id.confirm_preferred_date_and_time);
 
         reservationDetailIntent = getIntent();
 
@@ -59,22 +70,11 @@ public class MakeReservationActivity extends AppCompatActivity {
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
 
-        reservationConservationButton.setOnClickListener(new View.OnClickListener() {
+
+        chooseDateLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
-                toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
-                toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
-                toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
-                toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
-                startActivity(toReservationConfirmationIntent);
-            }
-        });
-
-        chooseADateTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
@@ -88,7 +88,9 @@ public class MakeReservationActivity extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
+
         });
+
 
         chooseADateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -100,7 +102,7 @@ public class MakeReservationActivity extends AppCompatActivity {
             }
         };
 
-        chooseATimeTextView.setOnClickListener(new View.OnClickListener() {
+        chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -110,23 +112,25 @@ public class MakeReservationActivity extends AppCompatActivity {
                         if (hourOfDay == 0) {
 
                             hourOfDay += 12;
-                            timeOfDay = "AM";
+                            timeOfDay = " AM";
                         } else if (hourOfDay == 12) {
 
-                            timeOfDay = "PM";
+                            timeOfDay = " PM";
 
                         } else if (hourOfDay > 12) {
 
                             hourOfDay -= 12;
-                            timeOfDay = "PM";
+                            timeOfDay = " PM";
 
                         } else {
-                            timeOfDay = "AM";
+                            timeOfDay = " AM";
                         }
 
-                        time = hourOfDay + ":" + minute + timeOfDay;
+                        if (minute < 10) {
+                            time = hourOfDay + ":0" + minute + timeOfDay;
+                        } else
+                            time = hourOfDay + ":" + minute + timeOfDay;
                         chooseATimeTextView.setText(time);
-
 
                     }
                 }, hourChosen, minuteChosen, false);
@@ -136,11 +140,15 @@ public class MakeReservationActivity extends AppCompatActivity {
 
 
             }
+
+
         });
+
 
         chooseATimeListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
 
                 String time = hourOfDay + " : " + minute;
                 chooseATimeTextView.setText(time);
@@ -148,6 +156,32 @@ public class MakeReservationActivity extends AppCompatActivity {
             }
         };
 
-    }
 
+        reservationConfirmationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
+
+
+                if (TextUtils.isEmpty(chooseADateTextView.getText()) || TextUtils.isEmpty(chooseATimeTextView.getText())) {
+                    setResult(RESULT_CANCELED, toReservationConfirmationIntent);
+
+                    Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be Left Blank.", Toast.LENGTH_LONG).show();
+
+
+                } else {
+
+                    toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
+                    toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
+                    toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
+                    toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
+                    startActivity(toReservationConfirmationIntent);
+                }
+
+
+            }
+        });
+    }
 }

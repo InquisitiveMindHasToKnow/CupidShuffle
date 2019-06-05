@@ -32,8 +32,12 @@
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_page_after_login" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
+        <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
+        <activity android:name=".SurveyActivities.EndSurveyActivity"></activity>
+        <activity android:name=".activities.ViewAllRequestsActivity" />
         <activity android:name=".activities.SentMessageConfirmationActivity" />
         <activity android:name=".activities.RespondToDMActivity" />
+        <activity android:name=".activities.ViewPrivateMessagesActivity" />
         <activity android:name=".activities.MainUserProfile" />
         <activity android:name=".activities.IndividualProfilePage" />
         <activity android:name=".activities.UserRegistrationActivity" />
@@ -48,6 +52,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SurveyActivities.generalInterestQuestions.GeneralInterestQuestion1" />
+        <activity android:name=".SurveyActivities.generalInterestQuestions.GeneralInterestQuestion2" />
+        <activity android:name=".SurveyActivities.generalInterestQuestions.GeneralInterestQuestion3" />
+        <activity android:name=".SurveyActivities.generalInterestQuestions.GeneralInterestQuestion5" />
+        <activity android:name=".SurveyActivities.hobbiesQuestions.HobbiesQuestion1" />
+        <activity android:name=".SurveyActivities.hobbiesQuestions.HobbiesQuestion2" />
+        <activity android:name=".SurveyActivities.hobbiesQuestions.HobbiesQuestion3" />
+        <activity android:name=".SurveyActivities.hobbiesQuestions.HobbiesQuestion4" />
+        <activity android:name=".SurveyActivities.hobbiesQuestions.HobbiesQuestion5" />
+        <activity android:name=".SurveyActivities.cultureQuestions.CultureQuestion1" />
+        <activity android:name=".SurveyActivities.cultureQuestions.CultureQuestion2" />
+        <activity android:name=".SurveyActivities.cultureQuestions.CultureQuestion3" />
+        <activity android:name=".SurveyActivities.cultureQuestions.CultureQuestion4" />
+        <activity android:name=".SurveyActivities.cultureQuestions.CultureQuestion5" />
+        <activity android:name=".SurveyActivities.financeQuestions.FinanceQuestion1" />
+        <activity android:name=".SurveyActivities.financeQuestions.FinanceQuestion2" />
+        <activity android:name=".SurveyActivities.financeQuestions.FinanceQuestion3" />
+        <activity android:name=".SurveyActivities.financeQuestions.FinanceQuestion4" />
+        <activity android:name=".SurveyActivities.financeQuestions.FinanceQuestion5" />
+        <activity android:name=".SurveyActivities.sexQuestions.SexQuestion1" />
+        <activity android:name=".SurveyActivities.sexQuestions.SexQuestion2" />
+        <activity android:name=".SurveyActivities.sexQuestions.SexQuestion3" />
+        <activity android:name=".SurveyActivities.sexQuestions.SexQuestion4" />
+        <activity android:name=".SurveyActivities.sexQuestions.SexQuestion5" />
+        <activity android:name=".SurveyActivities.StartSurveyActivity" />
+        <activity android:name=".SurveyActivities.generalInterestQuestions.GeneralInterestQuestion4" />
     </application>
 
 </manifest>

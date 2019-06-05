@@ -1,9 +1,6 @@
 package com.example.cupidshuffle.network;
 
-import com.example.cupidshuffle.services.SurveyService;
-import com.example.cupidshuffle.surveys.models.QuestionaireList;
 
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -32,11 +29,5 @@ public class RetrofitSingleton {
     }
 
 
-    private SurveyService getSurveyService(){
-        return retrofit.create(SurveyService.class);
-    }
 
-    public Call<QuestionaireList> getQuestionaireResponse(){
-        return getSurveyService().getQuestionaire();
-    }
 }

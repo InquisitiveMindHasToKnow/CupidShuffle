@@ -366,8 +366,6 @@
                         android:textSize="12sp"
                         android:text=" View All Users" />
 
-
-
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

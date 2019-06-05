@@ -41,6 +41,7 @@
             android:id="@+id/date_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:hint="Tap To Select Date"
             android:textSize="24sp"/>
 
@@ -69,6 +70,7 @@
             android:id="@+id/time_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:hint="Tap To Select Time"
             android:textSize="24sp"/>
 

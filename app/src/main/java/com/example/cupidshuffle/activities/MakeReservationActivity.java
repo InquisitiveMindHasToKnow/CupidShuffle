@@ -148,6 +148,9 @@ public class MakeReservationActivity extends AppCompatActivity {
                                     timeOfDay = "AM";
                                 }
 
+                                if(minute < 10){
+                                    time = hourOfDay + ":0" + minute + timeOfDay;
+                                }else
                                 time = hourOfDay + ":" + minute + timeOfDay;
                                 chooseATimeTextView.setText(time);
 

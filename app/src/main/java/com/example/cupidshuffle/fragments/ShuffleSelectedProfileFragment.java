@@ -82,6 +82,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         if (getArguments() != null) {
             userProfile = getArguments().getParcelable(USER_SELECTED);
         }
+
+
     }
 
     @Override
@@ -179,8 +181,13 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                                 builder.create().show();
                             }
                         }
-                    }, 8000);
+                    }, 4000);
+
+
+
                 }
+
+
             });
         } else {
             profilePageUserName.setText(userProfile.getUser());

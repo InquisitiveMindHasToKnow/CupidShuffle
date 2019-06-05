@@ -4,7 +4,9 @@ package com.example.cupidshuffle.vpfragments;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+
+import android.os.Handler;
+
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.activities.ShuffleTheLoveBirdsActivity;
 import com.example.cupidshuffle.network.RetrofitSingleton;
 import com.example.cupidshuffle.model.ConnectorAPI;
 import com.example.cupidshuffle.model.ConnectorModel;
@@ -59,13 +62,6 @@ public class ViewAllConnectionRequestsFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_view_all_connection_requests, container, false);
 
-        BottomNavigationView navView = rootView.findViewById(R.id.nav_view);
-
-        Menu menu = navView.getMenu();
-        MenuItem menuItem = menu.getItem(3);
-        menuItem.setChecked(true);
-
-
         connectionRequestRecyclerView = rootView.findViewById(R.id.connector_request_recyclerview);
         loadConnectionRequests();
 
@@ -92,19 +88,29 @@ public class ViewAllConnectionRequestsFragment extends Fragment {
                 Log.d(TAG, "Retrofit call failed" + t.getMessage());
 
 
-                AlertDialog.Builder builder =
-                        new AlertDialog.Builder(getContext())
-                                .setIcon(R.drawable.nointernetconnection)
-                                .setTitle("Uh-Oh!")
-                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
-                                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                builder.create().show();
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        AlertDialog.Builder builder =
+                                new AlertDialog.Builder(getContext())
+                                        .setIcon(R.drawable.nointernetconnection)
+                                        .setTitle("Uh-Oh!")
+                                        .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                        .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                        builder.create().show();
+
+                    }
+                }, 8000);
             }
+
+
         });
 
     }

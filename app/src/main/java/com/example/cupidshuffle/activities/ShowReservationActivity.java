@@ -1,6 +1,9 @@
 package com.example.cupidshuffle.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.squareup.picasso.Picasso;
+
 
 public class ShowReservationActivity extends AppCompatActivity {
 
@@ -64,18 +68,26 @@ public class ShowReservationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                StringBuilder emailBody = new StringBuilder();
+                emailBody.append("Venue: " + venueName);
+                emailBody.append("\n\nWhen: " + dateOfReservation + timeOfReservation);
+                emailBody.append("\n\nWith: " + ShuffleSelectedProfileFragment.USER_NAME);
 
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setType("message/rfc822");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Date Reservation Details");
-                emailIntent.putExtra(Intent.EXTRA_TEXT   , "body of email");
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(ShowReservationActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                }
-            }
+
+                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                        emailIntent.setType("message/rfc822");
+                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Date Reservation Details");
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, emailBody.toString());
+                        try {
+                            startActivity(Intent.createChooser(emailIntent, "Reservation Details"));
+                        } catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(ShowReservationActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
         });
+
     }
 }

@@ -265,5 +265,4 @@ public class ShuffleSelectedProfileFragment extends Fragment {
 
         return width;
     }
-
 }

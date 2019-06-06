@@ -92,6 +92,7 @@
         <item>Football</item>
         <item>Baseball/Softball</item>
         <item>Gymnastics</item>
+        <item>Other</item>
         <item>I don\'t play sports</item>
     </string-array>
 

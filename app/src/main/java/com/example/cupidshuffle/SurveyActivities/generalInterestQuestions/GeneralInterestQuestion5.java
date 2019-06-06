@@ -127,6 +127,7 @@ public class GeneralInterestQuestion5 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(GeneralInterestQuestion5.this, HobbiesQuestion1.class);
                 editor.apply();
+                GeneralInterestQuestion5.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -135,6 +136,7 @@ public class GeneralInterestQuestion5 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(GeneralInterestQuestion5.this, HobbiesQuestion1.class);
+                GeneralInterestQuestion5.this.finish();
                 startActivity(skipIntent);
             }
         });

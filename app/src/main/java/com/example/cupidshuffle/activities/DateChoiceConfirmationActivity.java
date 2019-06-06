@@ -28,7 +28,7 @@ public class DateChoiceConfirmationActivity extends AppCompatActivity {
     private TextView dateMessageTextView;
     private ImageView dateImageView;
 
-    public static final int NOTIFICATION_ID =0 ;
+    public static final int NOTIFICATION_ID = 0 ;
     public static final String PRIMARY_CHANNEL_ID = "PRIMARY_CHANNEL_ID" ;
     private NotificationManager notificationManager;
 

@@ -111,6 +111,7 @@ public class SexQuestion1 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(SexQuestion1.this, SexQuestion2.class);
                 editor.apply();
+                SexQuestion1.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -119,6 +120,7 @@ public class SexQuestion1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(SexQuestion1.this, SexQuestion2.class);
+                SexQuestion1.this.finish();
                 startActivity(skipIntent);
             }
         });

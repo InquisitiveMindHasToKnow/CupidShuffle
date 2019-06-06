@@ -160,27 +160,18 @@ public class MakeReservationActivity extends AppCompatActivity {
         reservationConfirmationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
-
-
                 if (TextUtils.isEmpty(chooseADateTextView.getText()) || TextUtils.isEmpty(chooseATimeTextView.getText())) {
                     setResult(RESULT_CANCELED, toReservationConfirmationIntent);
 
                     Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be Left Blank.", Toast.LENGTH_LONG).show();
-
-
                 } else {
-
                     toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
                     toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
                     toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
                     toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
                     startActivity(toReservationConfirmationIntent);
                 }
-
-
             }
         });
     }

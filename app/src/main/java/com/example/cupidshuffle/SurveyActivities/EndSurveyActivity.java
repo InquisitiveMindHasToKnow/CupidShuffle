@@ -23,6 +23,7 @@ public class EndSurveyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent endSurveyIntent = new Intent(EndSurveyActivity.this, FragmentHolderActivity.class);
+                EndSurveyActivity.this.finish();
                 startActivity(endSurveyIntent);
             }
         });

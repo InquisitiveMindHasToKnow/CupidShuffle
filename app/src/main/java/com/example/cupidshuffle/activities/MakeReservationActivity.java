@@ -1,26 +1,34 @@
 package com.example.cupidshuffle.activities;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 
 import java.util.Calendar;
 
 public class MakeReservationActivity extends AppCompatActivity {
+    private static final String ACCENT_TEXT_COLOR_BOLD_OPEN = "<font color = '#C4A29E'><b>";
+    private static final String ACCENT_TEXT_COLOR_BOLD_CLOSE = "</b></font>";
 
 
     private static final String VENUE_NAME = "venuename";
@@ -36,6 +44,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private String timeOfDay;
     private Button reservationConfirmationButton;
     private Intent reservationDetailIntent;
+    private ProgressBar progressBar;
 
     private LinearLayout chooseDateLinearLayout;
     private LinearLayout chooseTimeLinearLayout;
@@ -59,6 +68,9 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseADateTextView = findViewById(R.id.date_selected);
         chooseATimeTextView = findViewById(R.id.time_selected);
         reservationConfirmationButton = findViewById(R.id.confirm_preferred_date_and_time);
+
+        progressBar = findViewById(R.id.progress_circular);
+        progressBar.setVisibility(View.GONE);
 
         reservationDetailIntent = getIntent();
 
@@ -160,17 +172,53 @@ public class MakeReservationActivity extends AppCompatActivity {
         reservationConfirmationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toReservationConfirmationIntent = new Intent(MakeReservationActivity.this, DateChoiceConfirmationActivity.class);
                 if (TextUtils.isEmpty(chooseADateTextView.getText()) || TextUtils.isEmpty(chooseATimeTextView.getText())) {
-                    setResult(RESULT_CANCELED, toReservationConfirmationIntent);
-
                     Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be Left Blank.", Toast.LENGTH_LONG).show();
                 } else {
-                    toReservationConfirmationIntent.putExtra(VENUE_NAME, venue);
-                    toReservationConfirmationIntent.putExtra(VENUE_ADDRESS, address);
-                    toReservationConfirmationIntent.putExtra(RESERVATION_DATE, date);
-                    toReservationConfirmationIntent.putExtra(RESERVATION_TIME, time);
-                    startActivity(toReservationConfirmationIntent);
+
+                    StringBuffer dateRequestSent_string = new StringBuffer();
+                    dateRequestSent_string
+                            .append("You've sent a request to go on a date to  ")
+                            .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
+                            .append(venue)
+                            .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
+                            .append(" with ")
+                            .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
+                            .append(ShuffleSelectedProfileFragment.USER_NAME)
+                            .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
+                            .append(" on ")
+                            .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
+                            .append(date)
+                            .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
+                            .append(" at ")
+                            .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
+                            .append(time)
+                            .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
+                            .trimToSize();
+
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+
+                            AlertDialog.Builder dateRequestBuilder =
+                                    new AlertDialog.Builder(MakeReservationActivity.this)
+                                            .setIcon(R.drawable.date_request_tag)
+                                            .setTitle("Request Successful!")
+                                            .setMessage(Html.fromHtml(dateRequestSent_string.toString()))
+                                            .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dateRequestDialog, int which) {
+                                                    Intent dateRequestSentIntent = new Intent(MakeReservationActivity.this, FragmentHolderActivity.class);
+                                                    startActivity(dateRequestSentIntent);
+                                                    finish();
+                                                }
+                                            });
+                            dateRequestBuilder.create().show();
+                        }
+                    }, 1500);
                 }
             }
         });

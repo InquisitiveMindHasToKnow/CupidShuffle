@@ -124,6 +124,7 @@ public class HobbiesQuestion3 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(HobbiesQuestion3.this, HobbiesQuestion4.class);
                 editor.apply();
+                HobbiesQuestion3.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -132,6 +133,7 @@ public class HobbiesQuestion3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(HobbiesQuestion3.this, HobbiesQuestion4.class);
+                HobbiesQuestion3.this.finish();
                 startActivity(skipIntent);
             }
         });

@@ -15,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.SurveyActivities.StartSurveyActivity;
 
 public class GeneralInterestQuestion1 extends AppCompatActivity {
     private static final String USER_PREFS_KEY = "user shared preference";
@@ -174,6 +175,7 @@ public class GeneralInterestQuestion1 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(GeneralInterestQuestion1.this, GeneralInterestQuestion2.class);
                 editor.apply();
+                GeneralInterestQuestion1.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -182,6 +184,7 @@ public class GeneralInterestQuestion1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(GeneralInterestQuestion1.this, GeneralInterestQuestion2.class);
+                GeneralInterestQuestion1.this.finish();
                 startActivity(skipIntent);
             }
         });

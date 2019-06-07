@@ -15,16 +15,5 @@
         android:scaleType="fitXY"
         android:src="@drawable/cupid_shoots_slow"/>
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/pphearts_gif"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/cupid_shoot_gif"
-        app:layout_constraintEnd_toEndOf="@+id/cupid_shoot_gif"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cupid_shoot_gif"
-        app:layout_constraintTop_toTopOf="@+id/cupid_shoot_gif"
-        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

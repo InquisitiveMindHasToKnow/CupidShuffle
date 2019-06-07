@@ -186,7 +186,8 @@ public class GeneralInterestQuestion2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent saveIntent = new Intent(GeneralInterestQuestion2.this, GeneralInterestQuestion3.class);
-                //LOGIC TO SAVE RESPONSES HERE!!
+                editor.apply();
+                GeneralInterestQuestion2.this.finish();
                 startActivity(saveIntent);
             }
         });

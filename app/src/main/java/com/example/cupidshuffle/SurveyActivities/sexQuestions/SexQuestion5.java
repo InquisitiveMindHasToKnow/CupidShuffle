@@ -138,6 +138,7 @@ public class SexQuestion5 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(SexQuestion5.this, EndSurveyActivity.class);
                 editor.apply();
+                SexQuestion5.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -146,6 +147,7 @@ public class SexQuestion5 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(SexQuestion5.this, EndSurveyActivity.class);
+                SexQuestion5.this.finish();
                 startActivity(skipIntent);
             }
         });

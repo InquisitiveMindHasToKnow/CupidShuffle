@@ -126,6 +126,7 @@ public class CultureQuestion5 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(CultureQuestion5.this, FinanceQuestion1.class);
                 editor.apply();
+                CultureQuestion5.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -134,6 +135,7 @@ public class CultureQuestion5 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(CultureQuestion5.this, FinanceQuestion1.class);
+                CultureQuestion5.this.finish();
                 startActivity(skipIntent);
             }
         });

@@ -23,6 +23,7 @@ public class StartSurveyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startSurveyIntent = new Intent(StartSurveyActivity.this, GeneralInterestQuestion1.class);
+                StartSurveyActivity.this.finish();
                 startActivity(startSurveyIntent);
             }
         });

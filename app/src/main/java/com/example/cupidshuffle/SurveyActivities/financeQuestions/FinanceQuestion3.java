@@ -124,6 +124,7 @@ public class FinanceQuestion3 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(FinanceQuestion3.this, FinanceQuestion4.class);
                 editor.apply();
+                FinanceQuestion3.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -132,6 +133,7 @@ public class FinanceQuestion3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(FinanceQuestion3.this, FinanceQuestion4.class);
+                FinanceQuestion3.this.finish();
                 startActivity(skipIntent);
             }
         });

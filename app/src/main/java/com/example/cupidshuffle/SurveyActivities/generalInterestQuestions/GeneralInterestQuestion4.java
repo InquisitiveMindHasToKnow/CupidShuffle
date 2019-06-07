@@ -150,6 +150,7 @@ public class GeneralInterestQuestion4 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent saveIntent = new Intent(GeneralInterestQuestion4.this, GeneralInterestQuestion5.class);
                 editor.apply();
+                GeneralInterestQuestion4.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -158,6 +159,7 @@ public class GeneralInterestQuestion4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent skipIntent = new Intent(GeneralInterestQuestion4.this, GeneralInterestQuestion5.class);
+                GeneralInterestQuestion4.this.finish();
                 startActivity(skipIntent);
             }
         });

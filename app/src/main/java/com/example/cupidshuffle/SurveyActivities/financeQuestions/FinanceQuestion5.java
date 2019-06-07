@@ -15,7 +15,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.SurveyActivities.EndSurveyActivity;
 import com.example.cupidshuffle.SurveyActivities.sexQuestions.SexQuestion1;
+import com.example.cupidshuffle.activities.FragmentHolderActivity;
 
 
 public class FinanceQuestion5 extends AppCompatActivity {
@@ -137,8 +139,9 @@ public class FinanceQuestion5 extends AppCompatActivity {
         saveAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent saveIntent = new Intent(FinanceQuestion5.this, SexQuestion1.class);
+                Intent saveIntent = new Intent(FinanceQuestion5.this, EndSurveyActivity.class);
                 editor.apply();
+                FinanceQuestion5.this.finish();
                 startActivity(saveIntent);
             }
         });
@@ -146,7 +149,8 @@ public class FinanceQuestion5 extends AppCompatActivity {
         skipAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent skipIntent = new Intent(FinanceQuestion5.this, SexQuestion1.class);
+                Intent skipIntent = new Intent(FinanceQuestion5.this, EndSurveyActivity.class);
+                FinanceQuestion5.this.finish();
                 startActivity(skipIntent);
             }
         });

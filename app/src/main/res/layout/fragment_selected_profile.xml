@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@android:color/white"
+    android:layout_marginBottom="30dp"
     tools:context=".fragments.ShuffleSelectedProfileFragment">
 
-    <View
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:background="#C4A29E"
+        android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="412dp"
+        android:layout_height="251dp"
+        android:background="#8AEBA6A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -24,12 +31,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="10dp">
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/shuffled_profile_circular_imageview"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="190dp"
+                android:layout_height="181dp"
                 android:layout_centerHorizontal="true"
                 android:elevation="1dp"
                 android:src="@drawable/aimingcupid2"
@@ -47,7 +54,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="85dp"
+                    android:layout_marginTop="55dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
@@ -57,6 +64,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -64,7 +72,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="60dp"
+                            android:layout_marginTop="66dp"
                             android:text="Gaming Phenom"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -74,7 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="4dp"
                             android:text="Brooklyn, NY"
                             android:textSize="16sp" />
 
@@ -83,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="4dp"
                             android:text="Physical Therapist"
                             android:textSize="16sp" />
 
@@ -92,7 +100,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="10dp"
                             android:text="Gaming is by far the best hobby in the world. Prove me wrong!"
                             android:textAlignment="center"
                             android:textSize="16sp" />
@@ -104,23 +115,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/shuffled_profile_letsshuffle_button"
+                        style="@style/Widget.AppCompat.Button.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date Me!"
+                        android:background="@color/buttonPrimaryColor"
+                        android:text=" Take Me Out! "
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
                         android:textStyle="italic" />
 
                     <Button
                         android:id="@+id/shuffled_profile_send_message_to_user_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="140dp"
-                        android:text="Message Me!"
+                        android:layout_marginStart="180dp"
+                        android:background="@color/buttonPrimaryColor"
+                        android:text=" Message Me! "
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
                         android:textStyle="italic" />
                 </LinearLayout>
 
@@ -133,6 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -297,5 +315,5 @@
 
     </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

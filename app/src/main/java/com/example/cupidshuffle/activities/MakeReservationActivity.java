@@ -1,5 +1,6 @@
 package com.example.cupidshuffle.activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
@@ -29,7 +30,11 @@ import android.widget.Toast;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MakeReservationActivity extends AppCompatActivity {
     private static final String ACCENT_TEXT_COLOR_BOLD_OPEN = "<font color = '#C4A29E'><b>";
@@ -65,6 +70,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private String time;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +101,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         time = dateIntent.getStringExtra(RESERVATION_TIME);
 
 
+
         Calendar c = Calendar.getInstance();
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
@@ -120,8 +127,28 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseADateListener = (datePicker, year, month, day) -> {
             month = month + 1;
 
-            date = month + "/" + day + "/" + year;
-            chooseADateTextView.setText(date);
+
+                date = month + "/" + day + "/" + year;
+
+                try {
+                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).equals(new Date())|| new SimpleDateFormat("MM/dd/yyyy").parse(date).after(new Date())) {
+
+                        chooseADateTextView.setText(date);
+                    }
+
+                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
+
+                        Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be In The Past.", Toast.LENGTH_LONG).show();
+
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
         };
 
         chooseTimeLinearLayout.setOnClickListener(v -> {
@@ -157,6 +184,7 @@ public class MakeReservationActivity extends AppCompatActivity {
             chooseATimeTextView.setText(time);
 
         };
+
 
 
         reservationConfirmationButton.setOnClickListener(v -> {

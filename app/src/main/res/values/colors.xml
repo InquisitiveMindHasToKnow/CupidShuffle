@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#BE1F3C88</color>
+    <color name="colorPrimaryDark">#BE162B68</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="backgroundPrimary">#EBA6A9</color>
     <color name="textPrimaryColor">#002A32</color>
     <color name="white">#FFF</color>
-    <color name="buttonPrimaryColor">#003366</color>
+    <color name="buttonPrimaryColor">#BE1F3C88</color>
     <color name="snackColor">#000</color>
     <color name="appColor1">#F40076</color>
 

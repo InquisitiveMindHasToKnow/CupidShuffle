@@ -101,7 +101,6 @@ public class MakeReservationActivity extends AppCompatActivity {
         time = dateIntent.getStringExtra(RESERVATION_TIME);
 
 
-
         Calendar c = Calendar.getInstance();
         final int hourChosen = c.get(Calendar.HOUR_OF_DAY);
         final int minuteChosen = c.get(Calendar.MINUTE);
@@ -128,48 +127,61 @@ public class MakeReservationActivity extends AppCompatActivity {
             month = month + 1;
 
 
-                date = month + "/" + day + "/" + year;
+            date = month + "/" + day + "/" + year;
 
-                try {
-                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).equals(new Date())|| new SimpleDateFormat("MM/dd/yyyy").parse(date).after(new Date())) {
+            try {
+                if (new SimpleDateFormat("MM/dd/yyyy").parse(date).equals(new Date()) || new SimpleDateFormat("MM/dd/yyyy").parse(date).after(new Date())) {
 
-                        chooseADateTextView.setText(date);
-                    }
+                    chooseADateTextView.setText(date);
+                }
 
-                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
+                if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
 
-                        Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be In The Past.", Toast.LENGTH_LONG).show();
-
-                    }
-
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be In The Past.", Toast.LENGTH_LONG).show();
 
                 }
-            }
 
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+
+            }
         };
 
-        chooseTimeLinearLayout.setOnClickListener(v -> {
 
-            TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, (view, hourOfDay, minute) -> {
-                if (hourOfDay == 0) {
 
-                    hourOfDay += 12;
-                    timeOfDay = " AM";
-                } else if (hourOfDay == 12) {
+        chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    timeOfDay = " PM";
+                TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if (hourOfDay == 0) {
 
-                } else if (hourOfDay > 12) {
+                            hourOfDay += 12;
+                            timeOfDay = " AM";
+                        } else if (hourOfDay == 12) {
 
-                    hourOfDay -= 12;
-                    timeOfDay = " PM";
+                            timeOfDay = " PM";
 
-                } else {
-                    timeOfDay = " AM";
-                }
+                        } else if (hourOfDay > 12) {
+
+                            hourOfDay -= 12;
+                            timeOfDay = " PM";
+
+                        } else {
+                            timeOfDay = " AM";
+                        }
+
+                        if (minute < 10) {
+                            time = hourOfDay + ":0" + minute + timeOfDay;
+                        } else
+                            time = hourOfDay + ":" + minute + timeOfDay;
+                        chooseATimeTextView.setText(time);
+
+                    }
+                }, hourChosen, minuteChosen, false);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();

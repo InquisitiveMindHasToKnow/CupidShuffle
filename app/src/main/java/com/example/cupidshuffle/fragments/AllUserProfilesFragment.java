@@ -72,25 +72,21 @@ public class AllUserProfilesFragment extends Fragment {
                 Log.d(TAG, "Retrofit call failed" + t.getMessage());
 
 
-                new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(() -> {
 
-                    @Override
-                    public void run() {
+                    AlertDialog.Builder builder =
+                            new AlertDialog.Builder(getContext());
+                                    builder.setIcon(R.drawable.nointernetconnection)
+                                    .setTitle("Uh-Oh!")
+                                    .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
+                                    .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                    builder.create().show();
 
-                        AlertDialog.Builder builder =
-                                new AlertDialog.Builder(getContext());
-                                        builder.setIcon(R.drawable.nointernetconnection)
-                                        .setTitle("Uh-Oh!")
-                                        .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
-                                        .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-                        builder.create().show();
-
-                    }
                 }, 8000);
             }
         });

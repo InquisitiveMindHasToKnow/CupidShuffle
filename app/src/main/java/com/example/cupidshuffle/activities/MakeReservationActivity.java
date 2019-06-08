@@ -1,5 +1,6 @@
 package com.example.cupidshuffle.activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -24,7 +25,11 @@ import android.widget.Toast;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MakeReservationActivity extends AppCompatActivity {
     private static final String ACCENT_TEXT_COLOR_BOLD_OPEN = "<font color = '#C4A29E'><b>";
@@ -55,6 +60,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private String time;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +82,7 @@ public class MakeReservationActivity extends AppCompatActivity {
 
         venue = reservationDetailIntent.getStringExtra(VENUE_NAME);
         address = reservationDetailIntent.getStringExtra(VENUE_ADDRESS);
+
 
 
         Calendar c = Calendar.getInstance();
@@ -110,7 +117,29 @@ public class MakeReservationActivity extends AppCompatActivity {
                 month = month + 1;
 
                 date = month + "/" + day + "/" + year;
-                chooseADateTextView.setText(date);
+
+                try {
+
+
+                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).equals(new Date())|| new SimpleDateFormat("MM/dd/yyyy").parse(date).after(new Date())) {
+
+                        chooseADateTextView.setText(date);
+                    }
+
+                    if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
+
+                        Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be In The Past.", Toast.LENGTH_LONG).show();
+
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+
+                }
+
+
+
             }
         };
 
@@ -173,8 +202,13 @@ public class MakeReservationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(chooseADateTextView.getText()) || TextUtils.isEmpty(chooseATimeTextView.getText())) {
+
                     Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be Left Blank.", Toast.LENGTH_LONG).show();
-                } else {
+
+                }
+
+
+                else {
 
                     StringBuffer dateRequestSent_string = new StringBuffer();
                     dateRequestSent_string

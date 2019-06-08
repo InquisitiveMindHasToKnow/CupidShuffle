@@ -86,12 +86,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 Log.d(TAG, venues.toString());
 
                 final int pos = 0;
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        venuesRecyclerView.findViewHolderForAdapterPosition(pos).itemView.performClick();
-                    }
-                },1);
+                new Handler().postDelayed(() -> venuesRecyclerView.findViewHolderForAdapterPosition(pos).itemView.performClick(),1);
             }
 
             @Override

@@ -16,7 +16,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ShowReservationActivity"></activity>
         <activity android:name=".activities.MakeReservationActivity" />
-        <activity android:name=".activities.DateChoiceConfirmationActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

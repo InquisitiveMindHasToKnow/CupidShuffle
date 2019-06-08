@@ -57,19 +57,16 @@ public class UserProfilesViewHolder extends RecyclerView.ViewHolder{
                 .load(userProfile.getPicture())
                 .into(profileCircularImageView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        itemView.setOnClickListener(v -> {
 
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = ShuffleSelectedProfileFragment.newInstance(userProfile);
-                FragmentManager fragmentManager = activity.getSupportFragmentManager();
-                        fragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, shuffleSelectedProfileFragment)
-                        .addToBackStack(null)
-                        .commit();
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = ShuffleSelectedProfileFragment.newInstance(userProfile);
+            FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                    .replace(R.id.main_fragment_container, shuffleSelectedProfileFragment)
+                    .addToBackStack(null)
+                    .commit();
 
-            }
         });
 
     }

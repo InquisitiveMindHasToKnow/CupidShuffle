@@ -115,93 +115,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (userProfile == null) {
-            Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
-            UserProfileService userProfileService = retrofit.create(UserProfileService.class);
-            userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
-                @Override
-                public void onResponse(Call<UserProfilesAPI> call, Response<UserProfilesAPI> response) {
-                    Log.d(TAG, "This retrofit works, Omar! " + response.body().getProfiles().get(2).getPicture());
-                    userProfileList.addAll(response.body().getProfiles());
+        if (userProfile != null) {
 
-
-                    Random randomNumber = new Random();
-                    profileSelected = userProfileList.get(randomNumber.nextInt(userProfileList.size() - 1) + 1);
-
-
-                    profilePageUserName.setText(profileSelected.getUser() + ", " + profileSelected.getAge());
-                    profilePageUserBio.setText(profileSelected.getBio());
-                    profilePageUserLocation.setText(profileSelected.getLocation());
-                    profilePageUserOccupation.setText(profileSelected.getOccupation());
-
-                    USER_NAME = profileSelected.getUser();
-                    CHOSEN_DATES_PICTURE = profileSelected.getPicture();
-
-
-                    Picasso.get()
-                            .load(profileSelected.getPicture())
-                            .into(profilePageUserPicture);
-                    int financeUserProgressWidth = Integer.valueOf(profileSelected.getFinanceWidth());
-                    int hobbiesUserProgressWidth = Integer.valueOf(profileSelected.getHobbiesWidth());
-                    int cultureUserProgressWidth = Integer.valueOf(profileSelected.getCultureWidth());
-                    int sexUserProgressWidth = Integer.valueOf(profileSelected.getSexWidth());
-                    int generalUserProgressWidth = Integer.valueOf(profileSelected.getGeneralWidth());
-
-                    setWidth(getWidth(financeUserProgressWidth),
-                            getWidth(hobbiesUserProgressWidth),
-                            getWidth(cultureUserProgressWidth),
-                            getWidth(sexUserProgressWidth),
-                            getWidth(generalUserProgressWidth));
-
-
-                }
-
-                @Override
-                public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
-                    Log.d(TAG, "Retrofit call failed" + t.getMessage());
-
-                    new Handler().postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            if (getArguments() == null) {
-
-                                AlertDialog.Builder builder =
-                                        new AlertDialog.Builder(getContext())
-                                                .setIcon(R.drawable.nointernetconnection)
-                                                .setTitle("Uh-Oh!")
-                                                .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
-                                                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                });
-                                builder.create().show();
-                            }
-                        }
-                    }, 4000);
-
-
-
-                }
-
-
-            });
-        } else {
-            profilePageUserName.setText(userProfile.getUser());
-            profilePageUserBio.setText(userProfile.getBio());
-            profilePageUserLocation.setText(userProfile.getLocation());
-            profilePageUserOccupation.setText(userProfile.getOccupation());
-
-            USER_NAME = userProfile.getUser();
-            CHOSEN_DATES_PICTURE = userProfile.getPicture();
-
-
-            Picasso.get()
-                    .load(userProfile.getPicture())
-                    .into(profilePageUserPicture);
 
             int financeUserProgressWidth = Integer.valueOf(userProfile.getFinanceWidth());
             int hobbiesUserProgressWidth = Integer.valueOf(userProfile.getHobbiesWidth());
@@ -215,15 +130,45 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                     getWidth(sexUserProgressWidth),
                     getWidth(generalUserProgressWidth));
 
-            profileSelected = userProfile;
+
+            profilePageUserName.setText(userProfile.getUser());
+            profilePageUserBio.setText(userProfile.getBio());
+            profilePageUserLocation.setText(userProfile.getLocation());
+            profilePageUserOccupation.setText(userProfile.getOccupation());
+
+            USER_NAME = userProfile.getUser();
+            CHOSEN_DATES_PICTURE = userProfile.getPicture();
+
+
+            Picasso.get()
+                    .load(userProfile.getPicture())
+                    .into(profilePageUserPicture);
+
+            financeUserProgressWidth = Integer.valueOf(userProfile.getFinanceWidth());
+            hobbiesUserProgressWidth = Integer.valueOf(userProfile.getHobbiesWidth());
+            cultureUserProgressWidth = Integer.valueOf(userProfile.getCultureWidth());
+            sexUserProgressWidth = Integer.valueOf(userProfile.getSexWidth());
+            generalUserProgressWidth = Integer.valueOf(userProfile.getGeneralWidth());
+
+            setWidth(getWidth(financeUserProgressWidth),
+                    getWidth(hobbiesUserProgressWidth),
+                    getWidth(cultureUserProgressWidth),
+                    getWidth(sexUserProgressWidth),
+                    getWidth(generalUserProgressWidth));
 
         }
 
-        shuffledProfileLetsShuffleButton.setOnClickListener(v -> {
+
+        shuffledProfileLetsShuffleButton.setOnClickListener(v ->
+
+        {
             Intent intent = new Intent(getContext(), MainActivity.class);
-            intent.putExtra(SHUFFLED_USER_KEY, profileSelected);
+            intent.putExtra(SHUFFLED_USER_KEY, userProfile);
             startActivity(intent);
+
         });
+
+
     }
 
     private void setWidth(int financeWidth, int hobbiesWidth, int culturalWidth, int sexWidth, int generalWidth) {
@@ -266,3 +211,5 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         return width;
     }
 }
+
+

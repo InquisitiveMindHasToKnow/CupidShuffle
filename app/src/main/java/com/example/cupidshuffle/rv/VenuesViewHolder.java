@@ -1,7 +1,5 @@
 package com.example.cupidshuffle.rv;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
@@ -14,13 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.activities.DateChoiceConfirmationActivity;
 import com.example.cupidshuffle.activities.MakeReservationActivity;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
 import com.example.cupidshuffle.model.Venue;
-
-import java.util.Calendar;
 
 
 public class VenuesViewHolder extends RecyclerView.ViewHolder {

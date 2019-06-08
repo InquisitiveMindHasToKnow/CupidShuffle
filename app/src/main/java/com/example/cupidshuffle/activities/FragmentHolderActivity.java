@@ -15,6 +15,7 @@ import com.example.cupidshuffle.fragments.GoogleMapsFragment;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.fragments.UserProfileFragment;
 import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
+import com.example.cupidshuffle.fragments.UserViewPagerFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
 import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
 
@@ -32,10 +33,10 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
         navView.getMenu().getItem(2).setChecked(true);
 
 
-        ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = new ShuffleSelectedProfileFragment();
+        UserViewPagerFragment userViewPagerFragment = UserViewPagerFragment.newInstance();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_fragment_container, shuffleSelectedProfileFragment);
+        fragmentTransaction.replace(R.id.main_fragment_container, userViewPagerFragment);
         fragmentTransaction.commit();
 
     }
@@ -67,7 +68,7 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
 
             case R.id.navigation_shuffle:
 
-                clickedNavTabFragment = new ShuffleSelectedProfileFragment();
+                clickedNavTabFragment = new UserViewPagerFragment();
                 inflateFragment(clickedNavTabFragment);
                 break;
 

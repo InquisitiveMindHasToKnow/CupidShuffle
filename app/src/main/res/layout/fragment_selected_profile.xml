@@ -10,7 +10,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:background="@color/appColor1"
+        android:background="#C4A29E"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout

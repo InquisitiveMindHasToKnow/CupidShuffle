@@ -31,15 +31,17 @@ import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 
 import java.util.Calendar;
 
+import static com.example.cupidshuffle.rv.VenuesViewHolder.DATES_NAME;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_ADDRESS;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_NAME;
+
 public class MakeReservationActivity extends AppCompatActivity {
     private static final String ACCENT_TEXT_COLOR_BOLD_OPEN = "<font color = '#C4A29E'><b>";
     private static final String ACCENT_TEXT_COLOR_BOLD_CLOSE = "</b></font>";
 
 
-    private static final String VENUE_NAME = "venuename";
     private static final String RESERVATION_TIME = "reservationtime";
     private static final String RESERVATION_DATE = "reservationdate";
-    private static final String VENUE_ADDRESS = "venueaddress";
     public static final int NOTIFICATION_ID = 0;
     public static final String PRIMARY_CHANNEL_ID = "PRIMARY_CHANNEL_ID";
 
@@ -63,6 +65,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private String address;
     private String date;
     private String time;
+    private String dateName;
 
 
     @Override
@@ -93,6 +96,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         address = dateIntent.getStringExtra(VENUE_ADDRESS);
         date = dateIntent.getStringExtra(RESERVATION_DATE);
         time = dateIntent.getStringExtra(RESERVATION_TIME);
+        dateName = dateIntent.getStringExtra(DATES_NAME);
 
 
         Calendar c = Calendar.getInstance();
@@ -181,7 +185,7 @@ public class MakeReservationActivity extends AppCompatActivity {
                         .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
                         .append(" with ")
                         .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
-                        .append(ShuffleSelectedProfileFragment.USER_NAME)
+                        .append(dateName)
                         .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
                         .append(" on ")
                         .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
@@ -255,7 +259,7 @@ public class MakeReservationActivity extends AppCompatActivity {
 
         return new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID)
                 .setContentTitle("Great News!!!")
-                .setContentText(ShuffleSelectedProfileFragment.USER_NAME + " Has Agreed To Meet Up At " + venue + ". Click To Confirm A Date And Time")
+                .setContentText(dateName + " Has Agreed To Meet Up At " + venue + ". Click To Confirm A Date And Time")
                 .setSmallIcon(R.drawable.notificationcupid)
                 .setContentIntent(notificationPendingIntent)
                 .setAutoCancel(true)

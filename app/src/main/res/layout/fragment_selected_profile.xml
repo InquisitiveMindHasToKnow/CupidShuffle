@@ -111,7 +111,7 @@
                         android:id="@+id/shuffled_profile_letsshuffle_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Let's Shuffle"
+                        android:text="Lets Meet"
                         android:textAlignment="center"
                         android:textStyle="italic" />
 
@@ -141,26 +141,25 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="Finance"
                             android:textSize="16sp" />
 
                         <FrameLayout
                             android:layout_width="300dp"
-                            android:layout_height="15dp"
-                            android:layout_marginEnd="8dp">
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp">
 
                             <ImageView
                                 android:layout_width="300dp"
-                                android:layout_height="15dp"
-                                android:layout_marginEnd="8dp"
+                                android:layout_height="20dp"
                                 android:background="@drawable/rectangle_roundfull"
                                 android:foregroundGravity="center" />
 
                             <ImageView
                                 android:id="@+id/finance_progressBar"
                                 android:layout_width="200dp"
-                                android:layout_height="15dp"
-                                android:layout_marginEnd="8dp"
+                                android:layout_height="20dp"
                                 android:background="@drawable/rectangle_round"
                                 android:foregroundGravity="center" />
 
@@ -171,17 +170,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
                             android:text="Hobbies"
                             android:textSize="16sp" />
 
                         <FrameLayout
                             android:layout_width="300dp"
-                            android:layout_height="15dp"
-                            android:layout_marginEnd="8dp">
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp">
 
                             <ImageView
                                 android:layout_width="300dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_roundfull"
                                 android:foregroundGravity="center" />
@@ -189,7 +189,7 @@
                             <ImageView
                                 android:id="@+id/hobbies_progressBar"
                                 android:layout_width="200dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_round"
                                 android:foregroundGravity="center" />
@@ -200,17 +200,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
                             android:text="Culture/Lifestyle"
                             android:textSize="16sp" />
 
                         <FrameLayout
                             android:layout_width="300dp"
-                            android:layout_height="15dp"
-                            android:layout_marginEnd="8dp">
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp">
 
                             <ImageView
                                 android:layout_width="300dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_roundfull"
                                 android:foregroundGravity="center" />
@@ -218,7 +219,7 @@
                             <ImageView
                                 android:id="@+id/culture_progressBar"
                                 android:layout_width="200dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_round"
                                 android:foregroundGravity="center" />
@@ -230,17 +231,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
                             android:text="Sex"
                             android:textSize="16sp" />
 
                         <FrameLayout
                             android:layout_width="300dp"
-                            android:layout_height="15dp"
-                            android:layout_marginEnd="8dp">
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp">
 
                             <ImageView
                                 android:layout_width="300dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_roundfull"
                                 android:foregroundGravity="center" />
@@ -248,7 +250,7 @@
                             <ImageView
                                 android:id="@+id/sex_progressBar"
                                 android:layout_width="200dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_round"
                                 android:foregroundGravity="center" />
@@ -259,17 +261,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
                             android:text="General Interest"
                             android:textSize="16sp" />
 
                         <FrameLayout
                             android:layout_width="300dp"
-                            android:layout_height="15dp"
-                            android:layout_marginEnd="8dp">
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp">
 
                             <ImageView
                                 android:layout_width="300dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_roundfull"
                                 android:foregroundGravity="center" />
@@ -278,7 +281,7 @@
                             <ImageView
                                 android:id="@+id/general_progressBar"
                                 android:layout_width="200dp"
-                                android:layout_height="15dp"
+                                android:layout_height="20dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/rectangle_round"
                                 android:foregroundGravity="center" />

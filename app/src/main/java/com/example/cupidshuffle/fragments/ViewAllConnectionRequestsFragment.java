@@ -1,4 +1,4 @@
-package com.example.cupidshuffle.vpfragments;
+package com.example.cupidshuffle.fragments;
 
 
 import android.content.DialogInterface;

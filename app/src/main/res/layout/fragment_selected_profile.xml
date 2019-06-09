@@ -124,8 +124,8 @@
                         style="@style/Widget.AppCompat.Button.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Let's Meet"
                         android:background="@color/buttonPrimaryColor"
-                        android:text=" Take Me Out! "
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textStyle="italic" />

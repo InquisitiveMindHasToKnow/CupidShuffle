@@ -1,9 +1,8 @@
-package com.example.cupidshuffle;
+package com.example.cupidshuffle.rv;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 
 import java.util.List;
 

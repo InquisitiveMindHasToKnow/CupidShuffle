@@ -1,12 +1,10 @@
 package com.example.cupidshuffle.activities;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.ViewAllPrivateMessagesFragment;
 
 public class RespondToDMActivity extends AppCompatActivity {
 
@@ -59,11 +58,12 @@ public class RespondToDMActivity extends AppCompatActivity {
         sendResponseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toSentMessageConfirmationIntent = new Intent(RespondToDMActivity.this, SentMessageConfirmationActivity.class);
+                Intent toSentMessageConfirmationIntent = new Intent(RespondToDMActivity.this, ViewAllPrivateMessagesFragment.class);
                 if (TextUtils.isEmpty(respondToDMEditText.getText())) {
                     setResult(RESULT_CANCELED, toSentMessageConfirmationIntent);
                     Toast.makeText(RespondToDMActivity.this, "Please Enter A Message!", Toast.LENGTH_LONG).show();
                 }else{
+                    Toast.makeText(RespondToDMActivity.this, "Message Sent!", Toast.LENGTH_LONG).show();
                     RespondToDMActivity.this.finish();
                     startActivity(toSentMessageConfirmationIntent);
                 }

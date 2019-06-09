@@ -1,5 +1,6 @@
 package com.example.cupidshuffle.activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
@@ -27,19 +28,27 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
+import com.example.cupidshuffle.fragments.UserProfileFragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import static com.example.cupidshuffle.rv.VenuesViewHolder.DATES_NAME;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_ADDRESS;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_NAME;
 
 public class MakeReservationActivity extends AppCompatActivity {
     private static final String ACCENT_TEXT_COLOR_BOLD_OPEN = "<font color = '#C4A29E'><b>";
     private static final String ACCENT_TEXT_COLOR_BOLD_CLOSE = "</b></font>";
 
 
-    private static final String VENUE_NAME = "venuename";
     private static final String RESERVATION_TIME = "reservationtime";
     private static final String RESERVATION_DATE = "reservationdate";
-    private static final String VENUE_ADDRESS = "venueaddress";
     public static final int NOTIFICATION_ID = 0;
     public static final String PRIMARY_CHANNEL_ID = "PRIMARY_CHANNEL_ID";
 
@@ -63,8 +72,10 @@ public class MakeReservationActivity extends AppCompatActivity {
     private String address;
     private String date;
     private String time;
+    private String dateName;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +104,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         address = dateIntent.getStringExtra(VENUE_ADDRESS);
         date = dateIntent.getStringExtra(RESERVATION_DATE);
         time = dateIntent.getStringExtra(RESERVATION_TIME);
+        dateName = dateIntent.getStringExtra(DATES_NAME);
 
 
         Calendar c = Calendar.getInstance();
@@ -120,42 +132,66 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseADateListener = (datePicker, year, month, day) -> {
             month = month + 1;
 
+
             date = month + "/" + day + "/" + year;
-            chooseADateTextView.setText(date);
-        };
 
-        chooseTimeLinearLayout.setOnClickListener(v -> {
+            try {
+                if (new SimpleDateFormat("MM/dd/yyyy").parse(date).equals(new Date()) || new SimpleDateFormat("MM/dd/yyyy").parse(date).after(new Date())) {
 
-            TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, (view, hourOfDay, minute) -> {
-                if (hourOfDay == 0) {
-
-                    hourOfDay += 12;
-                    timeOfDay = " AM";
-                } else if (hourOfDay == 12) {
-
-                    timeOfDay = " PM";
-
-                } else if (hourOfDay > 12) {
-
-                    hourOfDay -= 12;
-                    timeOfDay = " PM";
-
-                } else {
-                    timeOfDay = " AM";
+                    chooseADateTextView.setText(date);
                 }
 
-                if (minute < 10) {
-                    time = hourOfDay + ":0" + minute + timeOfDay;
-                } else
-                    time = hourOfDay + ":" + minute + timeOfDay;
-                chooseATimeTextView.setText(time);
+                if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
 
-            }, hourChosen, minuteChosen, false);
+                    Toast.makeText(MakeReservationActivity.this, "Date Or Time Cannot Be In The Past.", Toast.LENGTH_LONG).show();
 
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.show();
+                }
 
 
+            } catch (ParseException e) {
+                e.printStackTrace();
+
+            }
+        };
+
+
+
+        chooseTimeLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TimePickerDialog dialog = new TimePickerDialog(MakeReservationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if (hourOfDay == 0) {
+
+                            hourOfDay += 12;
+                            timeOfDay = " AM";
+                        } else if (hourOfDay == 12) {
+
+                            timeOfDay = " PM";
+
+                        } else if (hourOfDay > 12) {
+
+                            hourOfDay -= 12;
+                            timeOfDay = " PM";
+
+                        } else {
+                            timeOfDay = " AM";
+                        }
+
+                        if (minute < 10) {
+                            time = hourOfDay + ":0" + minute + timeOfDay;
+                        } else
+                            time = hourOfDay + ":" + minute + timeOfDay;
+                        chooseATimeTextView.setText(time);
+
+                    }
+                }, hourChosen, minuteChosen, false);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
         });
 
 
@@ -166,6 +202,7 @@ public class MakeReservationActivity extends AppCompatActivity {
             chooseATimeTextView.setText(time);
 
         };
+
 
 
         reservationConfirmationButton.setOnClickListener(v -> {
@@ -181,7 +218,7 @@ public class MakeReservationActivity extends AppCompatActivity {
                         .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
                         .append(" with ")
                         .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
-                        .append(ShuffleSelectedProfileFragment.USER_NAME)
+                        .append(dateName)
                         .append(ACCENT_TEXT_COLOR_BOLD_CLOSE)
                         .append(" on ")
                         .append(ACCENT_TEXT_COLOR_BOLD_OPEN)
@@ -204,8 +241,6 @@ public class MakeReservationActivity extends AppCompatActivity {
                                     .setTitle("Request Successful!")
                                     .setMessage(Html.fromHtml(dateRequestSent_string.toString()))
                                     .setPositiveButton("Continue", (dateRequestDialog, which) -> {
-                                        Intent dateRequestSentIntent = new Intent(MakeReservationActivity.this, FragmentHolderActivity.class);
-                                        startActivity(dateRequestSentIntent);
                                         finish();
                                     });
                     dateRequestBuilder.create().show();
@@ -248,6 +283,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         Intent notificationIntent = new Intent(this, ShowReservationActivity.class);
         notificationIntent.putExtra(VENUE_NAME, venue);
         notificationIntent.putExtra(VENUE_ADDRESS, address);
+        notificationIntent.putExtra(DATES_NAME, dateName);
         notificationIntent.putExtra(RESERVATION_DATE, date);
         notificationIntent.putExtra(RESERVATION_TIME, time);
 
@@ -255,7 +291,7 @@ public class MakeReservationActivity extends AppCompatActivity {
 
         return new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID)
                 .setContentTitle("Great News!!!")
-                .setContentText(ShuffleSelectedProfileFragment.USER_NAME + " Has Agreed To Meet Up At " + venue + ". Click To Confirm A Date And Time")
+                .setContentText(dateName + " Has Agreed To Meet Up At " + venue + ". Click To Confirm A Date And Time")
                 .setSmallIcon(R.drawable.notificationcupid)
                 .setContentIntent(notificationPendingIntent)
                 .setAutoCancel(true)

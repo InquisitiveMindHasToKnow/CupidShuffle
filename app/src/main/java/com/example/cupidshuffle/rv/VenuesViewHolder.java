@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -15,17 +16,24 @@ import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.MakeReservationActivity;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
+
+import com.example.cupidshuffle.fragments.MapToProfileNavigation;
+
+import com.example.cupidshuffle.model.UserProfile;
+
 import com.example.cupidshuffle.model.Venue;
 
 
-public class VenuesViewHolder extends RecyclerView.ViewHolder {
+public class VenuesViewHolder extends RecyclerView.ViewHolder  {
 
     public static final String TAG = "PhotosCall";
+    public static final String DATES_NAME = "DATE NAME";
     private FragmentNavigation fragmentNavigation;
+    private MapToProfileNavigation mapToProfileNavigation;
     private static final String LOCATION_LAT = "lat";
     private static final String LOCATION_LON = "lon";
-    private static final String VENUE_NAME = "venuename";
-    private static final String VENUE_ADDRESS = "venueaddress";
+    public static final String VENUE_NAME = "venuename";
+    public static final String VENUE_ADDRESS = "venueaddress";
     private TextView venueNameTextView;
     private TextView venueCityTextView;
     private TextView venueAddressTextView;
@@ -45,7 +53,7 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void onBind(final Venue venue) {
+    public void onBind(final Venue venue, UserProfile userProfile) {
         String venueId = venue.getId();
         Log.d(TAG, venueId);
 
@@ -59,19 +67,26 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
         venueCityTextView.setText(venueCity);
         venueAddressTextView.setText(venueAddress);
 
-        dateChoiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
+        dateChoiceButton.setOnClickListener(v -> {
 
 
-                Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), MakeReservationActivity.class);
-                toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
-                toDateChoiceConfirmationIntent.putExtra(VENUE_ADDRESS, venueAddress);
+
+            Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), MakeReservationActivity.class);
+            toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
+            toDateChoiceConfirmationIntent.putExtra(VENUE_ADDRESS, venueAddress);
+            toDateChoiceConfirmationIntent.putExtra(DATES_NAME, userProfile.getUser());
+            itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
+
                 itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
 
 
-            }
+                mapToProfileNavigation = (MapToProfileNavigation) v.getContext();
+                mapToProfileNavigation.closeMainActivity();
+
+
         });
+
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,5 +109,6 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        }}
+        }
+}
 

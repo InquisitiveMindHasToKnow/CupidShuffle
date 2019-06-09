@@ -28,7 +28,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
+import com.example.cupidshuffle.fragments.UserProfileFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -235,8 +237,6 @@ public class MakeReservationActivity extends AppCompatActivity {
                                     .setTitle("Request Successful!")
                                     .setMessage(Html.fromHtml(dateRequestSent_string.toString()))
                                     .setPositiveButton("Continue", (dateRequestDialog, which) -> {
-                                        Intent dateRequestSentIntent = new Intent(MakeReservationActivity.this, FragmentHolderActivity.class);
-                                        startActivity(dateRequestSentIntent);
                                         finish();
                                     });
                     dateRequestBuilder.create().show();

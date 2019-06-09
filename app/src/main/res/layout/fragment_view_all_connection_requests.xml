@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".vpfragments.ViewAllConnectionRequestsFragment">
+    tools:context=".fragments.ViewAllConnectionRequestsFragment">
 
     <TextView
         android:id="@+id/connector_reuqest_header_texview"

@@ -13,6 +13,7 @@ import android.util.Log;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
+import com.example.cupidshuffle.fragments.MapToProfileNavigation;
 import com.example.cupidshuffle.model.SearchVenuesResponse;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.Venue;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 import static com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment.SHUFFLED_USER_KEY;
 
-public class MainActivity extends AppCompatActivity implements FragmentNavigation {
+public class MainActivity extends AppCompatActivity implements FragmentNavigation, MapToProfileNavigation {
     private static final String TAG = "MainActivity";
     private UserProfile userProfile;
     private String topCategoryOne;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
     private String topCategoryThree;
     private RecyclerView venuesRecyclerView;
     private VenuesAdapter venuesAdapter;
-    private String happy;
 
 
     @Override
@@ -129,5 +129,10 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 .add(R.id.main_container, googleMapsFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void closeMainActivity() {
+        finish();
     }
 }

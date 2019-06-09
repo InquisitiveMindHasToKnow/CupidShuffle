@@ -6,18 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
-import android.view.MenuItem;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
-import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.fragments.UserProfileFragment;
 import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
 import com.example.cupidshuffle.fragments.UserViewPagerFragment;
-import com.example.cupidshuffle.vpfragments.ViewAllConnectionRequestsFragment;
-import com.example.cupidshuffle.vpfragments.ViewAllPrivateMessagesFragment;
+import com.example.cupidshuffle.fragments.ViewAllConnectionRequestsFragment;
+import com.example.cupidshuffle.fragments.ViewAllPrivateMessagesFragment;
 
 public class FragmentHolderActivity extends AppCompatActivity implements FragmentNavigation {
     private BottomNavigationView navView;

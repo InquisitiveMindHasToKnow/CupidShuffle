@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -15,13 +16,15 @@ import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.activities.MakeReservationActivity;
 import com.example.cupidshuffle.fragments.FragmentNavigation;
 import com.example.cupidshuffle.fragments.GoogleMapsFragment;
+import com.example.cupidshuffle.fragments.MapToProfileNavigation;
 import com.example.cupidshuffle.model.Venue;
 
 
-public class VenuesViewHolder extends RecyclerView.ViewHolder {
+public class VenuesViewHolder extends RecyclerView.ViewHolder  {
 
     public static final String TAG = "PhotosCall";
     private FragmentNavigation fragmentNavigation;
+    private MapToProfileNavigation mapToProfileNavigation;
     private static final String LOCATION_LAT = "lat";
     private static final String LOCATION_LON = "lon";
     private static final String VENUE_NAME = "venuename";
@@ -67,9 +70,11 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
                 Intent toDateChoiceConfirmationIntent = new Intent(itemView.getContext(), MakeReservationActivity.class);
                 toDateChoiceConfirmationIntent.putExtra(VENUE_NAME, venueName);
                 toDateChoiceConfirmationIntent.putExtra(VENUE_ADDRESS, venueAddress);
+
                 itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
 
-
+                mapToProfileNavigation = (MapToProfileNavigation) v.getContext();
+                mapToProfileNavigation.closeMainActivity();
             }
         });
 
@@ -94,5 +99,6 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        }}
+        }
+}
 

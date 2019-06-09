@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activities.ShowReservationActivity">
 
+    <ImageView
+        android:id="@+id/reservation_background_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <TextView
         android:id="@+id/reservation_page_header_textview"
         android:layout_width="match_parent"
@@ -19,7 +23,6 @@
         android:id="@+id/reservation_page_location_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="VENUE"
         android:textSize="24sp"

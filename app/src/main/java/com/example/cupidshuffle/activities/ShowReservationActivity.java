@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.squareup.picasso.Picasso;
@@ -29,6 +30,7 @@ public class ShowReservationActivity extends AppCompatActivity {
     private TextView reservationPageDateAndTimeTextView;
     private TextView reservationPageWhosYourDateTextView;
     private ImageView reservationShareButtonImageView;
+    private ImageView reservationBackgroundImageView;
     private Intent showReservationIntent;
 
     private String venueName;
@@ -48,6 +50,7 @@ public class ShowReservationActivity extends AppCompatActivity {
         reservationPageDateAndTimeTextView = findViewById(R.id.reservation_page_date_and_time_textview);
         reservationPageWhosYourDateTextView = findViewById(R.id.reservation_page_date_with_textview);
         reservationShareButtonImageView = findViewById(R.id.reservation_information_share_icon);
+        reservationBackgroundImageView = findViewById(R.id.reservation_background_imageview);
 
         venueName = showReservationIntent.getStringExtra(VENUE_NAME);
         address = showReservationIntent.getStringExtra(VENUE_ADDRESS);
@@ -59,6 +62,9 @@ public class ShowReservationActivity extends AppCompatActivity {
         reservationPageVenueTextView.setText(venueName + "\n" + address);
         reservationPageWhosYourDateTextView.setText(ShuffleSelectedProfileFragment.USER_NAME);
         reservationPageDateAndTimeTextView.setText(dateOfReservation + " At " + timeOfReservation);
+
+        Glide.with(this).load(R.drawable.heartyhearts).into(reservationBackgroundImageView);
+
 
         Picasso.get()
                 .load(R.drawable.reservationshareicon)

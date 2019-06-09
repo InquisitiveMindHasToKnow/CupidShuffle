@@ -10,13 +10,17 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
@@ -36,6 +40,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static android.app.Activity.RESULT_CANCELED;
+
 public class ShuffleSelectedProfileFragment extends Fragment {
 
     private static final String USER_SELECTED = "USER SELECTED";
@@ -49,6 +55,7 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private TextView profilePageUserOccupation;
     private CircularImageView profilePageUserPicture;
     private Button shuffledProfileLetsShuffleButton;
+    private Button shuffledProfileMessageMeButton;
     private UserProfile userProfile;
     private ImageView financeProgressBar;
     private ImageView hobbiesProgressBar;
@@ -93,6 +100,7 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         profilePageUserPicture = rootView.findViewById(R.id.shuffled_profile_circular_imageview);
         profilePageUserOccupation = rootView.findViewById(R.id.shuffled_profile_occupation_textview);
         shuffledProfileLetsShuffleButton = rootView.findViewById(R.id.shuffled_profile_letsshuffle_button);
+        shuffledProfileMessageMeButton = rootView.findViewById(R.id.shuffled_profile_send_message_to_user_button);
 
         financeProgressBar = rootView.findViewById(R.id.finance_progressBar);
         hobbiesProgressBar = rootView.findViewById(R.id.hobbies_progressBar);
@@ -158,6 +166,46 @@ public class ShuffleSelectedProfileFragment extends Fragment {
             intent.putExtra(SHUFFLED_USER_KEY, userProfile);
             startActivity(intent);
 
+        });
+
+        shuffledProfileMessageMeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+
+                final EditText sendMessageEdittext = new EditText(getContext());
+                alert.setMessage("Enter Your Message: ");
+                alert.setTitle("Sending message to " + userProfile.getUser());
+
+                alert.setView(sendMessageEdittext);
+
+
+                alert.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        Intent sendMessageIntent = new Intent(getContext(), ShuffleSelectedProfileFragment.class);
+
+                        if (TextUtils.isEmpty(sendMessageEdittext.getText())) {
+                            getActivity().setResult(RESULT_CANCELED, sendMessageIntent);
+                            Toast.makeText(getContext(), "You cannot send an empty message.", Toast.LENGTH_LONG).show();
+                        }else {
+
+
+                            Toast.makeText(getActivity(), "Message sent!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+
+                    }
+                });
+
+                alert.show();
+            }
         });
 
 

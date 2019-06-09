@@ -82,13 +82,7 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
         return true;
     };
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
 
-        startBeginningFragment();
-
-    }
 
     private void inflateFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()

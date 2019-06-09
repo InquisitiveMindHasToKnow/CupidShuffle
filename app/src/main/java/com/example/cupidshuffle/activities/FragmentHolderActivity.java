@@ -72,18 +72,18 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
                 inflateFragment(clickedNavTabFragment);
                 break;
 
-        case R.id.navigation_connection_requests:
-            clickedNavTabFragment = new ViewAllConnectionRequestsFragment();
-            inflateFragment(clickedNavTabFragment);
-            break;
-    }
+            case R.id.navigation_connection_requests:
+                clickedNavTabFragment = new ViewAllConnectionRequestsFragment();
+                inflateFragment(clickedNavTabFragment);
+                break;
+        }
 
         return true;
     };
 
-    private void inflateFragment(Fragment fragment){
+    private void inflateFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container,fragment)
+                .replace(R.id.main_fragment_container, fragment)
                 .addToBackStack(null)
                 .commit();
     }

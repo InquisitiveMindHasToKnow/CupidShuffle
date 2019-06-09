@@ -30,12 +30,16 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
         navView.getMenu().getItem(2).setChecked(true);
 
 
+        startBeginningFragment();
+
+    }
+
+    private void startBeginningFragment() {
         UserViewPagerFragment userViewPagerFragment = UserViewPagerFragment.newInstance();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment_container, userViewPagerFragment);
         fragmentTransaction.commit();
-
     }
 
 
@@ -77,6 +81,14 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
 
         return true;
     };
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        startBeginningFragment();
+
+    }
 
     private void inflateFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()

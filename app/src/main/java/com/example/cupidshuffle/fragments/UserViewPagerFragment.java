@@ -1,7 +1,5 @@
 package com.example.cupidshuffle.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.ViewPagerAdapter;
+import com.example.cupidshuffle.rv.ViewPagerAdapter;
 import com.example.cupidshuffle.model.UserProfile;
 import com.example.cupidshuffle.model.UserProfilesAPI;
 import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
@@ -29,19 +27,9 @@ import retrofit2.Retrofit;
 
 
 public class UserViewPagerFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     public static final String TAG = "UserViewPagerFragment";
     public static final List<Fragment> fragmentList = new ArrayList<>();
     private View view;
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
 
 
     public UserViewPagerFragment() {
@@ -49,7 +37,7 @@ public class UserViewPagerFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
+
     public static UserViewPagerFragment newInstance() {
         return new UserViewPagerFragment();
     }
@@ -70,8 +58,6 @@ public class UserViewPagerFragment extends Fragment {
         return view;
     }
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -83,7 +69,15 @@ public class UserViewPagerFragment extends Fragment {
             public void onResponse(Call<UserProfilesAPI> call, Response<UserProfilesAPI> response) {
                 Log.d(TAG,response.body().toString());
                 List<UserProfile> userProfiles = response.body().getProfiles();
-                for (UserProfile user : userProfiles) {
+                List<UserProfile> womenList = new ArrayList<>();
+
+                for (int i = 0; i < userProfiles.size(); i++) {
+                    if (userProfiles.get(i).getGender().equalsIgnoreCase("Female")){
+                        womenList.add(userProfiles.get(i));
+                    }
+                }
+
+                for (UserProfile user : womenList) {
                     ShuffleSelectedProfileFragment shuffleSelectedProfileFragment = ShuffleSelectedProfileFragment.newInstance(user);
                     fragmentList.add(shuffleSelectedProfileFragment);
                 }
@@ -95,8 +89,6 @@ public class UserViewPagerFragment extends Fragment {
             @Override
             public void onFailure(Call<UserProfilesAPI> call, Throwable t) {
                 Log.d(TAG,t.getMessage());
-
-
             }
         });
     }

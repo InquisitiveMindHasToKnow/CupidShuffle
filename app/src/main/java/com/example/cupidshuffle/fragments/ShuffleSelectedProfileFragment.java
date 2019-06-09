@@ -40,22 +40,15 @@ public class ShuffleSelectedProfileFragment extends Fragment {
 
     private static final String USER_SELECTED = "USER SELECTED";
     private View rootView;
-    private static final String TAG = "UserProfilesJSON.TAG";
     public static final String SHUFFLED_USER_KEY = "shuffled User";
-    public static String USER_NAME = "";
+    public static String USER_NAME = "shuffled userName";
     public static String CHOSEN_DATES_PICTURE = "";
-    private List<UserProfile> userProfileList = new ArrayList<>();
     private TextView profilePageUserName;
     private TextView profilePageUserLocation;
     private TextView profilePageUserBio;
-    private TextView shuffledProfilePageUserAge;
     private TextView profilePageUserOccupation;
     private CircularImageView profilePageUserPicture;
     private Button shuffledProfileLetsShuffleButton;
-    private UserProfile profileSelected;
-    private Button shuffledProfileMessageMeButton;
-    private Intent getShuffledProfileIntent;
-    private String shuffledIndividualUserAge;
     private UserProfile userProfile;
     private ImageView financeProgressBar;
     private ImageView hobbiesProgressBar;
@@ -100,7 +93,6 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         profilePageUserPicture = rootView.findViewById(R.id.shuffled_profile_circular_imageview);
         profilePageUserOccupation = rootView.findViewById(R.id.shuffled_profile_occupation_textview);
         shuffledProfileLetsShuffleButton = rootView.findViewById(R.id.shuffled_profile_letsshuffle_button);
-        shuffledProfileMessageMeButton = rootView.findViewById(R.id.shuffled_profile_send_message_to_user_button);
 
         financeProgressBar = rootView.findViewById(R.id.finance_progressBar);
         hobbiesProgressBar = rootView.findViewById(R.id.hobbies_progressBar);

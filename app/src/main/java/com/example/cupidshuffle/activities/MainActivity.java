@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 SearchVenuesResponse searchVenuesResponse = response.body();
                 VenuesResponse venuesResponse = searchVenuesResponse.getResponse();
                 List<Venue> venues = venuesResponse.getVenues();
-                venuesAdapter = new VenuesAdapter(venues);
+                venuesAdapter = new VenuesAdapter(venues,userProfile);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 venuesRecyclerView.setAdapter(venuesAdapter);
                 venuesRecyclerView.setLayoutManager(linearLayoutManager);

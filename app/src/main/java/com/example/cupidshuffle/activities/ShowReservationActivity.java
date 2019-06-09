@@ -17,6 +17,8 @@ import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.squareup.picasso.Picasso;
 
+import static com.example.cupidshuffle.rv.VenuesViewHolder.DATES_NAME;
+
 
 public class ShowReservationActivity extends AppCompatActivity {
 
@@ -37,6 +39,7 @@ public class ShowReservationActivity extends AppCompatActivity {
     private String address;
     private String dateOfReservation;
     private String timeOfReservation;
+    private String dateName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +57,14 @@ public class ShowReservationActivity extends AppCompatActivity {
 
         venueName = showReservationIntent.getStringExtra(VENUE_NAME);
         address = showReservationIntent.getStringExtra(VENUE_ADDRESS);
+        dateName = showReservationIntent.getStringExtra(DATES_NAME);
         dateOfReservation = showReservationIntent.getStringExtra(RESERVATION_DATE);
         timeOfReservation = showReservationIntent.getStringExtra(RESERVATION_TIME);
 
         Log.e("STUFF FOR RESERVATION" , address);
 
         reservationPageVenueTextView.setText(venueName + "\n" + address);
-        reservationPageWhosYourDateTextView.setText(ShuffleSelectedProfileFragment.USER_NAME);
+        reservationPageWhosYourDateTextView.setText(dateName);
         reservationPageDateAndTimeTextView.setText(dateOfReservation + " At " + timeOfReservation);
 
         Glide.with(this).load(R.drawable.heartyhearts).into(reservationBackgroundImageView);
@@ -77,7 +81,7 @@ public class ShowReservationActivity extends AppCompatActivity {
                 StringBuilder emailBody = new StringBuilder();
                 emailBody.append("Venue: " + venueName);
                 emailBody.append("\n\nWhen: " + dateOfReservation + timeOfReservation);
-                emailBody.append("\n\nWith: " + ShuffleSelectedProfileFragment.USER_NAME);
+                emailBody.append("\n\nWith: " + dateName);
 
 
                         Intent emailIntent = new Intent(Intent.ACTION_SEND);

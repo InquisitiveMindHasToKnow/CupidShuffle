@@ -17,11 +17,14 @@ import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.squareup.picasso.Picasso;
 
+import static com.example.cupidshuffle.rv.VenuesViewHolder.DATES_NAME;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_ADDRESS;
+import static com.example.cupidshuffle.rv.VenuesViewHolder.VENUE_NAME;
+
 
 public class ShowReservationActivity extends AppCompatActivity {
 
-    private static final String VENUE_NAME = "venuename";
-    private static final String VENUE_ADDRESS = "venueaddress";
+
     private static final String RESERVATION_TIME = "reservationtime";
     private static final String RESERVATION_DATE = "reservationdate";
 
@@ -35,6 +38,7 @@ public class ShowReservationActivity extends AppCompatActivity {
 
     private String venueName;
     private String address;
+    private String dateName;
     private String dateOfReservation;
     private String timeOfReservation;
 
@@ -54,13 +58,14 @@ public class ShowReservationActivity extends AppCompatActivity {
 
         venueName = showReservationIntent.getStringExtra(VENUE_NAME);
         address = showReservationIntent.getStringExtra(VENUE_ADDRESS);
+        dateName = showReservationIntent.getStringExtra(DATES_NAME);
         dateOfReservation = showReservationIntent.getStringExtra(RESERVATION_DATE);
         timeOfReservation = showReservationIntent.getStringExtra(RESERVATION_TIME);
 
         Log.e("STUFF FOR RESERVATION" , address);
 
         reservationPageVenueTextView.setText(venueName + "\n" + address);
-        reservationPageWhosYourDateTextView.setText(ShuffleSelectedProfileFragment.USER_NAME);
+        reservationPageWhosYourDateTextView.setText(dateName);
         reservationPageDateAndTimeTextView.setText(dateOfReservation + " At " + timeOfReservation);
 
         Glide.with(this).load(R.drawable.heartyhearts).into(reservationBackgroundImageView);
@@ -77,7 +82,7 @@ public class ShowReservationActivity extends AppCompatActivity {
                 StringBuilder emailBody = new StringBuilder();
                 emailBody.append("Venue: " + venueName);
                 emailBody.append("\n\nWhen: " + dateOfReservation + timeOfReservation);
-                emailBody.append("\n\nWith: " + ShuffleSelectedProfileFragment.USER_NAME);
+                emailBody.append("\n\nWith: " + dateName);
 
 
                         Intent emailIntent = new Intent(Intent.ACTION_SEND);

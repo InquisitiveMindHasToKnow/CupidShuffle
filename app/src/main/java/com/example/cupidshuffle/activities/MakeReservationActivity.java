@@ -282,6 +282,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private NotificationCompat.Builder getNotificationBuilder() {
         Intent notificationIntent = new Intent(this, ShowReservationActivity.class);
         notificationIntent.putExtra(VENUE_NAME, venue);
+        notificationIntent.putExtra(DATES_NAME, dateName);
         notificationIntent.putExtra(VENUE_ADDRESS, address);
         notificationIntent.putExtra(RESERVATION_DATE, date);
         notificationIntent.putExtra(RESERVATION_TIME, time);

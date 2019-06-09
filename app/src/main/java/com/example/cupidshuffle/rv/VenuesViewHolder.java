@@ -77,9 +77,6 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder  {
             toDateChoiceConfirmationIntent.putExtra(DATES_NAME, userProfile.getUser());
             itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
 
-                itemView.getContext().startActivity(toDateChoiceConfirmationIntent);
-
-
                 mapToProfileNavigation = (MapToProfileNavigation) v.getContext();
                 mapToProfileNavigation.closeMainActivity();
 

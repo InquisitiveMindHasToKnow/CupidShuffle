@@ -6,7 +6,7 @@
     android:padding="24dp"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp">
+    android:layout_marginBottom="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,12 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_margin="6dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/private_message_senders_name_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#2C2C2C"
             android:textSize="16sp"
             />
 
@@ -35,21 +37,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="6dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/private_message_accept_button"
-                android:text="Respond"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/buttonPrimaryColor"
+                android:text="Respond"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/private_message_reject_button"
-                android:text="Reject"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/buttonPrimaryColor"
+                android:text="Reject"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragments.UserProfileFragment">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/main_user_profile_imageview"
@@ -19,7 +22,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/main_user_profile_userinfo_card"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="wrap_content"
         android:padding="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -47,7 +50,8 @@
                         android:id="@+id/main_user_profile_username_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Germane To Jermaine"
+                        android:text="Germane Jermaine"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
@@ -72,7 +76,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="I love marshmallow toffee I love lemon drops candy canes cake chocolate jelly beans. Gummies icing marzipan I love powder dessert chocolate. Cake cake topping cupcake marzipan I love caramels marshmallow marzipan."
+                        android:layout_marginBottom="8dp"
+                        android:text="I love marshmallow toffee I love lemon drops candy canes cake chocolate jelly beans. Gummies icing marzipan I love sweets!!"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -81,20 +86,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/buttonPrimaryColor"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
-                        android:text="Reveal Answers"/>
+                        android:text="Reveal Survey Responses"/>
 
-                    <ScrollView
-                        android:id="@+id/revealAnswers_scrollView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="68dp">
-
-                        <LinearLayout
+                        <ScrollView
+                            android:id="@+id/revealAnswers_scrollView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginBottom="50dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
                             <android.support.v7.widget.CardView
                                 android:id="@+id/userProfile_question01_revealedAnswer_card"
@@ -126,93 +134,6 @@
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
 
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question02_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question02_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question02_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question03_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question03_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question03_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question04_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question04_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question04_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
                             <android.support.v7.widget.CardView
                                 android:id="@+id/userProfile_question05_revealedAnswer_card"
                                 android:layout_width="match_parent"
@@ -241,122 +162,6 @@
 
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question06_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question06_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question06_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question07_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question07_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question07_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question08_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question08_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question08_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question09_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question09_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question09_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
 
                             <android.support.v7.widget.CardView
                                 android:id="@+id/userProfile_question10_revealedAnswer_card"
@@ -416,35 +221,6 @@
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
 
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question12_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question12_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question12_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
                             <android.support.v7.widget.CardView
                                 android:id="@+id/userProfile_question13_revealedAnswer_card"
                                 android:layout_width="match_parent"
@@ -473,64 +249,6 @@
 
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question14_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question14_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question14_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question15_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question15_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question15_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
 
                             <android.support.v7.widget.CardView
                                 android:id="@+id/userProfile_question16_revealedAnswer_card"
@@ -619,221 +337,20 @@
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
 
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question19_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question19_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question19_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question20_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question20_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question20_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question21_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question21_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question21_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question22_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question22_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question22_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question23_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question23_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question23_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question24_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="16dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question24_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question24_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
-                            <!--<android.support.v7.widget.CardView-->
-                                <!--android:id="@+id/userProfile_question25_revealedAnswer_card"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginStart="16dp"-->
-                                <!--android:layout_marginEnd="16dp"-->
-                                <!--android:layout_marginBottom="6dp"-->
-                                <!--android:padding="16dp">-->
-
-                                <!--<LinearLayout-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:orientation="vertical">-->
-
-                                    <!--<TextView-->
-                                        <!--android:id="@+id/userProfile_question25_revealedAnswer_text"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:textSize="20sp" />-->
-
-                                    <!--<RadioButton-->
-                                        <!--android:id="@+id/userProfile_question25_revealedAnswer_answer"-->
-                                        <!--android:layout_width="match_parent"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:checked="true" />-->
-
-                                <!--</LinearLayout>-->
-                            <!--</android.support.v7.widget.CardView>-->
-
                             <Button
                                 android:id="@+id/hideAnswers_button"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"
                                 android:layout_marginEnd="6dp"
-                                android:layout_marginBottom="16dp"
-                                android:text="Hide Answers"
+                                android:layout_marginBottom="24dp"
+                                android:background="@color/buttonPrimaryColor"
+                                android:textColor="@android:color/white"
+                                android:text="Hide Survey Responses"
                                 android:textSize="18sp" />
 
-                        </LinearLayout>
-                    </ScrollView>
+                            </LinearLayout>
+                        </ScrollView>
 
 
 
@@ -842,16 +359,18 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+    <!--<android.support.design.widget.BottomNavigationView-->
+        <!--android:id="@+id/nav_view"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:background="?android:attr/windowBackground"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:menu="@menu/bottom_nav_menu" />-->
 
-</android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

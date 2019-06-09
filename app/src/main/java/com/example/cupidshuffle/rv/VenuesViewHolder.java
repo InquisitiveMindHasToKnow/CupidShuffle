@@ -82,9 +82,11 @@ public class VenuesViewHolder extends RecyclerView.ViewHolder  {
 
                 mapToProfileNavigation = (MapToProfileNavigation) v.getContext();
                 mapToProfileNavigation.closeMainActivity();
-            }
+
 
         });
+
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

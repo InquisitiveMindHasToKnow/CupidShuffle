@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.activities.IndividualProfilePage;
 import com.example.cupidshuffle.activities.PrivateProfileActivity;
 import com.example.cupidshuffle.model.ConnectorModel;
 import com.google.gson.Gson;

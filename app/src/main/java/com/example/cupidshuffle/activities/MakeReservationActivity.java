@@ -120,11 +120,8 @@ public class MakeReservationActivity extends AppCompatActivity {
             int day = cal.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog dialog = new DatePickerDialog(
-                    MakeReservationActivity.this,
-                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                    chooseADateListener,
-                    year, month, day);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    MakeReservationActivity.this, R.style.DatePickerDialogTheme, chooseADateListener, year, month, day);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
             dialog.show();
         });
 

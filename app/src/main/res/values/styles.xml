@@ -16,4 +16,8 @@
         <item name="android:text">Loading...Please Wait. \n This Will Only Take A Few Seconds!</item>
     </style>
 
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>

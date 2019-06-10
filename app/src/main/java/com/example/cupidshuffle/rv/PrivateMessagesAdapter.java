@@ -1,22 +1,30 @@
 package com.example.cupidshuffle.rv;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.activities.RespondToDMActivity;
+import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.example.cupidshuffle.model.PrivateMessages;
 import com.google.gson.Gson;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.content.Context.MODE_PRIVATE;
 
 public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessagesAdapter.PrivateMessagesViewHolder> {
@@ -79,6 +87,8 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
         private Button dMRespondButton;
         private Button dMRejectButton;
 
+        private Context context;
+
 
         public PrivateMessagesViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,12 +109,47 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
             dMRespondButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent toRespondToDMActivityIntent = new Intent(itemView.getContext(), RespondToDMActivity.class);
-                    toRespondToDMActivityIntent.putExtra(dMSendersName, privateMessages.getSender());
-                    toRespondToDMActivityIntent.putExtra(dMedMessage, privateMessages.getMessage());
-                    itemView.getContext().startActivity(toRespondToDMActivityIntent);
+
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(v.getContext());
+
+                    final EditText respondToDMEdittext = new EditText(v.getContext());
+
+                    alertDialog.setTitle("Sending message to " + privateMessages.getSender());
+                    alertDialog.setMessage("Enter your message: ");
+
+                    alertDialog.setView(respondToDMEdittext);
+
+                    alertDialog.setPositiveButton("Send",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Intent sendMessageIntent = new Intent(v.getContext(), ShuffleSelectedProfileFragment.class);
+
+                                    if (TextUtils.isEmpty(respondToDMEdittext.getText())) {
+                                        if (context instanceof Activity)
+                                            ((Activity) context).setResult(RESULT_CANCELED, sendMessageIntent);
+
+                                        Toast.makeText(v.getContext(), "You cannot send an empty message.", Toast.LENGTH_LONG).show();
+                                    }else {
+
+                                        deletePrivateMessage(getAdapterPosition());
+                                        Toast.makeText(v.getContext(), "Message sent!", Toast.LENGTH_LONG).show();
+                                    }
+
+                                }
+                            });
+                    alertDialog.setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                    alertDialog.show();
+
                 }
             });
+
+
 
             dMRejectButton.setOnClickListener(new View.OnClickListener() {
                 @Override

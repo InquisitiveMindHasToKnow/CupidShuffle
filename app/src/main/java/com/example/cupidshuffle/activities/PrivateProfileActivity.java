@@ -3,6 +3,7 @@ package com.example.cupidshuffle.activities;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,10 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.AllUserProfilesFragment;
+import com.example.cupidshuffle.fragments.ClosePrivateProfileNavigation;
+import com.example.cupidshuffle.fragments.UserProfileFragment;
+import com.example.cupidshuffle.fragments.UserViewPagerFragment;
+import com.example.cupidshuffle.fragments.ViewAllConnectionRequestsFragment;
+import com.example.cupidshuffle.fragments.ViewAllPrivateMessagesFragment;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-public class PrivateProfileActivity extends AppCompatActivity {
+public class PrivateProfileActivity extends AppCompatActivity implements ClosePrivateProfileNavigation {
 
     private static final String REQUESTORS_USER_NAME = "requestorsusername";
     private static final String REQUESTOR_USER_PICTURE = "requestorspicutre";
@@ -32,13 +39,6 @@ public class PrivateProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_profile);
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-
-        int size = navView.getMenu().size();
-        for (int i = 0; i < size; i++) {
-            navView.getMenu().getItem(i).setCheckable(false);
-        }
 
         getInfoForPrivateUserIntent = getIntent();
 
@@ -58,7 +58,19 @@ public class PrivateProfileActivity extends AppCompatActivity {
                 .load(getInfoForPrivateUserIntent.getStringExtra(REQUESTOR_USER_PICTURE))
                 .into(privateProfileCircularImageView);
 
+        privateProfileConnectRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PrivateProfileActivity.this, "Connection request sent to " + requestorsName, Toast.LENGTH_LONG).show();
+                closePrivateProfileActivity();
+
+            }
+        });
+
     }
 
-
+    @Override
+    public void closePrivateProfileActivity() {
+        finish();
+    }
 }

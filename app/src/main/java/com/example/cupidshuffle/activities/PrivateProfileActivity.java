@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
+import com.example.cupidshuffle.fragments.ClosePrivateProfileNavigation;
+import com.example.cupidshuffle.fragments.ViewAllConnectionRequestsFragment;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-public class PrivateProfileActivity extends AppCompatActivity {
+public class PrivateProfileActivity extends AppCompatActivity implements ClosePrivateProfileNavigation {
 
     private static final String REQUESTORS_USER_NAME = "requestorsusername";
     private static final String REQUESTOR_USER_PICTURE = "requestorspicutre";
@@ -58,7 +60,20 @@ public class PrivateProfileActivity extends AppCompatActivity {
                 .load(getInfoForPrivateUserIntent.getStringExtra(REQUESTOR_USER_PICTURE))
                 .into(privateProfileCircularImageView);
 
+        privateProfileConnectRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PrivateProfileActivity.this, "Connection request sent to " + requestorsName, Toast.LENGTH_LONG).show();
+                closePrivateProfileActivity();
+
+            }
+        });
+
     }
 
 
+    @Override
+    public void closePrivateProfileActivity() {
+        finish();
+    }
 }

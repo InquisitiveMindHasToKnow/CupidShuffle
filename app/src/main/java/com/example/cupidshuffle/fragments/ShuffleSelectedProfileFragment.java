@@ -177,7 +177,6 @@ public class ShuffleSelectedProfileFragment extends Fragment {
                 final EditText sendMessageEdittext = new EditText(getContext());
                 alert.setMessage("Enter Your Message: ");
                 alert.setTitle("Sending message to " + userProfile.getUser());
-
                 alert.setView(sendMessageEdittext);
 
 

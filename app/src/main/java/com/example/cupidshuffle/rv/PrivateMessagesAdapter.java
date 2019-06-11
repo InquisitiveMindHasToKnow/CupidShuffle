@@ -116,7 +116,6 @@ public class PrivateMessagesAdapter extends RecyclerView.Adapter<PrivateMessages
 
                     alertDialog.setTitle("Sending message to " + privateMessages.getSender());
                     alertDialog.setMessage("Enter your message: ");
-
                     alertDialog.setView(respondToDMEdittext);
 
                     alertDialog.setPositiveButton("Send",

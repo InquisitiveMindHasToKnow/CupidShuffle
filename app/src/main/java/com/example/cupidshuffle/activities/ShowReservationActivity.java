@@ -80,7 +80,7 @@ public class ShowReservationActivity extends AppCompatActivity {
 
                 StringBuilder emailBody = new StringBuilder();
                 emailBody.append("Venue: " + venueName);
-                emailBody.append("\n\nWhen: " + dateOfReservation + timeOfReservation);
+                emailBody.append("\n\nWhen: " + dateOfReservation + " at " + timeOfReservation);
                 emailBody.append("\n\nWith: " + dateName);
 
 

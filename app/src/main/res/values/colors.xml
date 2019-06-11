@@ -5,10 +5,11 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="backgroundPrimary">#EBA6A9</color>
-    <color name="textPrimaryColor">#002A32</color>
+    <color name="textPrimaryColor">#2C2C2C</color>
     <color name="white">#FFF</color>
     <color name="buttonPrimaryColor">#BE1F3C88</color>
     <color name="snackColor">#000</color>
     <color name="appColor1">#F40076</color>
+
 
 </resources>

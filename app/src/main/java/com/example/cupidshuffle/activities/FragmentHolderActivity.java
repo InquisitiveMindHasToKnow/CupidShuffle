@@ -85,9 +85,10 @@ public class FragmentHolderActivity extends AppCompatActivity implements Fragmen
     private void inflateFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_container, fragment)
-                .addToBackStack(null)
                 .commit();
     }
+
+
 
 
     @Override

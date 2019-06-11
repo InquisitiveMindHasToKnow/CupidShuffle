@@ -38,4 +38,6 @@ public class UserProfilesAdapter  extends RecyclerView.Adapter<UserProfilesViewH
     public int getItemCount() {
         return userProfileList.size();
     }
+
+
 }

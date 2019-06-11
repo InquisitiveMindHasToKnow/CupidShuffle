@@ -47,9 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
         registerButton.setPaintFlags(registerButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        Picasso.get()
-                .load(R.drawable.cupid2)
-                .into(loginPageImage);
+//        Picasso.get()
+//                .load(R.drawable.cupid2)
+//                .into(loginPageImage);
 
         loginSharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 

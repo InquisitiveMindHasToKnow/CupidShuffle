@@ -230,21 +230,21 @@ public class ShuffleSelectedProfileFragment extends Fragment {
 
     public int getWidth(int width) {
 
-        int max = 31;
-        int min = 10;
-        int midMax = 20;
+        int max = 121;
+        int min = 50;
+        int midMax = 70;
 
-        if (width == 0 || width <= 1) {
-            width = 1;
+        if (width <= 60) {
+            width = 100;
         }
-        if (width <= min && width >= 2) {
-            width = 90;
+        if (width <=70){
+            width =250;
         }
-        if (width <= max && width >= midMax) {
-            width = 350;
+        if (width <= 90){
+            width = 400;
         }
-        if (width < midMax && width >= min) {
-            width = 175;
+        if (width <= 125){
+            width =700;
         }
 
         return width;

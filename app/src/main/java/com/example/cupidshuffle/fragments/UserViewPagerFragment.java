@@ -45,23 +45,6 @@ public class UserViewPagerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_user_view_pager, container, false);
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
         Retrofit retrofit = UserProfileRetrofitSingleton.getRetrofitInstance();
         UserProfileService userProfileService = retrofit.create(UserProfileService.class);
         userProfileService.getProfiles().enqueue(new Callback<UserProfilesAPI>() {
@@ -82,7 +65,7 @@ public class UserViewPagerFragment extends Fragment {
                     fragmentList.add(shuffleSelectedProfileFragment);
                 }
                 ViewPager viewPager = view.findViewById(R.id.fragment_viewPager);
-                viewPager.setAdapter(new ViewPagerAdapter(getActivity().getSupportFragmentManager(),fragmentList));
+                viewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(),fragmentList));
 
             }
 
@@ -92,6 +75,15 @@ public class UserViewPagerFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_user_view_pager, container, false);
+
+        return view;
+    }
+
 
 
 

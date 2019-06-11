@@ -238,16 +238,18 @@ public class MakeReservationActivity extends AppCompatActivity {
                                     .setTitle("Request Successful!")
                                     .setMessage(Html.fromHtml(dateRequestSent_string.toString()))
                                     .setPositiveButton("Continue", (dateRequestDialog, which) -> {
+
+                                        new Handler().postDelayed(() -> {
+                                            createNotificationChannel();
+
+                                            sendNotification();
+
+                                        }, 10000);
                                         finish();
                                     });
                     dateRequestBuilder.create().show();
 
-                    new Handler().postDelayed(() -> {
-                        createNotificationChannel();
 
-                        sendNotification();
-
-                    }, 10000);
                 }, 1500);
 
 

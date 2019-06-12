@@ -50,8 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="8dp"
-                android:background="@color/buttonPrimaryColor"
+                android:layout_margin="8dp"
+                android:background="@drawable/roundedbuttons"
                 android:textColor="@android:color/white"
                 android:text="Select"/>
 

@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
                         android:layout_marginTop="10dp"
-                        android:background="@color/buttonPrimaryColor"
+                        android:background="@drawable/roundedbuttons"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:text="Reveal Survey Responses"/>
@@ -344,7 +344,7 @@
                                 android:layout_marginStart="6dp"
                                 android:layout_marginEnd="6dp"
                                 android:layout_marginBottom="24dp"
-                                android:background="@color/buttonPrimaryColor"
+                                android:background="@drawable/roundedbuttons"
                                 android:textColor="@android:color/white"
                                 android:text="Hide Survey Responses"
                                 android:textSize="18sp" />

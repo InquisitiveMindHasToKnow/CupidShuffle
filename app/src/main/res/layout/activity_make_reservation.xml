@@ -23,8 +23,8 @@
 
     <ProgressBar
         android:id="@+id/progress_circular"
-        android:layout_width="155dp"
-        android:layout_height="131dp"
+        android:layout_width="133dp"
+        android:layout_height="115dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -96,7 +96,6 @@
             android:layout_marginStart="16dp"
             android:hint="Tap to select time"
             android:textSize="24sp"/>
-
 
     </LinearLayout>
 

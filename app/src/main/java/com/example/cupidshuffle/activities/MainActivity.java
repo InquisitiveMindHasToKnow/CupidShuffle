@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             public void onFailure(Call<SearchVenuesResponse> call, Throwable t) {
                 Log.d(TAG, t.toString());
 
-        }
+
+            }
 
         });
     }

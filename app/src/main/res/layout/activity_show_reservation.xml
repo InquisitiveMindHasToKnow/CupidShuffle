@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinkpeach_wallpaper"
+    android:background="@drawable/peachpink_wallpaper"
     tools:context=".activities.ShowReservationActivity">
 
 
@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Reservation"
-        android:textSize="32sp"
+        android:textSize="40sp"
         android:textColor="#2C2C2C"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:background="@color/buttonPrimaryColor"
+                android:background="@drawable/roundedbuttons"
                 android:textColor="@android:color/white"
                 android:text="Select"/>
 

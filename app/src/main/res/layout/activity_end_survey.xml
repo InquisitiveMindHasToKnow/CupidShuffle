@@ -43,7 +43,7 @@
         android:layout_height="59dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="88dp"
-        android:background="@color/buttonPrimaryColor"
+        android:background="@drawable/roundedbuttons"
         android:text="@string/go_text"
         android:textSize="22sp"
         android:textColor="@android:color/white"

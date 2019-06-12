@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ToxicBakery.viewpager.transforms.BackgroundToForegroundTransformer;
+import com.ToxicBakery.viewpager.transforms.StackTransformer;
 import com.example.cupidshuffle.R;
 import com.example.cupidshuffle.rv.ViewPagerAdapter;
 import com.example.cupidshuffle.model.UserProfile;
@@ -66,6 +68,8 @@ public class UserViewPagerFragment extends Fragment {
                 }
                 ViewPager viewPager = view.findViewById(R.id.fragment_viewPager);
                 viewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(),fragmentList));
+                viewPager.setPageTransformer(true, new BackgroundToForegroundTransformer());
+
 
             }
 

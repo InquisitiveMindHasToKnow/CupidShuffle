@@ -1,9 +1,6 @@
 package com.example.cupidshuffle.activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +11,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.fragments.ShuffleSelectedProfileFragment;
 import com.squareup.picasso.Picasso;
 
 import static com.example.cupidshuffle.rv.VenuesViewHolder.DATES_NAME;

@@ -15,6 +15,6 @@ public interface UserProfileService {
      *
      * https://gist.githubusercontent.com/InquisitiveMindHasToKnow/6ad4c3e83c0bde52c0ba369e49091898/raw/6167db52c567774d8d17271f8554d457eaffe69f/CupidShuffleProfiles.txt
      */
-    @GET("InquisitiveMindHasToKnow/6ad4c3e83c0bde52c0ba369e49091898/raw/6167db52c567774d8d17271f8554d457eaffe69f/CupidShuffleProfiles.txt")
+    @GET("InquisitiveMindHasToKnow/6ad4c3e83c0bde52c0ba369e49091898/raw/3adb9fc04e72f73ab109969ea5b0a76379d02d75/CupidShuffleProfiles.txt")
     Call<UserProfilesAPI> getProfiles();
 }

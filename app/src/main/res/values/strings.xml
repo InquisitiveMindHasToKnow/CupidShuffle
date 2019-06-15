@@ -23,6 +23,7 @@
     <string name="start_text">Start</string>
     <string name="go_text">Go !</string>
     <string name="completed_survey_text">You\'ve complete the compatibility questionnaire.\n\nNow let\'s see your profile, potential matches, and recommended date ideas!</string>
+    <string name="reservation_response_text">\"Hey boo, thanks for the invite. Can\'t wait to meet you! 😘\"</string>
 
 
     <!--QUESTIONNAIRE STRINGS-->

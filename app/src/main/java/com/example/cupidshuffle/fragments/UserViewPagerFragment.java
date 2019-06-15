@@ -89,10 +89,4 @@ public class UserViewPagerFragment extends Fragment {
 
         return view;
     }
-
-
-
-
-
-
 }

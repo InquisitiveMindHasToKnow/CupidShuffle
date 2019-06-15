@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:background="#000"
-        android:src="@drawable/ronaldomanu2"
+        android:src="@drawable/user_sky_background"
+        android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +51,7 @@
                         android:id="@+id/main_user_profile_username_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Germane Jermaine"
+                        android:text="Josh Hernandez"
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:textSize="24sp" />
@@ -60,6 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Brooklyn, N.Y."
+                        android:textColor="#2C2C2C"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -67,8 +69,9 @@
                         android:id="@+id/main_user_profile_occupation_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Football Legend"
+                        android:text="International Pilot"
                         android:textAlignment="center"
+                        android:textColor="#2C2C2C"
                         android:textSize="16sp" />
 
                     <TextView
@@ -77,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="I love marshmallow toffee I love lemon drops candy canes cake chocolate jelly beans. Gummies icing marzipan I love sweets!!"
+                        android:text="Dominican 🇩🇴 but my home is NYC 🗽. 31.  I love all types of seafood. Looking for a lovely lady to show her the beauty of the world.   "
                         android:textAlignment="center"
                         android:textSize="20sp" />
 

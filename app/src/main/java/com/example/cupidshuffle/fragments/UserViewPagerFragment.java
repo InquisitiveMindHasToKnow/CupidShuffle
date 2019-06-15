@@ -56,7 +56,6 @@ public class UserViewPagerFragment extends Fragment {
                 Log.d(TAG,response.body().toString());
                 List<UserProfile> userProfiles = response.body().getProfiles();
                 List<UserProfile> womenList = new ArrayList<>();
-                Collections.shuffle(userProfiles);
 
                 for (int i = 0; i < userProfiles.size(); i++) {
                     if (userProfiles.get(i).getGender().equalsIgnoreCase("Female")){

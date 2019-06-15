@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,6 +62,7 @@ public class MakeReservationActivity extends AppCompatActivity {
     private Button reservationConfirmationButton;
     private Intent reservationDetailIntent;
     private ProgressBar progressBar;
+    private EditText sendMessageEdittext;
     private NotificationManager notificationManager;
     private Intent dateIntent;
 
@@ -89,7 +91,7 @@ public class MakeReservationActivity extends AppCompatActivity {
         chooseADateTextView = findViewById(R.id.date_selected);
         chooseATimeTextView = findViewById(R.id.time_selected);
         reservationConfirmationButton = findViewById(R.id.confirm_preferred_date_and_time);
-
+        sendMessageEdittext = findViewById(R.id.send_message_at_reservation_edittext);
         progressBar = findViewById(R.id.progress_circular);
         progressBar.setVisibility(View.GONE);
 

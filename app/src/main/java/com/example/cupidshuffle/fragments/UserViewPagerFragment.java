@@ -20,6 +20,7 @@ import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.services.UserProfileService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -55,6 +56,7 @@ public class UserViewPagerFragment extends Fragment {
                 Log.d(TAG,response.body().toString());
                 List<UserProfile> userProfiles = response.body().getProfiles();
                 List<UserProfile> womenList = new ArrayList<>();
+                Collections.shuffle(userProfiles);
 
                 for (int i = 0; i < userProfiles.size(); i++) {
                     if (userProfiles.get(i).getGender().equalsIgnoreCase("Female")){
@@ -87,10 +89,4 @@ public class UserViewPagerFragment extends Fragment {
 
         return view;
     }
-
-
-
-
-
-
 }

@@ -94,29 +94,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 Log.d(TAG, t.toString());
 
 
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        AlertDialog.Builder builder =
-                                new AlertDialog.Builder(MainActivity.this)
-                                        .setIcon(R.drawable.nointernetconnection)
-                                        .setTitle("Uh-Oh!")
-                                        .setMessage("Slow or no internet connection. Please check your settings and refresh the page.")
-                                        .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-                        builder.create().show();
-
-                    }
-                }, 8000);
-
-
-        }
+            }
 
         });
     }

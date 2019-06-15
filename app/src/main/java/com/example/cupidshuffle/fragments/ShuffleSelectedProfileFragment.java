@@ -166,6 +166,46 @@ public class ShuffleSelectedProfileFragment extends Fragment {
             intent.putExtra(SHUFFLED_USER_KEY, userProfile);
             startActivity(intent);
         });
+
+        shuffledProfileMessageMeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+
+                final EditText sendMessageEdittext = new EditText(getContext());
+                alert.setMessage("Enter Your Message: ");
+                alert.setTitle("Sending message to " + userProfile.getUser());
+
+                alert.setView(sendMessageEdittext);
+
+
+                alert.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        Intent sendMessageIntent = new Intent(getContext(), ShuffleSelectedProfileFragment.class);
+
+                        if (TextUtils.isEmpty(sendMessageEdittext.getText())) {
+                            getActivity().setResult(RESULT_CANCELED, sendMessageIntent);
+                            Toast.makeText(getContext(), "You cannot send an empty message.", Toast.LENGTH_LONG).show();
+                        } else {
+
+
+                            Toast.makeText(getActivity(), "Message sent!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+
+                    }
+                });
+
+                alert.show();
+            }
+
+        });
     }
 
     private void setWidth(int financeWidth, int hobbiesWidth, int culturalWidth, int sexWidth, int generalWidth) {

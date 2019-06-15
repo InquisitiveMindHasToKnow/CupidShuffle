@@ -86,6 +86,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="4dp"
                             android:text="Brooklyn, NY"
+                            android:textColor="#2C2C2C"
                             android:textSize="16sp" />
 
                         <TextView
@@ -95,6 +96,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="4dp"
                             android:text="Physical Therapist"
+                            android:textColor="#2C2C2C"
                             android:textSize="16sp" />
 
                         <TextView

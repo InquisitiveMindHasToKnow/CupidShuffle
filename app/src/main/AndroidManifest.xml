@@ -27,8 +27,7 @@
         <activity android:name=".activities.questionnaires.GenderActivity" />
         <activity android:name=".activities.PrivateProfileActivity" />
         <activity
-            android:name=".activities.FragmentHolderActivity"
-            android:configChanges="keyboardHidden|orientation"
+            android:name=".activities.FragmentHolderActivity" android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_page_after_login" />
         <activity android:name=".activities.ShuffleTheLoveBirdsActivity" />
         <activity android:name=".activities.ViewPrivateMessagesAndConnectionRequest" />
@@ -36,8 +35,7 @@
         <activity android:name=".activities.ViewAllRequestsActivity" />
         <activity android:name=".activities.UserRegistrationActivity" />
         <activity
-            android:name=".activities.MainActivity"
-            android:configChanges="keyboardHidden|orientation" />
+            android:name=".activities.MainActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>

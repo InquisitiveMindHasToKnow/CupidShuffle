@@ -4,15 +4,12 @@ package com.example.cupidshuffle.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,22 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cupidshuffle.R;
-import com.example.cupidshuffle.network.UserProfileRetrofitSingleton;
 import com.example.cupidshuffle.activities.MainActivity;
 import com.example.cupidshuffle.model.UserProfile;
-import com.example.cupidshuffle.model.UserProfilesAPI;
-import com.example.cupidshuffle.services.UserProfileService;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import static android.app.Activity.RESULT_CANCELED;
 
@@ -62,6 +48,8 @@ public class ShuffleSelectedProfileFragment extends Fragment {
     private ImageView cultureProgressBar;
     private ImageView sexProgressBar;
     private ImageView generalProgressBar;
+    private long lastButtonClickTime = 0;
+
 
 
     public ShuffleSelectedProfileFragment() {
@@ -159,9 +147,14 @@ public class ShuffleSelectedProfileFragment extends Fragment {
         }
 
 
-        shuffledProfileLetsShuffleButton.setOnClickListener(v ->
+        shuffledProfileLetsShuffleButton.setOnClickListener(v -> {
 
-        {
+
+            if (SystemClock.elapsedRealtime() - lastButtonClickTime < 4000) {
+                return;
+            }
+            lastButtonClickTime = SystemClock.elapsedRealtime();
+
             Intent intent = new Intent(getContext(), MainActivity.class);
             intent.putExtra(SHUFFLED_USER_KEY, userProfile);
             startActivity(intent);

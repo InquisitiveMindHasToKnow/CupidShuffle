@@ -3,7 +3,6 @@ package com.example.cupidshuffle.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -56,8 +55,6 @@ public class ShowReservationActivity extends AppCompatActivity {
         dateName = showReservationIntent.getStringExtra(DATES_NAME);
         dateOfReservation = showReservationIntent.getStringExtra(RESERVATION_DATE);
         timeOfReservation = showReservationIntent.getStringExtra(RESERVATION_TIME);
-
-        Log.e("STUFF FOR RESERVATION" , address);
 
         reservationPageVenueTextView.setText(venueName + "\n" + address);
         reservationPageWhosYourDateTextView.setText(dateName);

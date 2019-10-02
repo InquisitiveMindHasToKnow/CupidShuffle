@@ -121,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
@@ -130,6 +131,7 @@
                         android:layout_gravity="center"
                         android:padding="4dp"
                         android:background="@drawable/roundedbuttons"
+                        android:layout_marginEnd="24dp"
                         android:text="   Let's Meet!   "
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
@@ -140,9 +142,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginStart="160dp"
                         android:background="@drawable/roundedbuttons"
                         android:padding="4dp"
+                        android:layout_marginStart="24dp"
                         android:text="  Message Me!  "
                         android:textAlignment="center"
                         android:textColor="@android:color/white"

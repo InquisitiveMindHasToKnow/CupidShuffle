@@ -1,15 +1,11 @@
 <resources>
-    <string name="app_name">CupidShuffle</string>
+    <string name="app_name">Cupid Shuffle</string>
     <string name="title_activity_page_after_login">PageAfterLoginActivity</string>
     <string name="title_profile">Profile</string>
     <string name="title_dashboard">Discover</string>
     <string name="title_notifications">Messages</string>
     <string name="title_messages">Requests</string>
     <string name="title_match">Match</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <string name="optional">Explain your answer (optional)</string>
     <string name="your_answer">Your Answer</string>
